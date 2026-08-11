@@ -13,3 +13,4 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/pengaduan', [DashboardController::class, 'pengaduan'])->name('dashboard.pengaduan');

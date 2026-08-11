@@ -24,4 +24,20 @@ class DashboardController extends Controller
 
         return redirect('/login')->withErrors(['login_identifier' => 'Silakan masuk terlebih dahulu.']);
     }
+
+    /**
+     * Tampilkan halaman pengaduan berdasarkan guard user.
+     */
+    public function pengaduan()
+    {
+        if (Auth::guard('siswa')->check()) {
+            return view('siswa.pengaduan');
+        }
+
+        if (Auth::guard('web')->check()) {
+            return view('petugas.pengaduan');
+        }
+
+        return redirect('/login')->withErrors(['login_identifier' => 'Silakan masuk terlebih dahulu.']);
+    }
 }
