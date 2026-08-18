@@ -67,11 +67,11 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Pastikan kredensial **Google reCAPTCHA v2** terpasang di `.env` (sudah terintegrasi otomatis):
+Pastikan kredensial **Google reCAPTCHA v2** terpasang di `.env`:
 
 ```env
-NOCAPTCHA_SITEKEY=6Lf36X4tAAAAAF_WE2WGqApSmi9N2t1ZMNrmn7Xq
-NOCAPTCHA_SECRET=6Lf36X4tAAAAACZwFWLsDxq_8LnryJSU2DDkrIJQ
+NOCAPTCHA_SITEKEY=your-recaptcha-sitekey-here
+NOCAPTCHA_SECRET=your-recaptcha-secretkey-here
 ```
 
 ### Langkah 4: Generate Application Key
