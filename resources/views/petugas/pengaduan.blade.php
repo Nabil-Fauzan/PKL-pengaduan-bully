@@ -1,23 +1,157 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Pengaduan')
-@section('page_title', 'Data Pengaduan')
+@section('title', 'Data Pengaduan Siswa')
+@section('page_title', 'Daftar Pengaduan')
 
 @section('content')
 <div class="row">
-    <div class="col-lg-12">
-        <div class="card card-primary card-outline">
+    <div class="col-12">
+        
+        <!-- Filter Card -->
+        <div class="card card-default mb-4">
+            <div class="card-header">
+                <h3 class="card-title font-weight-bold">
+                    <i class="fas fa-filter mr-1"></i>
+                    Saring & Cari Laporan
+                </h3>
+            </div>
             <div class="card-body">
-                <h5 class="card-title font-weight-bold mb-3">Daftar Pengaduan</h5>
-                <p class="card-text">
-                    Halaman ini adalah daftar pengaduan yang masuk. Halaman ini saat ini sengaja dikosongkan terlebih dahulu sesuai dengan instruksi pengerjaan.
-                </p>
-                <hr>
-                <a href="#" onclick="event.preventDefault(); if(confirm('Yakin ingin keluar?')) { document.getElementById('logout-form').submit(); }" class="text-danger font-weight-bold">
-                    Keluar (Logout) &rarr;
-                </a>
+                <form action="{{ route('dashboard.pengaduan') }}" method="GET" class="row">
+                    <!-- Search query -->
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <label for="search" class="text-sm font-weight-bold text-muted">Kata Kunci:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" name="search" id="search" value="{{ request('search') }}" 
+                                placeholder="Cari judul, nama pelapor, atau NIS..." class="form-control form-control-sm">
+                        </div>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label for="status" class="text-sm font-weight-bold text-muted">Status Laporan:</label>
+                        <select name="status" id="status" class="form-control form-control-sm">
+                            <option value="">Semua Status</option>
+                            <option value="baru" {{ request('status') === 'baru' ? 'selected' : '' }}>Baru (<= 3 Hari)</option>
+                            <option value="terabaikan" {{ request('status') === 'terabaikan' ? 'selected' : '' }}>Terabaikan (> 3 Hari)</option>
+                            <option value="proses" {{ request('status') === 'proses' ? 'selected' : '' }}>Dalam Proses</option>
+                            <option value="selesai" {{ request('status') === 'selesai' ? 'selected' : '' }}>Selesai</option>
+                            <option value="ditolak" {{ request('status') === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                        </select>
+                    </div>
+
+                    <!-- Kategori Filter -->
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <label for="kategori" class="text-sm font-weight-bold text-muted">Kategori:</label>
+                        <select name="kategori" id="kategori" class="form-control form-control-sm">
+                            <option value="">Semua Kategori</option>
+                            <option value="bullying" {{ request('kategori') === 'bullying' ? 'selected' : '' }}>Bullying</option>
+                            <option value="fasilitas" {{ request('kategori') === 'fasilitas' ? 'selected' : '' }}>Fasilitas Sekolah</option>
+                            <option value="akademik" {{ request('kategori') === 'akademik' ? 'selected' : '' }}>Akademik</option>
+                            <option value="lainnya" {{ request('kategori') === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter Actions -->
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary btn-sm btn-block font-weight-bold">
+                            <i class="fas fa-search mr-1"></i> Cari
+                        </button>
+                        
+                        @if(request()->filled('search') || request()->filled('status') || request()->filled('kategori'))
+                            <a href="{{ route('dashboard.pengaduan') }}" class="btn btn-default btn-sm ml-2" title="Reset Filter">
+                                <i class="fas fa-sync-alt"></i>
+                            </a>
+                        @endif
+                    </div>
+                </form>
             </div>
         </div>
+
+        <!-- Data Card -->
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title font-weight-bold">
+                    <i class="fas fa-list mr-1"></i>
+                    Semua Data Pengaduan Masuk
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;" class="text-center">No</th>
+                                <th style="width: 200px;">Siswa Pelapor</th>
+                                <th>Judul Pengaduan</th>
+                                <th style="width: 120px;">Kategori</th>
+                                <th style="width: 180px;">Tanggal Masuk</th>
+                                <th style="width: 150px;">Status</th>
+                                <th style="width: 130px;" class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $no = ($data_pengaduan->currentPage() - 1) * $data_pengaduan->perPage() + 1;
+                            @endphp
+                            @forelse($data_pengaduan as $pengaduan)
+                                <tr>
+                                    <td class="text-center font-weight-bold">{{ $no++ }}</td>
+                                    <td>
+                                        <div class="font-weight-bold text-dark">{{ $pengaduan->siswa->nama }}</div>
+                                        <small class="text-muted">NIS: {{ $pengaduan->siswa->nis }}</small>
+                                    </td>
+                                    <td class="text-dark">{{ $pengaduan->judul }}</td>
+                                    <td>
+                                        @if($pengaduan->kategori === 'bullying')
+                                            <span class="badge bg-danger">Bullying</span>
+                                        @elseif($pengaduan->kategori === 'fasilitas')
+                                            <span class="badge bg-info">Fasilitas</span>
+                                        @elseif($pengaduan->kategori === 'akademik')
+                                            <span class="badge bg-primary">Akademik</span>
+                                        @else
+                                            <span class="badge bg-secondary">Lainnya</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $pengaduan->tanggal_pengaduan->format('d/m/Y | H:i') }} WIB</td>
+                                    <td>
+                                        @if($pengaduan->isTerabaikan())
+                                            <span class="badge bg-danger">Terabaikan (>3 hari)</span>
+                                        @elseif($pengaduan->status === 'baru')
+                                            <span class="badge bg-primary">Baru</span>
+                                        @elseif($pengaduan->status === 'diproses')
+                                            <span class="badge bg-warning text-dark">Diproses</span>
+                                        @elseif($pengaduan->status === 'selesai')
+                                            <span class="badge bg-success">Selesai</span>
+                                        @else
+                                            <span class="badge bg-danger">Ditolak</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('petugas.pengaduan.detail', $pengaduan->id_pengaduan) }}" class="btn btn-primary btn-xs font-weight-bold">
+                                            <i class="fas fa-reply mr-1"></i> Tanggapi
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-4">Tidak ada laporan pengaduan yang ditemukan.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Pagination Footer -->
+            @if($data_pengaduan->hasPages())
+                <div class="card-footer clearfix d-flex justify-content-end">
+                    {{ $data_pengaduan->links('pagination::bootstrap-4') }}
+                </div>
+            @endif
+        </div>
+
     </div>
 </div>
 @endsection

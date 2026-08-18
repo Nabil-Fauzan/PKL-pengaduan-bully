@@ -23,8 +23,8 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        // Tentukan default role aktif (petugas atau siswa)
-        $role = $request->query('role', 'siswa');
+        // Tentukan default role aktif (petugas atau siswa), periksa input lama jika redirect back
+        $role = old('role', $request->query('role', 'siswa'));
         if (!in_array($role, ['siswa', 'petugas'])) {
             $role = 'siswa';
         }

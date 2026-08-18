@@ -53,4 +53,12 @@ class Pengaduan extends Model
     {
         return $this->hasMany(Tanggapan::class, 'id_pengaduan', 'id_pengaduan');
     }
+
+    /**
+     * Check if the complaint has been ignored/unresolved for more than 3 days.
+     */
+    public function isTerabaikan(): bool
+    {
+        return $this->status === 'baru' && $this->tanggal_pengaduan->lt(now()->subDays(3));
+    }
 }
