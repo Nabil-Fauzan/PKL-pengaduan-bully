@@ -120,24 +120,42 @@
                 </div>
 
                 <!-- Search and Filters Section -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                    <!-- Category Pills Filter -->
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="filterByCategory('all')" id="btn-cat-all" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm border border-indigo-600 transition-all cursor-pointer">Semua Kategori</button>
-                        <button onclick="filterByCategory('bullying')" id="btn-cat-bullying" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Bullying</button>
-                        <button onclick="filterByCategory('fasilitas')" id="btn-cat-fasilitas" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Fasilitas</button>
-                        <button onclick="filterByCategory('akademik')" id="btn-cat-akademik" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Akademik</button>
-                        <button onclick="filterByCategory('lainnya')" id="btn-cat-lainnya" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Lainnya</button>
+                <div class="flex flex-col gap-4 mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <!-- Category Pills Filter -->
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="filterByCategory('all')" id="btn-cat-all" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm border border-indigo-600 transition-all cursor-pointer">Semua Kategori</button>
+                            <button onclick="filterByCategory('bullying')" id="btn-cat-bullying" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Bullying</button>
+                            <button onclick="filterByCategory('fasilitas')" id="btn-cat-fasilitas" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Fasilitas</button>
+                            <button onclick="filterByCategory('akademik')" id="btn-cat-akademik" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Akademik</button>
+                            <button onclick="filterByCategory('lainnya')" id="btn-cat-lainnya" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">Lainnya</button>
+                        </div>
+
+                        <!-- Search Input -->
+                        <div class="relative w-full sm:w-64">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </span>
+                            <input type="text" id="search-input" oninput="filterBySearch()" placeholder="Cari judul laporan..." class="block w-full rounded-full border border-slate-200 bg-white pl-9 pr-4 py-1.5 text-xs focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder-slate-400 shadow-sm transition-all">
+                        </div>
                     </div>
 
-                    <!-- Search Input -->
-                    <div class="relative w-full sm:w-64">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </span>
-                        <input type="text" id="search-input" oninput="filterBySearch()" placeholder="Cari judul laporan..." class="block w-full rounded-full border border-slate-200 bg-white pl-9 pr-4 py-1.5 text-xs focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder-slate-400 shadow-sm transition-all">
+                    <!-- Date Range Filter Row -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200/80 rounded-full px-4 py-1.5 shadow-sm text-xs">
+                            <span class="text-slate-400 font-semibold flex items-center gap-1">
+                                <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                Rentang Tanggal:
+                            </span>
+                            <input type="date" id="filter-date-start" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
+                            <span class="text-slate-300 font-semibold">s.d</span>
+                            <input type="date" id="filter-date-end" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
+                            <button onclick="clearDateFilter()" class="text-red-500 hover:text-red-700 font-bold ml-1 text-sm" title="Reset filter tanggal">&times;</button>
+                        </div>
                     </div>
                 </div>
 
@@ -171,7 +189,8 @@
                         @foreach($data_pengaduan as $pengaduan)
                             <div class="complaint-card bg-white border border-slate-200/80 rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 transition-all duration-300 group"
                                  data-status="{{ $pengaduan->status }}" 
-                                 data-kategori="{{ $pengaduan->kategori }}">
+                                 data-kategori="{{ $pengaduan->kategori }}"
+                                 data-tanggal="{{ $pengaduan->tanggal_pengaduan->format('Y-m-d') }}">
                                 <div class="flex justify-between items-start gap-4 mb-3">
                                     <div>
                                         <span class="inline-block text-[10px] bg-slate-100 text-slate-700 font-bold px-2.5 py-0.5 rounded-full border border-slate-200/60 mr-2">
@@ -294,6 +313,57 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- FAQ Accordion Card -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-sm font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+                        <svg class="h-4 w-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        FAQ Keamanan & BK
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <!-- FAQ Item 1 -->
+                        <div class="border-b border-slate-100 pb-3">
+                            <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-left text-xs font-bold text-slate-800 hover:text-indigo-600 transition-colors focus:outline-none">
+                                <span>Apakah laporan saya anonim/rahasia?</span>
+                                <svg id="faq-icon-1" class="h-3 w-3 text-slate-400 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <p id="faq-answer-1" class="hidden text-[11px] text-slate-500 mt-2 leading-relaxed">
+                                Ya. Laporan Anda hanya dapat diakses oleh Admin Sistem dan Tim Guru BK. Teman sekelas atau pihak terlapor tidak akan mengetahui identitas Anda tanpa izin khusus untuk keperluan investigasi berat.
+                            </p>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="border-b border-slate-100 pb-3">
+                            <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-left text-xs font-bold text-slate-800 hover:text-indigo-600 transition-colors focus:outline-none">
+                                <span>Berapa lama laporan direspon BK?</span>
+                                <svg id="faq-icon-2" class="h-3 w-3 text-slate-400 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <p id="faq-answer-2" class="hidden text-[11px] text-slate-500 mt-2 leading-relaxed">
+                                Tim Guru BK berkomitmen meninjau laporan Anda dalam kurun waktu 2x24 jam hari kerja. Status laporan akan diperbarui menjadi "Diproses" segera setelah penelusuran dimulai.
+                            </p>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="pb-1">
+                            <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center text-left text-xs font-bold text-slate-800 hover:text-indigo-600 transition-colors focus:outline-none">
+                                <span>Bagaimana jika pelaku mengancam?</span>
+                                <svg id="faq-icon-3" class="h-3 w-3 text-slate-400 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <p id="faq-answer-3" class="hidden text-[11px] text-slate-500 mt-2 leading-relaxed">
+                                Tuliskan situasi ancaman tersebut di isi laporan. Sekolah memiliki protokol perlindungan fisik dan mental khusus untuk murid pelapor guna menjamin keselamatan Anda selama berada di lingkungan sekolah.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -358,13 +428,35 @@
             applyFilters();
         }
 
+        function clearDateFilter() {
+            document.getElementById('filter-date-start').value = '';
+            document.getElementById('filter-date-end').value = '';
+            applyFilters();
+        }
+
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
         function applyFilters() {
             const cards = document.querySelectorAll('.complaint-card');
             let visibleCount = 0;
 
+            const startDateStr = document.getElementById('filter-date-start').value;
+            const endDateStr = document.getElementById('filter-date-end').value;
+
             cards.forEach(card => {
                 const status = card.getAttribute('data-status');
                 const category = card.getAttribute('data-kategori');
+                const cardDateStr = card.getAttribute('data-tanggal');
                 
                 // Get title text for searching
                 const titleElement = card.querySelector('h3');
@@ -386,7 +478,29 @@
                 // Determine search query match
                 let searchMatch = (currentSearchQuery === '' || titleText.includes(currentSearchQuery));
 
-                if (statusMatch && categoryMatch && searchMatch) {
+                // Determine date range match
+                let dateMatch = true;
+                if (cardDateStr) {
+                    const cardDate = new Date(cardDateStr);
+                    cardDate.setHours(0,0,0,0);
+
+                    if (startDateStr) {
+                        const startDate = new Date(startDateStr);
+                        startDate.setHours(0,0,0,0);
+                        if (cardDate < startDate) {
+                            dateMatch = false;
+                        }
+                    }
+                    if (endDateStr) {
+                        const endDate = new Date(endDateStr);
+                        endDate.setHours(23,59,59,999);
+                        if (cardDate > endDate) {
+                            dateMatch = false;
+                        }
+                    }
+                }
+
+                if (statusMatch && categoryMatch && searchMatch && dateMatch) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {

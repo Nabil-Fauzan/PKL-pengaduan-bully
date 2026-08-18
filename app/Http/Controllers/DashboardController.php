@@ -38,13 +38,23 @@ class DashboardController extends Controller
                                            ->take(5)
                                            ->get();
 
+            // Category counts for ChartJS
+            $bullyingCount = Pengaduan::where('kategori', 'bullying')->count();
+            $fasilitasCount = Pengaduan::where('kategori', 'fasilitas')->count();
+            $akademikCount = Pengaduan::where('kategori', 'akademik')->count();
+            $lainnyaCount = Pengaduan::where('kategori', 'lainnya')->count();
+
             return view('petugas.dashboard', compact(
                 'user',
                 'totalComplaints',
                 'newComplaints',
                 'ignoredComplaints',
                 'processedComplaints',
-                'recentComplaints'
+                'recentComplaints',
+                'bullyingCount',
+                'fasilitasCount',
+                'akademikCount',
+                'lainnyaCount'
             ));
         }
 
@@ -132,11 +142,19 @@ class DashboardController extends Controller
             'isi_pengaduan.required' => 'Isi laporan pengaduan wajib diisi.',
         ]);
 
+        $kategori = $request->input('kategori');
+        $isi_pengaduan = $request->input('isi_pengaduan');
+
+        if ($kategori === 'lainnya' && $request->filled('kategori_lainnya')) {
+            $kategori_lainnya = trim($request->input('kategori_lainnya'));
+            $isi_pengaduan = "[Kategori Lainnya: {$kategori_lainnya}]\n\n" . $isi_pengaduan;
+        }
+
         Pengaduan::create([
             'id_siswa' => Auth::guard('siswa')->id(),
             'judul' => $request->input('judul'),
-            'kategori' => $request->input('kategori'),
-            'isi_pengaduan' => $request->input('isi_pengaduan'),
+            'kategori' => $kategori,
+            'isi_pengaduan' => $isi_pengaduan,
             'status' => 'baru',
         ]);
 

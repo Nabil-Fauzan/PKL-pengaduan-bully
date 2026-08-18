@@ -71,10 +71,29 @@
     </div>
 </div>
 
+<!-- Chart Card Row -->
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card card-default card-outline">
+            <div class="card-header border-0">
+                <h3 class="card-title font-weight-bold">
+                    <i class="fas fa-chart-bar mr-1"></i>
+                    Grafik Distribusi Kategori Pengaduan
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="chart" style="position: relative; height: 260px; width: 100%;">
+                    <canvas id="kategoriChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Recent complaints table -->
 <div class="row mt-4">
     <div class="col-lg-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mb-5">
             <div class="card-header">
                 <h3 class="card-title font-weight-bold">
                     <i class="fas fa-history mr-1"></i>
@@ -147,4 +166,55 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('kategoriChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Bullying', 'Fasilitas Sekolah', 'Akademik', 'Lainnya'],
+                datasets: [{
+                    label: 'Jumlah Pengaduan',
+                    data: [
+                        {{ $bullyingCount }},
+                        {{ $fasilitasCount }},
+                        {{ $akademikCount }},
+                        {{ $lainnyaCount }}
+                    ],
+                    backgroundColor: [
+                        '#dc3545', // Danger / Red
+                        '#17a2b8', // Info / Blue-green
+                        '#007bff', // Primary / Blue
+                        '#6c757d'  // Secondary / Gray
+                    ],
+                    borderColor: [
+                        '#dc3545',
+                        '#17a2b8',
+                        '#007bff',
+                        '#6c757d'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    });
+</script>
 @endsection

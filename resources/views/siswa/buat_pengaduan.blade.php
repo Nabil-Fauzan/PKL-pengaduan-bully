@@ -79,6 +79,14 @@
                 @enderror
             </div>
 
+            <!-- Kategori Lainnya (Custom Input) -->
+            <div id="kategori-lainnya-wrapper" class="mb-5 hidden">
+                <label for="kategori_lainnya" class="block text-sm font-semibold text-slate-800 mb-2">Sebutkan Kategori Lainnya</label>
+                <input type="text" name="kategori_lainnya" id="kategori_lainnya" value="{{ old('kategori_lainnya') }}"
+                    placeholder="Contoh: Keamanan, Kebersihan, Ketertiban..."
+                    class="block w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder-slate-400">
+            </div>
+
             <!-- Isi Pengaduan -->
             <div class="mb-6">
                 <label for="isi_pengaduan" class="block text-sm font-semibold text-slate-800 mb-2">Isi Laporan / Detail Kejadian</label>
@@ -175,13 +183,29 @@
             updateCounter();
         }
 
+        const kategoriLainnyaWrapper = document.getElementById('kategori-lainnya-wrapper');
+        const kategoriLainnyaInput = document.getElementById('kategori_lainnya');
+
+        function toggleKategoriLainnya() {
+            if (kategoriSelect.value === 'lainnya') {
+                kategoriLainnyaWrapper.classList.remove('hidden');
+                kategoriLainnyaInput.setAttribute('required', 'required');
+            } else {
+                kategoriLainnyaWrapper.classList.add('hidden');
+                kategoriLainnyaInput.removeAttribute('required');
+            }
+        }
+
         // Attach listeners
         isiTextarea.addEventListener('input', () => {
             updateCounter();
             saveDraft();
         });
         judulInput.addEventListener('input', saveDraft);
-        kategoriSelect.addEventListener('change', saveDraft);
+        kategoriSelect.addEventListener('change', () => {
+            toggleKategoriLainnya();
+            saveDraft();
+        });
 
         // Clear Draft on Submit
         form.addEventListener('submit', () => {
@@ -189,7 +213,10 @@
         });
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', loadDraft);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDraft();
+            toggleKategoriLainnya();
+        });
     </script>
 </body>
 </html>

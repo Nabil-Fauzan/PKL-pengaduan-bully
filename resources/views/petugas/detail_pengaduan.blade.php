@@ -169,10 +169,32 @@
 
                     <!-- Tanggapan Textarea -->
                     <div class="form-group mt-4">
-                        <label for="isi_tanggapan" class="font-weight-bold">Isi Tanggapan Tertulis:</label>
+                        <label for="isi_tanggapan" class="font-weight-bold">Isi Tanggapan Resmi BK:</label>
                         <textarea name="isi_tanggapan" id="isi_tanggapan" rows="6" class="form-control" 
                             placeholder="Tuliskan keterangan tindakan, pemanggilan siswa, koordinasi dengan wali kelas, atau penyelesaian masalah secara rinci..."></textarea>
                         <small class="form-text text-muted">Minimal menulis 5 karakter. Tanggapan Anda akan muncul di riwayat portal siswa pelapor secara transparan.</small>
+                    </div>
+
+                    <!-- Quick Response Templates -->
+                    <div class="form-group mt-3">
+                        <span class="text-xs font-weight-bold text-muted d-block mb-1"><i class="fas fa-magic mr-1"></i> Pilih Templat Tanggapan Cepat:</span>
+                        <div class="d-flex flex-column gap-1">
+                            <button type="button" class="btn btn-xs btn-outline-info text-left mb-1 quick-template-btn" 
+                                data-text="Laporan Anda telah kami terima dan sedang dalam penyelidikan awal. Pihak BK akan segera memanggil pihak-pihak terkait untuk dimintai keterangan lebih lanjut." 
+                                data-status="diproses">
+                                <i class="fas fa-spinner mr-1"></i> <strong>Penyelidikan Awal</strong>: Laporan sedang diselidiki.
+                            </button>
+                            <button type="button" class="btn btn-xs btn-outline-success text-left mb-1 quick-template-btn" 
+                                data-text="Masalah perundungan ini telah dimediasi oleh pihak BK. Seluruh pihak terkait telah dipanggil dan sepakat berdamai. Laporan dinyatakan selesai dan ditutup." 
+                                data-status="selesai">
+                                <i class="fas fa-check-circle mr-1"></i> <strong>Selesai & Damai</strong>: Pihak terkait dipanggil dan sepakat damai.
+                            </button>
+                            <button type="button" class="btn btn-xs btn-outline-danger text-left mb-1 quick-template-btn" 
+                                data-text="Setelah dilakukan penelusuran lebih lanjut, laporan ini ditolak karena informasi yang diberikan kurang lengkap atau tidak ditemukan unsur perundungan di lapangan." 
+                                data-status="ditolak">
+                                <i class="fas fa-times-circle mr-1"></i> <strong>Tidak Cukup Bukti</strong>: Informasi kurang lengkap atau nihil bullying.
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Submit Button -->
@@ -187,3 +209,22 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quickBtns = document.querySelectorAll('.quick-template-btn');
+        const textarea = document.getElementById('isi_tanggapan');
+        const statusSelect = document.getElementById('status_pengaduan');
+
+        quickBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                textarea.value = this.getAttribute('data-text');
+                const targetStatus = this.getAttribute('data-status');
+                if (statusSelect) {
+                    statusSelect.value = targetStatus;
+                }
+            });
+        });
+    });
+</script>
