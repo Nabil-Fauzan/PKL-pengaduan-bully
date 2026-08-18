@@ -176,6 +176,22 @@
                             </a>
                         </li>
 
+                        @if(Auth::user()->role === 'admin')
+                            <li class="nav-header">Manajemen Akun</li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.siswa') }}" class="nav-link {{ request()->routeIs('admin.siswa*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user-graduate"></i>
+                                    <p>Data Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.petugas') }}" class="nav-link {{ request()->routeIs('admin.petugas*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user-tie"></i>
+                                    <p>Data Petugas</p>
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); if(confirm('Yakin ingin keluar?')) document.getElementById('logout-form').submit();" class="nav-link text-danger">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
