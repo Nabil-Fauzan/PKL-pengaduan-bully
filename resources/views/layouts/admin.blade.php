@@ -190,6 +190,12 @@
                                     <p>Data Petugas</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.setting') }}" class="nav-link {{ request()->routeIs('admin.setting*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-cogs"></i>
+                                    <p>Pengaturan Jurusan</p>
+                                </a>
+                            </li>
                         @endif
 
                         <li class="nav-item">

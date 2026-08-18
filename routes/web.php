@@ -36,3 +36,6 @@ Route::get('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'petug
 Route::post('/dashboard/admin/petugas/update/{id}', [AdminController::class, 'petugasUpdate'])->name('admin.petugas.update');
 Route::post('/dashboard/admin/petugas/toggle/{id}', [AdminController::class, 'petugasToggleStatus'])->name('admin.petugas.toggle');
 
+Route::get('/dashboard/admin/setting', [AdminController::class, 'settingsIndex'])->name('admin.setting');
+Route::post('/dashboard/admin/setting', [AdminController::class, 'settingsUpdate'])->name('admin.setting.update');
+

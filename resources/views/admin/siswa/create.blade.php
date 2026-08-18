@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-8 offset-md-2">
         
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mb-5">
             <div class="card-header">
                 <h3 class="card-title font-weight-bold">
                     <i class="fas fa-plus mr-1"></i>
@@ -56,15 +56,23 @@
                     <!-- Kelas -->
                     <div class="form-group mt-3">
                         <label for="kelas" class="font-weight-bold">Kelas:</label>
-                        <input type="text" name="kelas" id="kelas" value="{{ old('kelas') }}" 
-                            placeholder="Contoh: XII, XI, X..." class="form-control" required>
+                        <select name="kelas" id="kelas" class="form-control" required>
+                            <option value="">-- Pilih Kelas --</option>
+                            <option value="X" {{ old('kelas') === 'X' ? 'selected' : '' }}>X (Sepuluh)</option>
+                            <option value="XI" {{ old('kelas') === 'XI' ? 'selected' : '' }}>XI (Sebelas)</option>
+                            <option value="XII" {{ old('kelas') === 'XII' ? 'selected' : '' }}>XII (Dua Belas)</option>
+                        </select>
                     </div>
 
                     <!-- Jurusan -->
                     <div class="form-group mt-3">
                         <label for="jurusan" class="font-weight-bold">Jurusan:</label>
-                        <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan') }}" 
-                            placeholder="Contoh: Rekayasa Perangkat Lunak, Teknik Komputer Jaringan..." class="form-control" required>
+                        <select name="jurusan" id="jurusan" class="form-control" required>
+                            <option value="">-- Pilih Jurusan --</option>
+                            @foreach($list_jurusan as $jurusan)
+                                <option value="{{ $jurusan }}" {{ old('jurusan') === $jurusan ? 'selected' : '' }}>{{ $jurusan }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Password -->
@@ -74,9 +82,9 @@
                             <input type="password" name="password" id="password" 
                                 placeholder="Masukkan password akun baru..." class="form-control" required>
                             <div class="input-group-append">
-                                <button type="button" id="togglePasswordBtn" class="btn btn-outline-secondary">
+                                <span class="input-group-text" id="togglePasswordBtn" style="cursor: pointer;">
                                     <i class="fas fa-eye" id="eyeIcon"></i>
-                                </button>
+                                </span>
                             </div>
                         </div>
                         <small class="form-text text-muted">Minimal 4 karakter.</small>
@@ -110,17 +118,23 @@
 
 @section('scripts')
 <script>
-    document.getElementById('togglePasswordBtn').addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('togglePasswordBtn');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const eyeIcon = document.getElementById('eyeIcon');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+            });
         }
     });
 </script>
+@endsection

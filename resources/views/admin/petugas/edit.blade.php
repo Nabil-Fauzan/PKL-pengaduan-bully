@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-8 offset-md-2">
         
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mb-5">
             <div class="card-header">
                 <h3 class="card-title font-weight-bold">
                     <i class="fas fa-edit mr-1"></i>
@@ -67,9 +67,9 @@
                             <input type="password" name="password" id="password" 
                                 placeholder="Biarkan kosong jika tidak ingin mengubah password..." class="form-control">
                             <div class="input-group-append">
-                                <button type="button" id="togglePasswordBtn" class="btn btn-outline-secondary">
+                                <span class="input-group-text" id="togglePasswordBtn" style="cursor: pointer;">
                                     <i class="fas fa-eye" id="eyeIcon"></i>
-                                </button>
+                                </span>
                             </div>
                         </div>
                         <small class="form-text text-muted">Hanya diisi jika petugas meminta reset/ganti password. Minimal 4 karakter.</small>
@@ -127,17 +127,23 @@
 
 @section('scripts')
 <script>
-    document.getElementById('togglePasswordBtn').addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            eyeIcon.classList.remove('fa-eye');
-            eyeIcon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            eyeIcon.classList.remove('fa-eye-slash');
-            eyeIcon.classList.add('fa-eye');
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('togglePasswordBtn');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const eyeIcon = document.getElementById('eyeIcon');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+            });
         }
     });
 </script>
+@endsection

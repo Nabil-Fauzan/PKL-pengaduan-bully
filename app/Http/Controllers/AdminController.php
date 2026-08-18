@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
 use App\Models\User;
+use App\Models\Setting;
 
 class AdminController extends Controller
 {
@@ -48,7 +49,8 @@ class AdminController extends Controller
     public function siswaCreate()
     {
         $this->checkAdmin();
-        return view('admin.siswa.create');
+        $list_jurusan = Setting::getJurusan();
+        return view('admin.siswa.create', compact('list_jurusan'));
     }
 
     /**
@@ -57,20 +59,23 @@ class AdminController extends Controller
     public function siswaStore(Request $request)
     {
         $this->checkAdmin();
+        $list_jurusan = Setting::getJurusan();
 
         $request->validate([
             'nis' => 'required|string|max:20|unique:siswa,nis',
             'nama' => 'required|string|max:100',
-            'kelas' => 'required|string|max:20',
-            'jurusan' => 'required|string|max:50',
+            'kelas' => 'required|in:X,XI,XII',
+            'jurusan' => 'required|in:' . implode(',', $list_jurusan),
             'password' => 'required|string|min:4',
             'status' => 'required|in:aktif,lulus,pindah',
         ], [
             'nis.required' => 'NIS wajib diisi.',
             'nis.unique' => 'NIS sudah digunakan oleh siswa lain.',
             'nama.required' => 'Nama lengkap siswa wajib diisi.',
-            'kelas.required' => 'Kelas wajib diisi.',
-            'jurusan.required' => 'Jurusan wajib diisi.',
+            'kelas.required' => 'Kelas wajib dipilih.',
+            'kelas.in' => 'Pilihan kelas tidak valid.',
+            'jurusan.required' => 'Jurusan wajib dipilih.',
+            'jurusan.in' => 'Pilihan jurusan tidak valid.',
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal 4 karakter.',
         ]);
@@ -94,7 +99,8 @@ class AdminController extends Controller
     {
         $this->checkAdmin();
         $siswa = Siswa::findOrFail($id);
-        return view('admin.siswa.edit', compact('siswa'));
+        $list_jurusan = Setting::getJurusan();
+        return view('admin.siswa.edit', compact('siswa', 'list_jurusan'));
     }
 
     /**
@@ -104,20 +110,23 @@ class AdminController extends Controller
     {
         $this->checkAdmin();
         $siswa = Siswa::findOrFail($id);
+        $list_jurusan = Setting::getJurusan();
 
         $request->validate([
             'nis' => 'required|string|max:20|unique:siswa,nis,' . $id . ',id_siswa',
             'nama' => 'required|string|max:100',
-            'kelas' => 'required|string|max:20',
-            'jurusan' => 'required|string|max:50',
+            'kelas' => 'required|in:X,XI,XII',
+            'jurusan' => 'required|in:' . implode(',', $list_jurusan),
             'password' => 'nullable|string|min:4',
             'status' => 'required|in:aktif,lulus,pindah',
         ], [
             'nis.required' => 'NIS wajib diisi.',
             'nis.unique' => 'NIS sudah digunakan oleh siswa lain.',
             'nama.required' => 'Nama lengkap siswa wajib diisi.',
-            'kelas.required' => 'Kelas wajib diisi.',
-            'jurusan.required' => 'Jurusan wajib diisi.',
+            'kelas.required' => 'Kelas wajib dipilih.',
+            'kelas.in' => 'Pilihan kelas tidak valid.',
+            'jurusan.required' => 'Jurusan wajib dipilih.',
+            'jurusan.in' => 'Pilihan jurusan tidak valid.',
             'password.min' => 'Password minimal 4 karakter.',
         ]);
 
@@ -291,5 +300,36 @@ class AdminController extends Controller
         $petugas->save();
 
         return redirect()->back()->with('success_message', 'Status akun petugas/admin berhasil diubah!');
+    }
+
+    /**
+     * Display the settings page.
+     */
+    public function settingsIndex()
+    {
+        $this->checkAdmin();
+        $list_jurusan = Setting::getJurusan();
+        return view('admin.setting', compact('list_jurusan'));
+    }
+
+    /**
+     * Update the list of majors.
+     */
+    public function settingsUpdate(Request $request)
+    {
+        $this->checkAdmin();
+        
+        $request->validate([
+            'jurusan' => 'required|array|min:1',
+            'jurusan.*' => 'required|string|max:100',
+        ], [
+            'jurusan.required' => 'Daftar jurusan wajib diisi.',
+            'jurusan.min' => 'Minimal harus ada 1 jurusan.',
+            'jurusan.*.required' => 'Nama jurusan tidak boleh kosong.',
+        ]);
+
+        Setting::setJurusan($request->input('jurusan'));
+
+        return redirect()->route('admin.setting')->with('success_message', 'Daftar pilihan jurusan berhasil diperbarui!');
     }
 }
