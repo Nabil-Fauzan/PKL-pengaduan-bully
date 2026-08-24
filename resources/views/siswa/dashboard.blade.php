@@ -15,6 +15,117 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode overrides */
+        body.dark-mode {
+            background-color: #0f172a !important; /* Slate 900 */
+            color: #f8fafc !important; /* Slate 50 */
+        }
+        
+        .dark-mode header {
+            background-color: rgba(15, 23, 42, 0.85) !important;
+            border-color: #1e293b !important;
+        }
+        
+        .dark-mode header span {
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .bg-white {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-color: #334155 !important; /* Slate 700 */
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .text-slate-900,
+        .dark-mode .text-slate-800 {
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .text-slate-700 {
+            color: #cbd5e1 !important; /* Slate 300 */
+        }
+
+        .dark-mode .text-slate-500,
+        .dark-mode .text-slate-400 {
+            color: #94a3b8 !important; /* Slate 400 */
+        }
+
+        .dark-mode .border-slate-200,
+        .dark-mode .border-slate-100 {
+            border-color: #334155 !important;
+        }
+
+        .dark-mode #search-input {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .complaint-card:hover {
+            border-color: #6366f1 !important; /* Indigo 500 */
+            box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.25) !important;
+        }
+
+        .dark-mode #filter-date-start,
+        .dark-mode #filter-date-end {
+            color: #f8fafc !important;
+        }
+
+        /* Card highlight and micro-animations on hover */
+        .complaint-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .complaint-card:hover {
+            transform: translateY(-2px);
+            border-color: #6366f1 !important;
+            box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.08);
+        }
+
+        /* Fixes for category badges and header badges in Dark Mode */
+        .dark-mode .bg-slate-100 {
+            background-color: #334155 !important; /* Slate 700 */
+        }
+        
+        .dark-mode .bg-indigo-50 {
+            background-color: #312e81 !important; /* Indigo 900 */
+        }
+        
+        .dark-mode .text-indigo-700 {
+            color: #e0e7ff !important; /* Indigo 100 */
+        }
+
+        /* Webkit calendar indicator inversion for native date pickers */
+        .dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        /* Timeline dark mode enhancements */
+        .dark-mode .timeline-circle-active {
+            background-color: #6366f1 !important; /* Indigo 500 */
+            border-color: #f8fafc !important; /* Slate 50 */
+        }
+        .dark-mode .timeline-circle-inactive {
+            background-color: #475569 !important; /* Slate 600 */
+            border-color: #334155 !important; /* Slate 700 */
+        }
+        .dark-mode .timeline-line {
+            background-color: #334155 !important; /* Slate 700 */
+        }
+
+        /* Stat cards hover and active styling for both themes */
+        .stat-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px) !important;
+            border-color: #6366f1 !important; /* Indigo 500 */
+            box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.15) !important;
+        }
+        .dark-mode .border-indigo-500 {
+            border-color: #6366f1 !important; /* Force indigo active border in dark mode */
         }
     </style>
 </head>
@@ -36,6 +147,19 @@
             </div>
             <div class="flex items-center gap-4">
                 <span class="hidden md:inline-block text-xs font-semibold text-slate-500">{{ date('d M Y') }}</span>
+                
+                <!-- Dark Mode Toggle -->
+                <button type="button" id="dark-mode-toggle" class="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer outline-none mr-1" title="Ubah Tema">
+                    <!-- Sun Icon (visible in dark mode) -->
+                    <svg id="sun-icon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                    <!-- Moon Icon (visible in light mode) -->
+                    <svg id="moon-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
                 <a href="#" onclick="event.preventDefault(); if(confirm('Yakin ingin keluar?')) document.getElementById('logout-form').submit();" 
                     class="text-xs font-bold text-red-500 hover:text-red-700 transition-colors bg-red-50 hover:bg-red-100/80 px-3.5 py-2 rounded-lg">
                     Logout
@@ -64,7 +188,7 @@
         <!-- Statistics Dashboard Row -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
             <!-- Stat 1: Total Reports -->
-            <div id="stat-all" onclick="filterByStatus('all')" class="bg-white border-2 border-indigo-500 rounded-2xl p-5 shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
+            <div id="stat-all" onclick="filterByStatus('all')" class="stat-card bg-white border-2 border-indigo-500 rounded-2xl p-5 shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
                 <div class="h-12 w-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -77,7 +201,7 @@
             </div>
 
             <!-- Stat 2: In Process -->
-            <div id="stat-proses" onclick="filterByStatus('proses')" class="bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
+            <div id="stat-proses" onclick="filterByStatus('proses')" class="stat-card bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
                 <div class="h-12 w-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -92,7 +216,7 @@
             </div>
 
             <!-- Stat 3: Resolved -->
-            <div id="stat-selesai" onclick="filterByStatus('selesai')" class="bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
+            <div id="stat-selesai" onclick="filterByStatus('selesai')" class="stat-card bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
                 <div class="h-12 w-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -290,26 +414,40 @@
                         Langkah Penanganan
                     </h3>
                     
-                    <div class="relative pl-6 border-l-2 border-indigo-100 space-y-6 text-xs">
+                    <div class="space-y-6 text-xs">
                         <!-- Step 1 -->
-                        <div class="relative">
-                            <div class="absolute -left-[31px] top-0.5 h-4.5 w-4.5 rounded-full bg-indigo-600 border-4 border-white flex items-center justify-center"></div>
-                            <h4 class="font-extrabold text-slate-900">1. Kirim Laporan</h4>
-                            <p class="text-slate-400 mt-1 font-medium leading-relaxed">Murid mengirimkan laporan kasus perundungan secara aman lewat formulir portal.</p>
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="h-4.5 w-4.5 rounded-full bg-indigo-600 border-4 border-white flex-shrink-0 shadow-sm timeline-circle-active"></div>
+                                <div class="w-0.5 bg-indigo-100 flex-grow mt-1.5 min-h-[40px] timeline-line"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-900">1. Kirim Laporan</h4>
+                                <p class="text-slate-400 mt-1 font-medium leading-relaxed">Murid mengirimkan laporan kasus perundungan secara aman lewat formulir portal.</p>
+                            </div>
                         </div>
                         
                         <!-- Step 2 -->
-                        <div class="relative">
-                            <div class="absolute -left-[31px] top-0.5 h-4.5 w-4.5 rounded-full bg-slate-300 border-4 border-white flex items-center justify-center"></div>
-                            <h4 class="font-extrabold text-slate-800">2. Proses Investigasi</h4>
-                            <p class="text-slate-400 mt-1 font-medium leading-relaxed">Petugas guru BK / Bimbingan Konseling akan meneliti kasus dan memanggil pihak terkait.</p>
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="h-4.5 w-4.5 rounded-full bg-slate-300 border-4 border-white flex-shrink-0 shadow-sm timeline-circle-inactive"></div>
+                                <div class="w-0.5 bg-indigo-100 flex-grow mt-1.5 min-h-[40px] timeline-line"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-800">2. Proses Investigasi</h4>
+                                <p class="text-slate-400 mt-1 font-medium leading-relaxed">Petugas guru BK / Bimbingan Konseling akan meneliti kasus dan memanggil pihak terkait.</p>
+                            </div>
                         </div>
                         
                         <!-- Step 3 -->
-                        <div class="relative">
-                            <div class="absolute -left-[31px] top-0.5 h-4.5 w-4.5 rounded-full bg-slate-300 border-4 border-white flex items-center justify-center"></div>
-                            <h4 class="font-extrabold text-slate-800">3. Solusi & Selesai</h4>
-                            <p class="text-slate-400 mt-1 font-medium leading-relaxed">Setelah investigasi tuntas, kasus ditutup dan status laporan berubah menjadi selesai.</p>
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="h-4.5 w-4.5 rounded-full bg-slate-300 border-4 border-white flex-shrink-0 shadow-sm timeline-circle-inactive"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-800">3. Solusi & Selesai</h4>
+                                <p class="text-slate-400 mt-1 font-medium leading-relaxed">Setelah investigasi tuntas, kasus ditutup dan status laporan berubah menjadi selesai.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -389,9 +527,9 @@
             Object.keys(statCards).forEach(key => {
                 if (!statCards[key]) return;
                 if (key === status) {
-                    statCards[key].className = "bg-white border-2 border-indigo-500 rounded-2xl p-5 shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
+                    statCards[key].className = "stat-card bg-white border-2 border-indigo-500 rounded-2xl p-5 shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
                 } else {
-                    statCards[key].className = "bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
+                    statCards[key].className = "stat-card bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
                 }
             });
 
@@ -533,6 +671,38 @@
                     tempEmptyState.remove();
                 }
             }
+        }
+
+        // Dark Mode Logic
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+            localStorage.setItem('dark-mode', 'enabled');
+        }
+
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+            localStorage.setItem('dark-mode', 'disabled');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        // Initialize theme preference
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            enableDarkMode();
         }
     </script>
 </body>
