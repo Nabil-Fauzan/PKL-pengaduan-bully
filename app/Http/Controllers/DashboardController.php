@@ -158,7 +158,7 @@ class DashboardController extends Controller
             'status' => 'baru',
         ]);
 
-        return redirect()->route('dashboard.pengaduan')->with('success_message', 'Pengaduan Anda berhasil dikirim!');
+        return redirect()->route('dashboard')->with('success_message', 'Pengaduan Anda berhasil dikirim!');
     }
 
     /**

@@ -15,6 +15,55 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Dark Mode styles */
+        body.dark-mode {
+            background-color: #0f172a !important; /* Slate 900 */
+            color: #f8fafc !important; /* Slate 50 */
+        }
+        .dark-mode .bg-white {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-color: #334155 !important; /* Slate 700 */
+            color: #f8fafc !important;
+        }
+        .dark-mode .text-slate-900,
+        .dark-mode .text-slate-800 {
+            color: #f8fafc !important;
+        }
+        .dark-mode .text-slate-700 {
+            color: #cbd5e1 !important; /* Slate 300 */
+        }
+        .dark-mode .text-slate-500,
+        .dark-mode .text-slate-400 {
+            color: #94a3b8 !important; /* Slate 400 */
+        }
+        .dark-mode .border-slate-200,
+        .dark-mode .border-slate-150 {
+            border-color: #334155 !important;
+        }
+        /* bg-slate-50 for details container */
+        .dark-mode .bg-slate-50 {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #cbd5e1 !important;
+        }
+        /* Estimation banner */
+        .dark-mode .bg-amber-50\/60 {
+            background-color: rgba(245, 158, 11, 0.1) !important;
+            border-color: rgba(245, 158, 11, 0.2) !important;
+        }
+        .dark-mode .text-amber-850 {
+            color: #fef08a !important;
+        }
+        .dark-mode .text-amber-900 {
+            color: #fef9c3 !important;
+        }
+        /* bg-slate-100 badges */
+        .dark-mode .bg-slate-100 {
+            background-color: #334155 !important;
+            border-color: #475569 !important;
+            color: #cbd5e1 !important;
         }
     </style>
 </head>
@@ -79,7 +128,6 @@
         </div>
 
         @if($pengaduan->status === 'baru')
-            <!-- Response Estimation Note -->
             <div class="mb-8 flex items-center gap-3 text-xs text-amber-850 bg-amber-50/60 border border-amber-100 rounded-xl p-4 leading-relaxed font-medium">
                 <svg class="h-5 w-5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -100,7 +148,6 @@
             </h2>
 
             @if($pengaduan->tanggapan->isEmpty())
-                <!-- No response state -->
                 <div class="bg-indigo-50/40 border border-indigo-100 rounded-xl p-5 text-center">
                     <p class="text-xs font-semibold text-indigo-900 leading-relaxed">
                         Belum ada tanggapan tertulis untuk laporan ini. Laporan Anda sedang dalam proses peninjauan oleh tim bimbingan konseling (BK) sekolah. Mohon pantau halaman ini secara berkala.
@@ -145,15 +192,13 @@
     <script>
         function copyComplaintId(id, buttonElement) {
             navigator.clipboard.writeText(id).then(() => {
-                // Temporary success indicator
                 const originalHtml = buttonElement.innerHTML;
                 buttonElement.innerHTML = `
                     <svg class="h-3 w-3 text-emerald-600 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                     </svg>
                 `;
-                
-                // Reset button html after 1.5 seconds
+
                 setTimeout(() => {
                     buttonElement.innerHTML = originalHtml;
                 }, 1500);
@@ -161,6 +206,13 @@
                 console.error('Failed to copy ID: ', err);
             });
         }
+
+        // Apply dark mode theme if enabled in local storage
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
     </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
 use App\Models\User;
 use App\Models\Setting;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -65,7 +66,7 @@ class AdminController extends Controller
             'nis' => 'required|string|max:20|unique:siswa,nis',
             'nama' => 'required|string|max:100',
             'kelas' => 'required|in:X,XI,XII',
-            'jurusan' => 'required|in:' . implode(',', $list_jurusan),
+            'jurusan' => ['required', Rule::in($list_jurusan)],
             'password' => 'required|string|min:4',
             'status' => 'required|in:aktif,lulus,pindah',
         ], [
@@ -116,7 +117,7 @@ class AdminController extends Controller
             'nis' => 'required|string|max:20|unique:siswa,nis,' . $id . ',id_siswa',
             'nama' => 'required|string|max:100',
             'kelas' => 'required|in:X,XI,XII',
-            'jurusan' => 'required|in:' . implode(',', $list_jurusan),
+            'jurusan' => ['required', Rule::in($list_jurusan)],
             'password' => 'nullable|string|min:4',
             'status' => 'required|in:aktif,lulus,pindah',
         ], [

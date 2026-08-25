@@ -5,6 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tulis Pengaduan Baru</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Dark Mode styles */
+        body.dark-mode {
+            background-color: #0f172a !important; /* Slate 900 */
+            color: #f8fafc !important; /* Slate 50 */
+        }
+        .dark-mode .bg-white {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-color: #334155 !important; /* Slate 700 */
+            color: #f8fafc !important;
+        }
+        .dark-mode .text-slate-900,
+        .dark-mode .text-slate-800 {
+            color: #f8fafc !important;
+        }
+        .dark-mode .text-slate-500,
+        .dark-mode .text-slate-400 {
+            color: #94a3b8 !important; /* Slate 400 */
+        }
+        .dark-mode .border-slate-200,
+        .dark-mode .border-slate-350,
+        .dark-mode .border-slate-300 {
+            border-color: #334155 !important;
+        }
+        .dark-mode input,
+        .dark-mode select,
+        .dark-mode textarea {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+        .dark-mode select option {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
+        }
+        /* Warning Notice Card in dark mode */
+        .dark-mode .bg-amber-50 {
+            background-color: rgba(245, 158, 11, 0.1) !important;
+            border-color: rgba(245, 158, 11, 0.2) !important;
+        }
+        .dark-mode .text-amber-850 {
+            color: #fef08a !important; /* light yellow */
+        }
+        .dark-mode .text-amber-950 {
+            color: #fef9c3 !important;
+        }
+        /* Cancel button bg */
+        .dark-mode .bg-white.text-slate-700,
+        .dark-mode .bg-white {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
 
@@ -214,6 +270,10 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            // Apply dark mode if enabled in local storage
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
             loadDraft();
             toggleKategoriLainnya();
         });
