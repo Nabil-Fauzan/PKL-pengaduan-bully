@@ -71,7 +71,7 @@
                     </div>
 
                     <!-- Form Actions -->
-                    <div class="mt-4 pt-3 border-t d-flex justify-content-end">
+                    <div class="mt-4 pt-3 border-top d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary font-weight-bold">
                             <i class="fas fa-save mr-1"></i> Simpan Semua Perubahan
                         </button>

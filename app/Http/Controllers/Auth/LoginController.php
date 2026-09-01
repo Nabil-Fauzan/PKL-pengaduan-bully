@@ -76,9 +76,6 @@ class LoginController extends Controller
             }
 
             Auth::guard('siswa')->login($siswa);
-            $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
         } else {
             // Login Petugas / Admin (Guard: web)
             $identifier = $request->input('login_identifier');
@@ -100,10 +97,11 @@ class LoginController extends Controller
             }
 
             Auth::guard('web')->login($user);
-            $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
         }
+
+        $request->session()->regenerate();
+
+        return redirect()->intended('/dashboard');
     }
 
     /**

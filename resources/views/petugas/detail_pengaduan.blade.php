@@ -198,7 +198,7 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="mt-4 pt-3 border-t">
+                    <div class="mt-4 pt-3 border-top">
                         <button type="submit" class="btn btn-success btn-block font-weight-bold">
                             <i class="fas fa-paper-plane mr-1"></i> Kirim Tanggapan & Perbarui Laporan
                         </button>

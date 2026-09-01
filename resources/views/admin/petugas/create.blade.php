@@ -94,7 +94,7 @@
                     </div>
 
                     <!-- Form Actions -->
-                    <div class="mt-4 pt-3 border-t d-flex justify-content-end">
+                    <div class="mt-4 pt-3 border-top d-flex justify-content-end">
                         <a href="{{ route('admin.petugas') }}" class="btn btn-default mr-2">Batal</a>
                         <button type="submit" class="btn btn-primary font-weight-bold">
                             <i class="fas fa-save mr-1"></i> Simpan Data Petugas

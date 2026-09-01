@@ -36,7 +36,7 @@
                             <option value="">Semua Status</option>
                             <option value="baru" {{ request('status') === 'baru' ? 'selected' : '' }}>Baru (<= 3 Hari)</option>
                             <option value="terabaikan" {{ request('status') === 'terabaikan' ? 'selected' : '' }}>Terabaikan (> 3 Hari)</option>
-                            <option value="proses" {{ request('status') === 'proses' ? 'selected' : '' }}>Dalam Proses</option>
+                            <option value="diproses" {{ request('status') === 'diproses' ? 'selected' : '' }}>Dalam Proses</option>
                             <option value="selesai" {{ request('status') === 'selesai' ? 'selected' : '' }}>Selesai</option>
                             <option value="ditolak" {{ request('status') === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
                         </select>
