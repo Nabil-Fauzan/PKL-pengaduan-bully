@@ -26,8 +26,8 @@
                         <tr>
                             <th style="width: 30%;">Siswa Pelapor</th>
                             <td>
-                                <strong>{{ $pengaduan->siswa->nama }}</strong>
-                                <span class="text-muted ml-2">(NIS: {{ $pengaduan->siswa->nis }})</span>
+                                <strong>{{ $pengaduan->siswa->nama ?? 'Siswa' }}</strong>
+                                <span class="text-muted ml-2">(NIS: {{ $pengaduan->siswa->nis ?? '-' }})</span>
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
                                 <div class="timeline-item">
                                     <span class="time"><i class="far fa-clock"></i> {{ $tanggapan->tanggal_tanggapan->format('d/m/Y H:i') }} WIB</span>
                                     <h3 class="timeline-header font-weight-bold text-primary">
-                                        {{ $tanggapan->petugas->nama }}
+                                        {{ $tanggapan->petugas->nama ?? 'Petugas BK' }}
                                         <span class="text-muted font-weight-normal">menanggapi dengan status</span>
                                         @if($tanggapan->status_pengaduan === 'diproses')
                                             <span class="badge bg-warning text-dark">Diproses</span>

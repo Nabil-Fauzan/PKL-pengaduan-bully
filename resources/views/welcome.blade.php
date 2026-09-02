@@ -107,26 +107,26 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <nav class="flex items-center space-x-4">
-                    <a href="#alur" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Alur</a>
-                    <a href="#faq" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors mr-2">FAQ</a>
+                <nav class="flex items-center space-x-1.5 sm:space-x-3 md:space-x-4">
+                    <a href="#alur" class="hidden sm:inline-block text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Alur</a>
+                    <a href="#faq" class="hidden sm:inline-block text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors mr-1">FAQ</a>
                     
                     <!-- Dark Mode Toggle -->
-                    <button type="button" id="dark-mode-toggle" class="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer outline-none mr-1" title="Ubah Tema">
+                    <button type="button" id="dark-mode-toggle" class="p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer outline-none" title="Ubah Tema">
                         <!-- Sun Icon (visible in dark mode) -->
-                        <svg id="sun-icon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg id="sun-icon" class="h-4.5 w-4.5 sm:h-5 sm:w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
                         </svg>
                         <!-- Moon Icon (visible in light mode) -->
-                        <svg id="moon-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg id="moon-icon" class="h-4.5 w-4.5 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
                     </button>
 
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 border border-indigo-200 hover:border-indigo-600 px-4 py-2 rounded-lg transition-all">
+                    <a href="{{ route('login') }}" class="text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-700 border border-indigo-200 hover:border-indigo-600 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-all">
                         Masuk Siswa
                     </a>
-                    <a href="{{ route('login') }}?role=petugas" class="text-sm font-medium text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg transition-colors">
+                    <a href="{{ route('login') }}?role=petugas" class="hidden sm:inline-block text-xs sm:text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors">
                         Portal Petugas
                     </a>
                 </nav>

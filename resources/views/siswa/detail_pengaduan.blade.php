@@ -160,7 +160,7 @@
                         <div class="bg-indigo-50/20 border border-indigo-150 rounded-xl p-5">
                             <div class="flex justify-between items-center border-b border-indigo-100/60 pb-2.5 mb-3 text-[10px]">
                                 <span class="font-extrabold text-indigo-950">
-                                    Petugas: <span class="text-indigo-600">{{ $tanggapan->petugas->nama }}</span>
+                                    Petugas: <span class="text-indigo-600">{{ $tanggapan->petugas->nama ?? 'Guru BK / Petugas' }}</span>
                                 </span>
                                 <span class="font-semibold text-slate-400">
                                     {{ $tanggapan->tanggal_tanggapan->format('d M Y | H:i') }} WIB
