@@ -85,7 +85,7 @@
                             @forelse($data_siswa as $siswa)
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $no++ }}</td>
-                                    <td class="text-dark font-weight-bold">{{ $siswa->nama }}</td>
+                                    <td class="font-weight-bold">{{ $siswa->nama }}</td>
                                     <td>{{ $siswa->nis }}</td>
                                     <td>{{ $siswa->kelas }}</td>
                                     <td>{{ $siswa->jurusan }}</td>

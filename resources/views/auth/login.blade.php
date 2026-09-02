@@ -61,6 +61,16 @@
         .dark-mode input::placeholder {
             color: #64748b !important;
         }
+
+        .dark-mode .bg-red-50 {
+            background-color: rgba(239, 68, 68, 0.12) !important;
+            border-color: rgba(239, 68, 68, 0.25) !important;
+        }
+
+        .dark-mode .text-red-800,
+        .dark-mode .text-red-700 {
+            color: #fca5a5 !important;
+        }
     </style>
 
     <!-- Immediate Theme Initialization to avoid white flash -->

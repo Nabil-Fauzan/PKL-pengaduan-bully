@@ -142,6 +142,46 @@
         .dark-mode .action-report-card p {
             color: #94a3b8 !important; /* Slate 400 */
         }
+
+        /* Status Badges Dark Mode Styling */
+        .dark-mode .bg-orange-50 {
+            background-color: rgba(249, 115, 22, 0.15) !important;
+            border-color: rgba(249, 115, 22, 0.3) !important;
+            color: #fdba74 !important;
+        }
+        .dark-mode .bg-blue-50 {
+            background-color: rgba(59, 130, 246, 0.15) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            color: #93c5fd !important;
+        }
+        .dark-mode .bg-amber-50 {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            border-color: rgba(245, 158, 11, 0.3) !important;
+            color: #fde047 !important;
+        }
+        .dark-mode .bg-emerald-50 {
+            background-color: rgba(16, 185, 129, 0.15) !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+            color: #6ee7b7 !important;
+        }
+        .dark-mode .bg-rose-50 {
+            background-color: rgba(244, 63, 94, 0.15) !important;
+            border-color: rgba(244, 63, 94, 0.3) !important;
+            color: #fda4af !important;
+        }
+        .dark-mode .text-orange-700 { color: #fdba74 !important; }
+        .dark-mode .text-blue-700 { color: #93c5fd !important; }
+        .dark-mode .text-amber-700 { color: #fde047 !important; }
+        .dark-mode .text-emerald-700 { color: #6ee7b7 !important; }
+        .dark-mode .text-rose-700 { color: #fda4af !important; }
+
+        .dark-mode .bg-red-50 {
+            background-color: rgba(239, 68, 68, 0.15) !important;
+            color: #f87171 !important;
+        }
+        .dark-mode .bg-red-50:hover {
+            background-color: rgba(239, 68, 68, 0.25) !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50/50 text-slate-900 min-h-screen selection:bg-indigo-500 selection:text-white">
@@ -697,6 +737,7 @@
         const moonIcon = document.getElementById('moon-icon');
 
         function enableDarkMode() {
+            document.documentElement.classList.add('dark');
             document.body.classList.add('dark-mode');
             sunIcon.classList.remove('hidden');
             moonIcon.classList.add('hidden');
@@ -704,6 +745,7 @@
         }
 
         function disableDarkMode() {
+            document.documentElement.classList.remove('dark');
             document.body.classList.remove('dark-mode');
             sunIcon.classList.add('hidden');
             moonIcon.classList.remove('hidden');

@@ -85,7 +85,7 @@
                             @forelse($data_petugas as $petugas)
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $no++ }}</td>
-                                    <td class="text-dark font-weight-bold">
+                                    <td class="font-weight-bold">
                                         {{ $petugas->nama }}
                                         @if($petugas->id_user === Auth::guard('web')->id())
                                             <span class="badge bg-indigo text-white ml-1">Saya</span>

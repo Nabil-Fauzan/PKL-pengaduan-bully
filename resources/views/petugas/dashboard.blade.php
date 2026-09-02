@@ -169,6 +169,7 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('assets-template/plugins/chart.js/Chart.min.js') }}"></script>
 <script>
     let categoryChartInstance = null;
 

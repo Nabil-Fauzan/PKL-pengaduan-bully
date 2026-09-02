@@ -67,13 +67,13 @@
                     </tbody>
                 </table>
 
-                <h5 class="font-weight-bold text-dark mb-2">Judul Laporan:</h5>
-                <p class="text-dark bg-light p-3 rounded border" style="font-size: 1.1rem; font-weight: 500;">
+                <h5 class="font-weight-bold mb-2">Judul Laporan:</h5>
+                <p class="bg-light p-3 rounded border" style="font-size: 1.1rem; font-weight: 500;">
                     {{ $pengaduan->judul }}
                 </p>
 
-                <h5 class="font-weight-bold text-dark mt-4 mb-2">Kronologi / Isi Laporan:</h5>
-                <div class="bg-light p-3 rounded border text-muted" style="white-space: pre-wrap; line-height: 1.6;">{{ $pengaduan->isi_pengaduan }}</div>
+                <h5 class="font-weight-bold mt-4 mb-2">Kronologi / Isi Laporan:</h5>
+                <div class="bg-light p-3 rounded border" style="white-space: pre-wrap; line-height: 1.6;">{{ $pengaduan->isi_pengaduan }}</div>
             </div>
         </div>
 
@@ -106,7 +106,7 @@
                                             <span class="badge bg-danger">Ditolak</span>
                                         @endif
                                     </h3>
-                                    <div class="timeline-body text-dark" style="white-space: pre-wrap;">{{ $tanggapan->isi_tanggapan }}</div>
+                                    <div class="timeline-body" style="white-space: pre-wrap;">{{ $tanggapan->isi_tanggapan }}</div>
                                 </div>
                             </div>
                         @endforeach

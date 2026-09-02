@@ -68,7 +68,31 @@
             border-color: #475569 !important;
             color: #cbd5e1 !important;
         }
+        /* Response card styling */
+        .dark-mode .bg-indigo-50\/40,
+        .dark-mode .bg-indigo-50\/20 {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+        .dark-mode .text-indigo-950,
+        .dark-mode .text-indigo-900 {
+            color: #f8fafc !important;
+        }
+        .dark-mode .border-indigo-100\/60,
+        .dark-mode .border-indigo-150 {
+            border-color: #334155 !important;
+        }
     </style>
+
+    <!-- Immediate Theme Initialization to avoid white flash -->
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.add('dark-mode');
+            });
+        }
+    </script>
 </head>
 <body class="bg-slate-50/50 text-slate-900 min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
 

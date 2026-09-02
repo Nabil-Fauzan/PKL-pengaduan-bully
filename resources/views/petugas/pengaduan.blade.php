@@ -10,10 +10,10 @@
         <!-- Filter Card -->
         <div class="card card-default mb-4">
             <div class="card-header">
-                <h3 class="card-title font-weight-bold">
+                <h2 class="card-title h5 font-weight-bold mb-0">
                     <i class="fas fa-filter mr-1"></i>
                     Saring & Cari Laporan
-                </h3>
+                </h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('dashboard.pengaduan') }}" method="GET" class="row">
@@ -73,10 +73,10 @@
         <!-- Data Card -->
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h3 class="card-title font-weight-bold">
+                <h2 class="card-title h5 font-weight-bold mb-0">
                     <i class="fas fa-list mr-1"></i>
                     Semua Data Pengaduan Masuk
-                </h3>
+                </h2>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

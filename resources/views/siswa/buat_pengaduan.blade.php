@@ -62,6 +62,16 @@
             color: #f8fafc !important;
         }
     </style>
+
+    <!-- Immediate Theme Initialization to avoid white flash -->
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.add('dark-mode');
+            });
+        }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
 

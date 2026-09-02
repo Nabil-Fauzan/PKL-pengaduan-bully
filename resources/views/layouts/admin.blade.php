@@ -10,33 +10,19 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml" />
 
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap">
+    </noscript>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets-template/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets-template/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('assets-template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/summernote/summernote-bs4.min.css') }}">
-    <!-- jQuery -->
-    <script src="{{ asset('assets-template/plugins/jquery/jquery.min.js') }}"></script>
 
     <!-- Fix DataTables encoding glitch (↑ / ↓) using unicode escapes -->
     <style>
@@ -79,8 +65,16 @@
             color: #f8fafc !important;
         }
         body.dark-mode .text-muted,
-        body.dark-mode small.text-muted {
-            color: #94a3b8 !important;
+        body.dark-mode small.text-muted,
+        body.dark-mode label.text-muted {
+            color: #cbd5e1 !important;
+        }
+        body.dark-mode .badge.bg-primary,
+        body.dark-mode .badge-primary {
+            background-color: rgba(59, 130, 246, 0.25) !important;
+            color: #93c5fd !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
+            font-weight: 700 !important;
         }
         body.dark-mode .table-bordered th,
         body.dark-mode .table-bordered td {
@@ -98,6 +92,37 @@
             border-color: #4b545c !important;
             color: #f8fafc !important;
         }
+        body.dark-mode .input-group-text {
+            background-color: #3f474e !important;
+            border-color: #4b545c !important;
+            color: #f8fafc !important;
+        }
+        body.dark-mode .bg-light {
+            background-color: #2b3035 !important;
+            border-color: #4b545c !important;
+            color: #f8fafc !important;
+        }
+        body.dark-mode .timeline-item {
+            background-color: #3f474e !important;
+            color: #f8fafc !important;
+            border-color: #4b545c !important;
+        }
+        body.dark-mode .timeline-header {
+            border-bottom-color: #4b545c !important;
+            color: #60a5fa !important;
+        }
+        body.dark-mode .timeline-body {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .modal-content {
+            background-color: #343a40 !important;
+            color: #f8fafc !important;
+            border-color: #4b545c !important;
+        }
+        body.dark-mode .modal-header,
+        body.dark-mode .modal-footer {
+            border-color: #4b545c !important;
+        }
         body.dark-mode .dropdown-menu {
             background-color: #343a40 !important;
             border-color: #4b545c !important;
@@ -108,6 +133,41 @@
         body.dark-mode .dropdown-item:hover {
             background-color: #3f474e !important;
             color: #fff !important;
+        }
+        body.dark-mode .main-footer {
+            background-color: #343a40 !important;
+            border-color: #4b545c !important;
+            color: #cbd5e1 !important;
+        }
+        body.dark-mode .main-footer a {
+            color: #60a5fa !important;
+        }
+        body.dark-mode .breadcrumb-item,
+        body.dark-mode .breadcrumb-item a {
+            color: #cbd5e1 !important;
+        }
+        body.dark-mode .breadcrumb-item.active {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .card-footer {
+            background-color: #343a40 !important;
+            border-top-color: #4b545c !important;
+            color: #f8fafc !important;
+        }
+        body.dark-mode .page-link {
+            background-color: #343a40 !important;
+            border-color: #4b545c !important;
+            color: #dee2e6 !important;
+        }
+        body.dark-mode .page-item.active .page-link {
+            background-color: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+            color: #fff !important;
+        }
+        body.dark-mode .page-item.disabled .page-link {
+            background-color: #2b3035 !important;
+            border-color: #4b545c !important;
+            color: #6c757d !important;
         }
         #admin-dark-mode-toggle {
             cursor: pointer;
@@ -144,11 +204,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets-template/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
-        </div>
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -216,7 +271,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('assets-template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('assets-template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" width="34" height="34">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
@@ -225,7 +280,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" data-accordion="false">
                         <li class="nav-header">Daftar Menu</li>
                         
                         <li class="nav-item">
@@ -335,44 +390,10 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('assets-template/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script>
-        $.widget.bridge('uibutton', $.ui.bridge ? $.ui.bridge : $.fn.button)
-    </script>
+    <!-- jQuery -->
+    <script src="{{ asset('assets-template/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets-template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('assets-template/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
-    <script src="{{ asset('assets-template/plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('assets-template/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('assets-template/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('assets-template/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/daterangepicker/daterangepicker.js') }}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('assets-template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('assets-template/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{ asset('assets-template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-    <!-- DataTables  & Plugins -->
-    <script src="{{ asset('assets-template/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets-template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets-template/dist/js/adminlte.min.js') }}"></script>
 

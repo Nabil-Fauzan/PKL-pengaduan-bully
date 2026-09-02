@@ -91,6 +91,22 @@
             border-color: #334155 !important;
         }
     </style>
+
+    <!-- Immediate Theme Initialization to avoid white flash -->
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.add('dark-mode');
+                const sunIcon = document.getElementById('sun-icon');
+                const moonIcon = document.getElementById('moon-icon');
+                if (sunIcon && moonIcon) {
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
 
@@ -329,6 +345,7 @@
         const moonIcon = document.getElementById('moon-icon');
 
         function enableDarkMode() {
+            document.documentElement.classList.add('dark');
             document.body.classList.add('dark-mode');
             sunIcon.classList.remove('hidden');
             moonIcon.classList.add('hidden');
@@ -336,6 +353,7 @@
         }
 
         function disableDarkMode() {
+            document.documentElement.classList.remove('dark');
             document.body.classList.remove('dark-mode');
             sunIcon.classList.add('hidden');
             moonIcon.classList.remove('hidden');
