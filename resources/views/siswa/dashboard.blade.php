@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
@@ -126,6 +129,18 @@
         }
         .dark-mode .border-indigo-500 {
             border-color: #6366f1 !important; /* Force indigo active border in dark mode */
+        }
+
+        /* Action Report Card dark mode */
+        .dark-mode .action-report-card {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-color: #334155 !important; /* Slate 700 */
+        }
+        .dark-mode .action-report-card h3 {
+            color: #f8fafc !important; /* Slate 50 */
+        }
+        .dark-mode .action-report-card p {
+            color: #94a3b8 !important; /* Slate 400 */
         }
     </style>
 </head>
@@ -397,10 +412,13 @@
                 </div>
 
                 <!-- Action Card -->
-                <div class="bg-gradient-to-b from-indigo-50 to-white border border-indigo-100 rounded-2xl p-6 text-center">
-                    <h3 class="text-base font-extrabold text-indigo-950 mb-1">Ingin Melapor Sesuatu?</h3>
-                    <p class="text-xs text-indigo-700 mb-5 font-medium leading-relaxed">Laporkan secara aman jika Anda atau teman Anda mengalami tindakan intimidasi atau kekerasan.</p>
-                    <a href="{{ route('dashboard.pengaduan.tambah') }}" class="w-full inline-flex items-center justify-center px-4 py-2.5 text-xs font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-200 transition-all hover:-translate-y-0.5 cursor-pointer">
+                <div class="action-report-card bg-indigo-50/70 border border-indigo-100 rounded-2xl p-6 text-center shadow-sm">
+                    <h3 class="text-base font-extrabold text-indigo-950 mb-1.5">Ingin Melapor Sesuatu?</h3>
+                    <p class="text-xs text-indigo-800/80 mb-5 font-medium leading-relaxed">Laporkan secara aman jika Anda atau teman Anda mengalami tindakan intimidasi atau kekerasan.</p>
+                    <a href="{{ route('dashboard.pengaduan.tambah') }}" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-500/20 active:scale-[0.98] transition-all hover:-translate-y-0.5 cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
                         Buat Laporan Baru
                     </a>
                 </div>

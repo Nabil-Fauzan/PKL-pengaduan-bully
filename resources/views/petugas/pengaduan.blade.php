@@ -100,10 +100,10 @@
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $no++ }}</td>
                                     <td>
-                                        <div class="font-weight-bold text-dark">{{ $pengaduan->siswa->nama }}</div>
+                                        <div class="font-weight-bold">{{ $pengaduan->siswa->nama }}</div>
                                         <small class="text-muted">NIS: {{ $pengaduan->siswa->nis }}</small>
                                     </td>
-                                    <td class="text-dark">{{ $pengaduan->judul }}</td>
+                                    <td>{{ $pengaduan->judul }}</td>
                                     <td>
                                         @if($pengaduan->kategori === 'bullying')
                                             <span class="badge bg-danger">Bullying</span>

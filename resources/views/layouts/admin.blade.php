@@ -8,24 +8,7 @@
     <title>@yield('title', 'Dashboard Petugas') | PKL Pengaduan Bullying</title>
 
     <!-- Favicon -->
-    <link rel="icon" id="favicon" href="https://img.icons8.com/ios-filled/50/control-panel--v2.png" type="image/png" />
-    <script>
-      const favicon = document.getElementById('favicon');
-      const matcher = window.matchMedia('(prefers-color-scheme: dark)');
-
-      function updateFavicon(e) {
-        if (e.matches) {
-          // Dark mode: white icon
-          favicon.href = 'https://img.icons8.com/ios-filled/50/ffffff/control-panel--v2.png';
-        } else {
-          // Light mode: default black icon
-          favicon.href = 'https://img.icons8.com/ios-filled/50/control-panel--v2.png';
-        }
-      }
-
-      updateFavicon(matcher);
-      matcher.addEventListener('change', updateFavicon);
-    </script>
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml" />
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets-template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -71,7 +54,92 @@
         table.dataTable thead .sorting_desc_disabled:after {
             content: "\2193" !important;
         }
+
+        /* AdminLTE Dark Mode Transitions & Fixes */
+        body.dark-mode .content-wrapper {
+            background-color: #343a40 !important;
+            color: #fff;
+        }
+        body.dark-mode .card:not(.bg-info):not(.bg-success):not(.bg-warning):not(.bg-danger):not(.bg-primary) {
+            background-color: #3f474e !important;
+            color: #fff !important;
+            border-color: #4b545c !important;
+        }
+        body.dark-mode .card-header {
+            border-bottom-color: #4b545c !important;
+        }
+        body.dark-mode .table {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .table td,
+        body.dark-mode .table th {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .text-dark {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .text-muted,
+        body.dark-mode small.text-muted {
+            color: #94a3b8 !important;
+        }
+        body.dark-mode .table-bordered th,
+        body.dark-mode .table-bordered td {
+            border-color: #4b545c !important;
+        }
+        body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.03) !important;
+        }
+        body.dark-mode .table-hover tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.06) !important;
+            color: #fff !important;
+        }
+        body.dark-mode .form-control:not(.bg-transparent) {
+            background-color: #2b3035 !important;
+            border-color: #4b545c !important;
+            color: #f8fafc !important;
+        }
+        body.dark-mode .dropdown-menu {
+            background-color: #343a40 !important;
+            border-color: #4b545c !important;
+        }
+        body.dark-mode .dropdown-item {
+            color: #dee2e6 !important;
+        }
+        body.dark-mode .dropdown-item:hover {
+            background-color: #3f474e !important;
+            color: #fff !important;
+        }
+        #admin-dark-mode-toggle {
+            cursor: pointer;
+        }
+        #admin-dark-mode-toggle i {
+            font-size: 1rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        #admin-dark-mode-toggle:hover i {
+            transform: scale(1.2);
+        }
     </style>
+
+    <!-- Immediate Theme Initialization to avoid white flash -->
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled' || localStorage.getItem('admin-dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark-mode');
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.add('dark-mode');
+                const navbar = document.querySelector('.main-header.navbar');
+                if (navbar) {
+                    navbar.classList.remove('navbar-white', 'navbar-light');
+                    navbar.classList.add('navbar-dark', 'bg-dark');
+                }
+                const icon = document.getElementById('admin-theme-icon');
+                if (icon) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun', 'text-warning');
+                }
+            });
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -120,8 +188,13 @@
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('dashboard.pengaduan') }}" class="dropdown-item dropdown-footer">Lihat Semua Pengaduan</a>
                     </div>
+                <!-- Dark Mode Toggle Button -->
+                <li class="nav-item">
+                    <a class="nav-link" id="admin-dark-mode-toggle" href="javascript:void(0)" role="button" title="Ubah Tema Gelap/Terang">
+                        <i id="admin-theme-icon" class="fas fa-moon"></i>
+                    </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -302,6 +375,42 @@
     <script src="{{ asset('assets-template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets-template/dist/js/adminlte.min.js') }}"></script>
+
+    <!-- Admin Dark Mode Toggle Script -->
+    <script>
+        $(document).ready(function() {
+            const toggleBtn = $('#admin-dark-mode-toggle');
+            const icon = $('#admin-theme-icon');
+            const navbar = $('.main-header.navbar');
+
+            function applyAdminTheme(isDark) {
+                if (isDark) {
+                    $('body').addClass('dark-mode');
+                    navbar.removeClass('navbar-white navbar-light').addClass('navbar-dark bg-dark');
+                    icon.removeClass('fa-moon text-dark').addClass('fa-sun text-warning');
+                    localStorage.setItem('dark-mode', 'enabled');
+                    localStorage.setItem('admin-dark-mode', 'enabled');
+                } else {
+                    $('body').removeClass('dark-mode');
+                    navbar.removeClass('navbar-dark bg-dark').addClass('navbar-white navbar-light');
+                    icon.removeClass('fa-sun text-warning').addClass('fa-moon');
+                    localStorage.setItem('dark-mode', 'disabled');
+                    localStorage.setItem('admin-dark-mode', 'disabled');
+                }
+                $(document).trigger('admin-theme-changed', [isDark]);
+            }
+
+            toggleBtn.on('click', function(e) {
+                e.preventDefault();
+                const isCurrentlyDark = $('body').hasClass('dark-mode');
+                applyAdminTheme(!isCurrentlyDark);
+            });
+
+            if (localStorage.getItem('dark-mode') === 'enabled' || localStorage.getItem('admin-dark-mode') === 'enabled') {
+                applyAdminTheme(true);
+            }
+        });
+    </script>
 
     @yield('scripts')
 </body>

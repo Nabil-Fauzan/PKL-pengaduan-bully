@@ -119,7 +119,7 @@
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $index + 1 }}</td>
                                     <td>
-                                        <div class="font-weight-bold text-dark">{{ $pengaduan->siswa->nama }}</div>
+                                        <div class="font-weight-bold">{{ $pengaduan->siswa->nama }}</div>
                                         <small class="text-muted">NIS: {{ $pengaduan->siswa->nis }}</small>
                                     </td>
                                     <td>{{ $pengaduan->judul }}</td>
@@ -170,9 +170,25 @@
 
 @section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('kategoriChart').getContext('2d');
-        new Chart(ctx, {
+    let categoryChartInstance = null;
+
+    function renderCategoryChart() {
+        const isDarkMode = document.body.classList.contains('dark-mode') || localStorage.getItem('dark-mode') === 'enabled' || localStorage.getItem('admin-dark-mode') === 'enabled';
+        
+        // Adaptive colors for dark vs light mode
+        const labelColor = isDarkMode ? '#f1f5f9' : '#334155';
+        const gridLineColor = isDarkMode ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.08)';
+        const zeroLineColor = isDarkMode ? 'rgba(255, 255, 255, 0.35)' : 'rgba(0, 0, 0, 0.2)';
+
+        const chartCanvas = document.getElementById('kategoriChart');
+        if (!chartCanvas) return;
+
+        if (categoryChartInstance) {
+            categoryChartInstance.destroy();
+        }
+
+        const ctx = chartCanvas.getContext('2d');
+        categoryChartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Bullying', 'Fasilitas Sekolah', 'Akademik', 'Lainnya'],
@@ -185,16 +201,16 @@
                         {{ $lainnyaCount }}
                     ],
                     backgroundColor: [
-                        '#dc3545', // Danger / Red
-                        '#17a2b8', // Info / Blue-green
-                        '#007bff', // Primary / Blue
-                        '#6c757d'  // Secondary / Gray
+                        '#ef4444', // Danger / Red
+                        '#06b6d4', // Cyan
+                        '#3b82f6', // Blue
+                        '#64748b'  // Slate Gray
                     ],
                     borderColor: [
-                        '#dc3545',
-                        '#17a2b8',
-                        '#007bff',
-                        '#6c757d'
+                        '#dc2626',
+                        '#0891b2',
+                        '#2563eb',
+                        '#475569'
                     ],
                     borderWidth: 1
                 }]
@@ -203,10 +219,28 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontColor: labelColor,
+                            fontSize: 12,
+                            fontStyle: 'bold'
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }],
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            stepSize: 1
+                            stepSize: 1,
+                            fontColor: labelColor,
+                            fontSize: 12,
+                            fontStyle: 'bold'
+                        },
+                        gridLines: {
+                            color: gridLineColor,
+                            zeroLineColor: zeroLineColor,
+                            drawBorder: true
                         }
                     }]
                 },
@@ -215,6 +249,15 @@
                 }
             }
         });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderCategoryChart();
+    });
+
+    // Re-render chart on theme change
+    $(document).on('admin-theme-changed', function() {
+        renderCategoryChart();
     });
 </script>
 @endsection

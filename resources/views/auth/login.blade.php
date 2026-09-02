@@ -13,19 +13,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode styles */
+        body.dark-mode {
+            background-color: #0f172a !important; /* Slate 900 */
+            color: #f8fafc !important; /* Slate 50 */
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-color: #334155 !important; /* Slate 700 */
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .text-slate-900,
+        .dark-mode .text-slate-800 {
+            color: #f8fafc !important;
+        }
+
+        .dark-mode .text-slate-500,
+        .dark-mode .text-slate-400 {
+            color: #94a3b8 !important; /* Slate 400 */
+        }
+
+        .dark-mode .border-slate-200,
+        .dark-mode .border-slate-300 {
+            border-color: #334155 !important;
+        }
+
+        .dark-mode input {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+
+        .dark-mode input::placeholder {
+            color: #64748b !important;
         }
     </style>
+
+    <!-- Immediate Theme Initialization to avoid white flash -->
+    <script>
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.add('dark-mode');
+                const sunIcon = document.getElementById('sun-icon');
+                const moonIcon = document.getElementById('moon-icon');
+                if (sunIcon && moonIcon) {
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            });
+        }
+    </script>
     
-    <!-- reCAPTCHA API -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- reCAPTCHA API with explicit render callback -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Top Navigation Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button type="button" id="dark-mode-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-all shadow-sm cursor-pointer outline-none" title="Ubah Tema">
+            <!-- Sun Icon (visible in dark mode) -->
+            <svg id="sun-icon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+            </svg>
+            <!-- Moon Icon (visible in light mode) -->
+            <svg id="moon-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </button>
+    </div>
 
     <div class="max-w-md w-full bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 sm:p-8">
         
@@ -124,9 +195,9 @@
                 </div>
             </div>
 
-            <!-- reCAPTCHA Widget -->
-            <div class="mb-6 flex justify-center">
-                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.sitekey') }}"></div>
+            <!-- reCAPTCHA Widget Container -->
+            <div id="recaptcha-wrapper" class="mb-6 flex justify-center min-h-[78px]">
+                <div id="recaptcha-widget"></div>
             </div>
 
             <!-- Submit Button -->
@@ -141,7 +212,7 @@
         </form>
     </div>
 
-    <!-- Javascript tab switcher -->
+    <!-- Javascript tab switcher & Theme Logic -->
     <script>
         function switchRole(role) {
             const tabSiswa = document.getElementById('tab-siswa');
@@ -187,6 +258,86 @@
                 eyeClosed.classList.add('hidden');
             }
         }
+
+        // reCAPTCHA Dynamic Theme Logic
+        let recaptchaWidgetId = null;
+
+        function getActiveTheme() {
+            return (document.body.classList.contains('dark-mode') || localStorage.getItem('dark-mode') === 'enabled') ? 'dark' : 'light';
+        }
+
+        function renderRecaptchaWidget(theme) {
+            const wrapper = document.getElementById('recaptcha-wrapper');
+            if (!wrapper) return;
+
+            // Fresh inner element to detach previous Google iframe instance
+            wrapper.innerHTML = '<div id="recaptcha-widget"></div>';
+
+            if (typeof grecaptcha !== 'undefined' && grecaptcha.render) {
+                try {
+                    recaptchaWidgetId = grecaptcha.render('recaptcha-widget', {
+                        'sitekey': '{{ config('services.recaptcha.sitekey') }}',
+                        'theme': theme
+                    });
+                } catch (e) {
+                    console.error('reCAPTCHA render error:', e);
+                }
+            }
+        }
+
+        window.onRecaptchaLoad = function() {
+            renderRecaptchaWidget(getActiveTheme());
+        };
+
+        // Dark Mode Switcher Logic
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            document.documentElement.classList.add('dark');
+            if (sunIcon && moonIcon) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+            localStorage.setItem('dark-mode', 'enabled');
+            renderRecaptchaWidget('dark');
+        }
+
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark');
+            if (sunIcon && moonIcon) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+            localStorage.setItem('dark-mode', 'disabled');
+            renderRecaptchaWidget('light');
+        }
+
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', () => {
+                if (document.body.classList.contains('dark-mode')) {
+                    disableDarkMode();
+                } else {
+                    enableDarkMode();
+                }
+            });
+        }
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            enableDarkMode();
+        }
+
+        // Safety fallback: if reCAPTCHA script loaded before callback bound
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (typeof grecaptcha !== 'undefined' && grecaptcha.render && !recaptchaWidgetId) {
+                    renderRecaptchaWidget(getActiveTheme());
+                }
+            }, 300);
+        });
     </script>
 </body>
 </html>

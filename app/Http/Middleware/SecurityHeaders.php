@@ -22,14 +22,17 @@ class SecurityHeaders
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
-        $csp = "default-src 'self'; "
-            . "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; "
-            . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; "
-            . "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
-            . "img-src 'self' data: https:; "
+        $isLocal = app()->environment('local') || config('app.debug');
+        $viteOrigins = $isLocal ? " http://localhost:* http://127.0.0.1:* http://[::1]:* ws://localhost:* ws://127.0.0.1:* ws://[::1]:* http://*:5173 ws://*:5173" : "";
+
+        $csp = "default-src 'self' data:; "
+            . "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net{$viteOrigins}; "
+            . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net{$viteOrigins}; "
+            . "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com{$viteOrigins}; "
+            . "img-src 'self' data: https: blob:; "
             . "frame-src 'self' https://www.google.com https://www.gstatic.com; "
             . "frame-ancestors 'self'; "
-            . "connect-src 'self' https: ws: wss:;";
+            . "connect-src 'self' https: ws: wss:{$viteOrigins};";
 
         $response->headers->set('Content-Security-Policy', $csp);
 
