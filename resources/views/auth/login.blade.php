@@ -1,5 +1,8 @@
 <?php
-    $role = request()->input('role', 'siswa');
+    $role = $role ?? old('role', request()->query('role', 'siswa'));
+    if (!in_array($role, ['siswa', 'petugas'])) {
+        $role = 'siswa';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

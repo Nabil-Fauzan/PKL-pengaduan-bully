@@ -49,10 +49,10 @@
             background-color: rgba(245, 158, 11, 0.1) !important;
             border-color: rgba(245, 158, 11, 0.2) !important;
         }
-        .dark-mode .text-amber-850 {
+        .dark-mode .text-amber-800 {
             color: #fef08a !important; /* light yellow */
         }
-        .dark-mode .text-amber-950 {
+        .dark-mode .text-amber-900 {
             color: #fef9c3 !important;
         }
         /* Cancel button bg */
@@ -84,13 +84,13 @@
         </div>
 
         <!-- Warning Notice Card -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-xs text-amber-850 leading-relaxed font-medium flex gap-3">
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-xs text-amber-800 leading-relaxed font-medium flex gap-3">
             <svg class="h-5 w-5 text-amber-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
             <div>
-                <strong class="font-extrabold text-amber-950 text-[13px] block mb-1">PENTING: Laporan Tidak Dapat Diubah/Dihapus!</strong>
-                Demi keadilan dan efisiensi penanganan, laporan yang telah Anda kirimkan <span class="font-extrabold text-amber-950">tidak dapat diubah atau ditarik kembali</span>. Pastikan Anda menuliskan fakta yang sebenar-benarnya. Laporan palsu, main-main, atau iseng akan dikenakan sanksi disiplin sekolah.
+                <strong class="font-extrabold text-amber-900 text-[13px] block mb-1">PENTING: Laporan Tidak Dapat Diubah/Dihapus!</strong>
+                Demi keadilan dan efisiensi penanganan, laporan yang telah Anda kirimkan <span class="font-extrabold text-amber-900">tidak dapat diubah atau ditarik kembali</span>. Pastikan Anda menuliskan fakta yang sebenar-benarnya. Laporan palsu, main-main, atau iseng akan dikenakan sanksi disiplin sekolah.
             </div>
         </div>
 
@@ -207,6 +207,19 @@
             }
         }
 
+        const kategoriLainnyaWrapper = document.getElementById('kategori-lainnya-wrapper');
+        const kategoriLainnyaInput = document.getElementById('kategori_lainnya');
+
+        function toggleKategoriLainnya() {
+            if (kategoriSelect.value === 'lainnya') {
+                kategoriLainnyaWrapper.classList.remove('hidden');
+                kategoriLainnyaInput.setAttribute('required', 'required');
+            } else {
+                kategoriLainnyaWrapper.classList.add('hidden');
+                kategoriLainnyaInput.removeAttribute('required');
+            }
+        }
+
         // Save Draft to LocalStorage
         let saveTimeout;
         function saveDraft() {
@@ -216,6 +229,7 @@
             const draftData = {
                 judul: judulInput.value,
                 kategori: kategoriSelect.value,
+                kategori_lainnya: kategoriLainnyaInput.value,
                 isi_pengaduan: isiTextarea.value
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(draftData));
@@ -240,6 +254,9 @@
                     if (draftData.kategori && !kategoriSelect.value) {
                         kategoriSelect.value = draftData.kategori;
                     }
+                    if (draftData.kategori_lainnya && !kategoriLainnyaInput.value) {
+                        kategoriLainnyaInput.value = draftData.kategori_lainnya;
+                    }
                     if (draftData.isi_pengaduan && !isiTextarea.value) {
                         isiTextarea.value = draftData.isi_pengaduan;
                     }
@@ -250,25 +267,13 @@
             updateCounter();
         }
 
-        const kategoriLainnyaWrapper = document.getElementById('kategori-lainnya-wrapper');
-        const kategoriLainnyaInput = document.getElementById('kategori_lainnya');
-
-        function toggleKategoriLainnya() {
-            if (kategoriSelect.value === 'lainnya') {
-                kategoriLainnyaWrapper.classList.remove('hidden');
-                kategoriLainnyaInput.setAttribute('required', 'required');
-            } else {
-                kategoriLainnyaWrapper.classList.add('hidden');
-                kategoriLainnyaInput.removeAttribute('required');
-            }
-        }
-
         // Attach listeners
         isiTextarea.addEventListener('input', () => {
             updateCounter();
             saveDraft();
         });
         judulInput.addEventListener('input', saveDraft);
+        kategoriLainnyaInput.addEventListener('input', saveDraft);
         kategoriSelect.addEventListener('change', () => {
             toggleKategoriLainnya();
             saveDraft();

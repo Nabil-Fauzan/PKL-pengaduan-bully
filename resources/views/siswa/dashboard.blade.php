@@ -88,6 +88,10 @@
         }
 
         /* Fixes for category badges and header badges in Dark Mode */
+        .dark-mode .bg-slate-50 {
+            background-color: #0f172a !important; /* Slate 900 */
+        }
+        
         .dark-mode .bg-slate-100 {
             background-color: #334155 !important; /* Slate 700 */
         }

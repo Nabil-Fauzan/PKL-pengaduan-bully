@@ -14,7 +14,7 @@
                     Informasi Pengaduan
                 </h3>
                 <div class="card-tools">
-                    <a href="{{ route('dashboard') }}" class="btn btn-default btn-sm">
+                    <a href="{{ route('dashboard.pengaduan') }}" class="btn btn-default btn-sm">
                         <i class="fas fa-arrow-left mr-1"></i> Kembali
                     </a>
                 </div>
@@ -171,7 +171,7 @@
                     <div class="form-group mt-4">
                         <label for="isi_tanggapan" class="font-weight-bold">Isi Tanggapan Resmi BK:</label>
                         <textarea name="isi_tanggapan" id="isi_tanggapan" rows="6" class="form-control" 
-                            placeholder="Tuliskan keterangan tindakan, pemanggilan siswa, koordinasi dengan wali kelas, atau penyelesaian masalah secara rinci..."></textarea>
+                            placeholder="Tuliskan keterangan tindakan, pemanggilan siswa, koordinasi dengan wali kelas, atau penyelesaian masalah secara rinci...">{{ old('isi_tanggapan') }}</textarea>
                         <small class="form-text text-muted">Minimal menulis 5 karakter. Tanggapan Anda akan muncul di riwayat portal siswa pelapor secara transparan.</small>
                     </div>
 

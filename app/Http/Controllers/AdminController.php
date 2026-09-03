@@ -112,12 +112,13 @@ class AdminController extends Controller
         $this->checkAdmin();
         $siswa = Siswa::findOrFail($id);
         $list_jurusan = Setting::getJurusan();
+        $allowed_jurusan = array_unique(array_filter(array_merge($list_jurusan, [$siswa->jurusan])));
 
         $request->validate([
             'nis' => 'required|string|max:20|unique:siswa,nis,' . $id . ',id_siswa',
             'nama' => 'required|string|max:100',
             'kelas' => 'required|in:X,XI,XII',
-            'jurusan' => ['required', Rule::in($list_jurusan)],
+            'jurusan' => ['required', Rule::in($allowed_jurusan)],
             'password' => 'nullable|string|min:4',
             'status' => 'required|in:aktif,lulus,pindah',
         ], [
@@ -322,11 +323,12 @@ class AdminController extends Controller
         
         $request->validate([
             'jurusan' => 'required|array|min:1',
-            'jurusan.*' => 'required|string|max:100',
+            'jurusan.*' => 'required|string|max:50',
         ], [
             'jurusan.required' => 'Daftar jurusan wajib diisi.',
             'jurusan.min' => 'Minimal harus ada 1 jurusan.',
             'jurusan.*.required' => 'Nama jurusan tidak boleh kosong.',
+            'jurusan.*.max' => 'Nama jurusan maksimal 50 karakter.',
         ]);
 
         Setting::setJurusan($request->input('jurusan'));

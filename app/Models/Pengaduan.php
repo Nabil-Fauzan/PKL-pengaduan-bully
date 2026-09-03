@@ -38,7 +38,7 @@ class Pengaduan extends Model
     }
 
     /**
-     * Pengadua -> petugas
+     * Pengaduan -> petugas
      */
     public function petugas()
     {
@@ -58,6 +58,6 @@ class Pengaduan extends Model
      */
     public function isTerabaikan(): bool
     {
-        return $this->status === 'baru' && $this->tanggal_pengaduan->lt(now()->subDays(3));
+        return $this->status === 'baru' && $this->tanggal_pengaduan && $this->tanggal_pengaduan->lt(now()->subDays(3));
     }
 }

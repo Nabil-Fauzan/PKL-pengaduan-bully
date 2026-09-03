@@ -56,7 +56,7 @@
             background-color: rgba(245, 158, 11, 0.1) !important;
             border-color: rgba(245, 158, 11, 0.2) !important;
         }
-        .dark-mode .text-amber-850 {
+        .dark-mode .text-amber-800 {
             color: #fef08a !important;
         }
         .dark-mode .text-amber-900 {
@@ -155,7 +155,7 @@
         </div>
 
         @if($pengaduan->status === 'baru')
-            <div class="mb-8 flex items-center gap-3 text-xs text-amber-850 bg-amber-50/60 border border-amber-100 rounded-xl p-4 leading-relaxed font-medium">
+            <div class="mb-8 flex items-center gap-3 text-xs text-amber-800 bg-amber-50/60 border border-amber-100 rounded-xl p-4 leading-relaxed font-medium">
                 <svg class="h-5 w-5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -218,20 +218,39 @@
     <!-- Clipboard Copy Script -->
     <script>
         function copyComplaintId(id, buttonElement) {
-            navigator.clipboard.writeText(id).then(() => {
+            const showSuccess = () => {
                 const originalHtml = buttonElement.innerHTML;
                 buttonElement.innerHTML = `
                     <svg class="h-3 w-3 text-emerald-600 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                     </svg>
                 `;
-
                 setTimeout(() => {
                     buttonElement.innerHTML = originalHtml;
                 }, 1500);
-            }).catch(err => {
-                console.error('Failed to copy ID: ', err);
-            });
+            };
+
+            const fallbackCopy = () => {
+                const textArea = document.createElement("textarea");
+                textArea.value = id;
+                textArea.style.position = "fixed";
+                textArea.style.opacity = "0";
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showSuccess();
+                } catch (err) {
+                    console.error('Failed to copy ID: ', err);
+                }
+                document.body.removeChild(textArea);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(id).then(showSuccess).catch(fallbackCopy);
+            } else {
+                fallbackCopy();
+            }
         }
 
         // Apply dark mode theme if enabled in local storage

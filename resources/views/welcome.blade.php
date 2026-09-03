@@ -185,17 +185,17 @@
                     <div class="p-6">
                         <div class="text-3xl font-extrabold text-indigo-600">100%</div>
                         <div class="text-sm font-semibold text-slate-800 mt-2">Identitas Terjaga</div>
-                        <p class="text-xs text-slate-550 mt-1">Laporan diproses secara rahasia dan aman demi kenyamanan pelapor.</p>
+                        <p class="text-xs text-slate-500 mt-1">Laporan diproses secara rahasia dan aman demi kenyamanan pelapor.</p>
                     </div>
                     <div class="p-6 border-t md:border-t-0 md:border-x border-slate-200">
                         <div class="text-3xl font-extrabold text-indigo-600">Responsif</div>
                         <div class="text-sm font-semibold text-slate-800 mt-2">Penanganan Cepat</div>
-                        <p class="text-xs text-slate-555 mt-1">Setiap laporan yang masuk akan segera ditindaklanjuti oleh petugas sekolah.</p>
+                        <p class="text-xs text-slate-500 mt-1">Setiap laporan yang masuk akan segera ditindaklanjuti oleh petugas sekolah.</p>
                     </div>
                     <div class="p-6 border-t md:border-t-0 border-slate-200">
                         <div class="text-3xl font-extrabold text-indigo-600">Transparan</div>
                         <div class="text-sm font-semibold text-slate-800 mt-2">Pantau Status</div>
-                        <p class="text-xs text-slate-555 mt-1">Siswa dapat memantau perkembangan status laporan mereka secara real-time.</p>
+                        <p class="text-xs text-slate-500 mt-1">Siswa dapat memantau perkembangan status laporan mereka secara real-time.</p>
                     </div>
                 </div>
             </div>
@@ -316,15 +316,22 @@
     <script>
         // Back to Top Button
         const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         // FAQ Toggle
         function toggleFaq(index) {

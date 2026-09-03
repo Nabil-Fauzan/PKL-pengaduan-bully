@@ -32,7 +32,7 @@
             <div class="icon">
                 <i class="fas fa-envelope-open-text"></i>
             </div>
-            <a href="{{ route('dashboard.pengaduan') }}" class="small-box-footer">
+            <a href="{{ route('dashboard.pengaduan', ['status' => 'baru']) }}" class="small-box-footer">
                 Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -48,7 +48,7 @@
             <div class="icon">
                 <i class="fas fa-spinner"></i>
             </div>
-            <a href="{{ route('dashboard.pengaduan') }}" class="small-box-footer">
+            <a href="{{ route('dashboard.pengaduan', ['status' => 'diproses']) }}" class="small-box-footer">
                 Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -64,7 +64,7 @@
             <div class="icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <a href="{{ route('dashboard.pengaduan') }}" class="small-box-footer">
+            <a href="{{ route('dashboard.pengaduan', ['status' => 'terabaikan']) }}" class="small-box-footer">
                 Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -234,6 +234,7 @@
                         ticks: {
                             beginAtZero: true,
                             stepSize: 1,
+                            precision: 0,
                             fontColor: labelColor,
                             fontSize: 12,
                             fontStyle: 'bold'

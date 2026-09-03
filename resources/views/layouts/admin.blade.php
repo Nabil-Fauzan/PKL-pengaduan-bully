@@ -76,6 +76,47 @@
             border: 1px solid rgba(59, 130, 246, 0.4) !important;
             font-weight: 700 !important;
         }
+        body.dark-mode .badge.bg-warning,
+        body.dark-mode .badge-warning {
+            background-color: rgba(245, 158, 11, 0.25) !important;
+            color: #fde047 !important;
+            border: 1px solid rgba(245, 158, 11, 0.4) !important;
+            font-weight: 700 !important;
+        }
+        body.dark-mode .badge.bg-danger,
+        body.dark-mode .badge-danger {
+            background-color: rgba(239, 68, 68, 0.25) !important;
+            color: #fca5a5 !important;
+            border: 1px solid rgba(239, 68, 68, 0.4) !important;
+            font-weight: 700 !important;
+        }
+        body.dark-mode .badge.bg-success,
+        body.dark-mode .badge-success {
+            background-color: rgba(16, 185, 129, 0.25) !important;
+            color: #86efac !important;
+            border: 1px solid rgba(16, 185, 129, 0.4) !important;
+            font-weight: 700 !important;
+        }
+        body.dark-mode .badge.bg-info,
+        body.dark-mode .badge-info {
+            background-color: rgba(6, 182, 212, 0.25) !important;
+            color: #a5f3fc !important;
+            border: 1px solid rgba(6, 182, 212, 0.4) !important;
+            font-weight: 700 !important;
+        }
+        body.dark-mode .badge.bg-secondary,
+        body.dark-mode .badge-secondary {
+            background-color: rgba(100, 116, 139, 0.25) !important;
+            color: #cbd5e1 !important;
+            border: 1px solid rgba(100, 116, 139, 0.4) !important;
+            font-weight: 700 !important;
+        }
+        body.dark-mode .badge.bg-indigo {
+            background-color: rgba(99, 102, 241, 0.3) !important;
+            color: #c7d2fe !important;
+            border: 1px solid rgba(99, 102, 241, 0.5) !important;
+            font-weight: 700 !important;
+        }
         body.dark-mode .table-bordered th,
         body.dark-mode .table-bordered td {
             border-color: #4b545c !important;
@@ -243,6 +284,8 @@
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('dashboard.pengaduan') }}" class="dropdown-item dropdown-footer">Lihat Semua Pengaduan</a>
                     </div>
+                </li>
+
                 <!-- Dark Mode Toggle Button -->
                 <li class="nav-item">
                     <a class="nav-link" id="admin-dark-mode-toggle" href="javascript:void(0)" role="button" title="Ubah Tema Gelap/Terang">
@@ -293,7 +336,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('dashboard.pengaduan') }}" class="nav-link {{ request()->routeIs('dashboard.pengaduan') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard.pengaduan') }}" class="nav-link {{ (request()->routeIs('dashboard.pengaduan*') || request()->routeIs('petugas.pengaduan*')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-bullhorn"></i>
                                 <p>
                                     Data Pengaduan
@@ -355,7 +398,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                                 <li class="breadcrumb-item active">@yield('page_title', 'Dashboard')</li>
                             </ol>
                         </div>

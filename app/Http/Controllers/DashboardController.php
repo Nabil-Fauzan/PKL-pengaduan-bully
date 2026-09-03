@@ -133,12 +133,14 @@ class DashboardController extends Controller
         $request->validate([
             'judul' => 'required|string|max:150',
             'kategori' => 'required|in:bullying,fasilitas,akademik,lainnya',
+            'kategori_lainnya' => 'nullable|string|max:50',
             'isi_pengaduan' => 'required|string',
         ], [
             'judul.required' => 'Judul pengaduan wajib diisi.',
             'judul.max' => 'Judul pengaduan tidak boleh lebih dari 150 karakter.',
             'kategori.required' => 'Kategori pengaduan wajib dipilih.',
             'kategori.in' => 'Kategori pengaduan yang dipilih tidak valid.',
+            'kategori_lainnya.max' => 'Kategori lainnya maksimal 50 karakter.',
             'isi_pengaduan.required' => 'Isi laporan pengaduan wajib diisi.',
         ]);
 

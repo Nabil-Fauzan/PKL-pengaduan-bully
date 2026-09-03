@@ -83,7 +83,7 @@
                             <select class="form-control" disabled>
                                 <option selected>Administrator (Akses Penuh - Akun Sendiri)</option>
                             </select>
-                            <small class="form-text text-muted text-warning"><i class="fas fa-exclamation-triangle"></i> Anda tidak bisa mendegradasi peran akun Anda sendiri yang sedang aktif.</small>
+                            <small class="form-text text-warning font-weight-bold"><i class="fas fa-exclamation-triangle"></i> Anda tidak bisa mendegradasi peran akun Anda sendiri yang sedang aktif.</small>
                         @else
                             <select name="role" id="role" class="form-control" required>
                                 <option value="petugas" {{ old('role', $petugas->role) === 'petugas' ? 'selected' : '' }}>Petugas BK (Bimbingan Konseling)</option>
@@ -100,7 +100,7 @@
                             <select class="form-control" disabled>
                                 <option selected>Aktif (Akun Sendiri)</option>
                             </select>
-                            <small class="form-text text-muted text-warning"><i class="fas fa-exclamation-triangle"></i> Anda tidak bisa menonaktifkan akun Anda sendiri yang sedang aktif.</small>
+                            <small class="form-text text-warning font-weight-bold"><i class="fas fa-exclamation-triangle"></i> Anda tidak bisa menonaktifkan akun Anda sendiri yang sedang aktif.</small>
                         @else
                             <select name="status" id="status" class="form-control" required>
                                 <option value="aktif" {{ old('status', $petugas->status) === 'aktif' ? 'selected' : '' }}>Aktif (Dapat Login)</option>
