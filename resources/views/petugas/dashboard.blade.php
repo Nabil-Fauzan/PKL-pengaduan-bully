@@ -142,7 +142,7 @@
                                             <span class="badge bg-secondary">Lainnya</span>
                                         @endif
                                     </td>
-                                    <td>{{ $pengaduan->tanggal_pengaduan->format('d/m/Y | H:i') }} WIB</td>
+                                    <td>{{ $pengaduan->tanggal_pengaduan->timezone('Asia/Jakarta')->translatedFormat('d/m/Y | H:i') }} WIB</td>
                                     <td>
                                         @if($pengaduan->isTerabaikan())
                                             <span class="badge bg-danger">Terabaikan (>3 hari)</span>

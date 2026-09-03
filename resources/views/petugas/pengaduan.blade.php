@@ -8,7 +8,7 @@
     <div class="col-12">
         
         <!-- Filter Card -->
-        <div class="card card-default mb-4">
+        <div class="card card-default mb-4 no-print">
             <div class="card-header">
                 <h2 class="card-title h5 font-weight-bold mb-0">
                     <i class="fas fa-filter mr-1"></i>
@@ -74,7 +74,7 @@
         <div class="print-only mb-4 text-center">
             <h3 class="font-weight-bold mb-1">SMK TI AIRLANGGA SAMARINDA</h3>
             <h5 class="mb-1 font-weight-bold">REKAPITULASI DATA PENGADUAN SISWA & KASUS BULLYING</h5>
-            <small class="text-muted">Dicetak pada: {{ now()->format('d F Y | H:i') }} WIB oleh {{ Auth::user()->nama }} ({{ ucfirst(Auth::user()->role) }})</small>
+            <small class="text-muted">Dicetak pada: {{ now()->timezone('Asia/Jakarta')->translatedFormat('d F Y | H:i') }} WIB oleh {{ Auth::user()->nama }} ({{ ucfirst(Auth::user()->role) }})</small>
             <hr style="border-top: 2px solid #000; margin-top: 10px; margin-bottom: 20px;">
         </div>
 
@@ -136,7 +136,7 @@
                                             <span class="badge bg-secondary">Lainnya</span>
                                         @endif
                                     </td>
-                                    <td>{{ $pengaduan->tanggal_pengaduan->format('d/m/Y | H:i') }} WIB</td>
+                                    <td>{{ $pengaduan->tanggal_pengaduan->timezone('Asia/Jakarta')->translatedFormat('d/m/Y | H:i') }} WIB</td>
                                     <td>
                                         @if($pengaduan->isTerabaikan())
                                             <span class="badge bg-danger">Terabaikan (>3 hari)</span>
