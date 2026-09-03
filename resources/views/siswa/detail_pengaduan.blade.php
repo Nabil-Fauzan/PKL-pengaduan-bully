@@ -45,6 +45,12 @@
         .dark-mode .border-slate-150 {
             border-color: #334155 !important;
         }
+        .dark-mode .border-slate-300 {
+            border-color: #475569 !important;
+        }
+        .dark-mode .bg-slate-200 {
+            background-color: #334155 !important;
+        }
         /* bg-slate-50 for details container */
         .dark-mode .bg-slate-50 {
             background-color: #0f172a !important;
@@ -146,6 +152,70 @@
             </h1>
         </div>
 
+        <!-- Progress Stepper -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-8">
+            <h3 class="text-[11px] font-extrabold tracking-wider text-slate-400 uppercase mb-4">Progres Penanganan Kasus</h3>
+            <div class="relative flex items-center justify-between">
+                <!-- Connector Line Background -->
+                <div class="absolute left-6 right-6 top-5 h-1 bg-slate-200 -z-0"></div>
+                <!-- Connector Line Active -->
+                <div class="absolute left-6 top-5 h-1 {{ $pengaduan->status === 'selesai' || $pengaduan->status === 'ditolak' ? 'w-[calc(100%-3rem)] bg-emerald-500' : ($pengaduan->status === 'diproses' ? 'w-[calc(50%-1.5rem)] bg-indigo-600' : 'w-0 bg-indigo-600') }} transition-all duration-500 -z-0"></div>
+
+                <!-- Step 1: Laporan Masuk -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 mt-2">Terkirim</span>
+                    <span class="text-[10px] text-slate-400 font-medium">{{ $pengaduan->tanggal_pengaduan->format('d/m H:i') }}</span>
+                </div>
+
+                <!-- Step 2: Pemeriksaan BK -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full {{ in_array($pengaduan->status, ['diproses', 'selesai', 'ditolak']) ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border-2 border-slate-300 text-slate-400' }} flex items-center justify-center font-bold text-xs transition-colors">
+                        @if(in_array($pengaduan->status, ['diproses', 'selesai', 'ditolak']))
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                        @else
+                            <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        @endif
+                    </div>
+                    <span class="text-xs font-bold {{ in_array($pengaduan->status, ['diproses', 'selesai', 'ditolak']) ? 'text-slate-900' : 'text-slate-400' }} mt-2">Ditinjau BK</span>
+                    <span class="text-[10px] text-slate-400 font-medium">{{ $pengaduan->status === 'baru' ? 'Antrean' : 'Diselidiki' }}</span>
+                </div>
+
+                <!-- Step 3: Penyelesaian -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full {{ $pengaduan->status === 'selesai' ? 'bg-emerald-500 text-white shadow-sm' : ($pengaduan->status === 'ditolak' ? 'bg-rose-500 text-white shadow-sm' : 'bg-white border-2 border-slate-300 text-slate-400') }} flex items-center justify-center font-bold text-xs transition-colors">
+                        @if($pengaduan->status === 'selesai')
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        @elseif($pengaduan->status === 'ditolak')
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        @else
+                            <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        @endif
+                    </div>
+                    <span class="text-xs font-bold {{ $pengaduan->status === 'selesai' ? 'text-emerald-700' : ($pengaduan->status === 'ditolak' ? 'text-rose-700' : 'text-slate-400') }} mt-2">
+                        {{ $pengaduan->status === 'ditolak' ? 'Ditolak' : 'Selesai' }}
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-medium">
+                        {{ $pengaduan->status === 'selesai' ? 'Kasus Ditutup' : ($pengaduan->status === 'ditolak' ? 'Nihil/Ditolak' : 'Menunggu') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <!-- Report Content -->
         <div class="mb-8">
             <h3 class="text-xs font-extrabold tracking-wider text-slate-400 uppercase mb-3">Isi Laporan / Detail Kejadian:</h3>
@@ -185,10 +255,15 @@
                 <div class="space-y-4">
                     @foreach($pengaduan->tanggapan as $tanggapan)
                         <div class="bg-indigo-50/20 border border-indigo-150 rounded-xl p-5">
-                            <div class="flex justify-between items-center border-b border-indigo-100/60 pb-2.5 mb-3 text-[10px]">
-                                <span class="font-extrabold text-indigo-950">
-                                    Petugas: <span class="text-indigo-600">{{ $tanggapan->petugas->nama ?? 'Guru BK / Petugas' }}</span>
-                                </span>
+                            <div class="flex justify-between items-center border-b border-indigo-100/60 pb-3 mb-3 text-[10px]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0">
+                                        {{ strtoupper(substr($tanggapan->petugas->nama ?? 'BK', 0, 2)) }}
+                                    </div>
+                                    <span class="font-extrabold text-indigo-950">
+                                        Petugas: <span class="text-indigo-600">{{ $tanggapan->petugas->nama ?? 'Guru BK / Petugas' }}</span>
+                                    </span>
+                                </div>
                                 <span class="font-semibold text-slate-400">
                                     {{ $tanggapan->tanggal_tanggapan->format('d M Y | H:i') }} WIB
                                 </span>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
@@ -213,18 +214,20 @@ class DashboardController extends Controller
 
         $pengaduan = Pengaduan::findOrFail($id);
         
-        // Update complaint status & responding officer
-        $pengaduan->status = $request->input('status_pengaduan');
-        $pengaduan->id_petugas = Auth::guard('web')->id();
-        $pengaduan->save();
+        DB::transaction(function () use ($pengaduan, $request, $id) {
+            // Update complaint status & responding officer
+            $pengaduan->status = $request->input('status_pengaduan');
+            $pengaduan->id_petugas = Auth::guard('web')->id();
+            $pengaduan->save();
 
-        // Create tanggapan record
-        Tanggapan::create([
-            'id_pengaduan' => $id,
-            'id_user' => Auth::guard('web')->id(),
-            'isi_tanggapan' => $request->input('isi_tanggapan'),
-            'status_pengaduan' => $request->input('status_pengaduan'),
-        ]);
+            // Create tanggapan record
+            Tanggapan::create([
+                'id_pengaduan' => $id,
+                'id_user' => Auth::guard('web')->id(),
+                'isi_tanggapan' => $request->input('isi_tanggapan'),
+                'status_pengaduan' => $request->input('status_pengaduan'),
+            ]);
+        });
 
         return redirect()->back()->with('success_message', 'Tanggapan berhasil dikirim dan status laporan diperbarui!');
     }

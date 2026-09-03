@@ -70,13 +70,26 @@
             </div>
         </div>
 
+        <!-- Print Only Header -->
+        <div class="print-only mb-4 text-center">
+            <h3 class="font-weight-bold mb-1">SMK TI AIRLANGGA SAMARINDA</h3>
+            <h5 class="mb-1 font-weight-bold">REKAPITULASI DATA PENGADUAN SISWA & KASUS BULLYING</h5>
+            <small class="text-muted">Dicetak pada: {{ now()->format('d F Y | H:i') }} WIB oleh {{ Auth::user()->nama }} ({{ ucfirst(Auth::user()->role) }})</small>
+            <hr style="border-top: 2px solid #000; margin-top: 10px; margin-bottom: 20px;">
+        </div>
+
         <!-- Data Card -->
         <div class="card card-primary card-outline">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h2 class="card-title h5 font-weight-bold mb-0">
                     <i class="fas fa-list mr-1"></i>
                     Semua Data Pengaduan Masuk
                 </h2>
+                <div class="card-tools ml-auto no-print">
+                    <button type="button" onclick="window.print()" class="btn btn-default btn-sm font-weight-bold" title="Cetak Rekap Laporan">
+                        <i class="fas fa-print mr-1"></i> Cetak / PDF
+                    </button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -84,12 +97,12 @@
                         <thead>
                             <tr>
                                 <th style="width: 50px;" class="text-center">No</th>
-                                <th style="width: 200px;">Siswa Pelapor</th>
+                                <th style="width: 220px;">Siswa Pelapor</th>
                                 <th>Judul Pengaduan</th>
                                 <th style="width: 120px;">Kategori</th>
                                 <th style="width: 180px;">Tanggal Masuk</th>
                                 <th style="width: 150px;">Status</th>
-                                <th style="width: 130px;" class="text-center">Aksi</th>
+                                <th style="width: 130px;" class="text-center no-print">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,8 +113,16 @@
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $no++ }}</td>
                                     <td>
-                                        <div class="font-weight-bold">{{ $pengaduan->siswa->nama }}</div>
-                                        <small class="text-muted">NIS: {{ $pengaduan->siswa->nis }}</small>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center mr-2 shrink-0" 
+                                                style="width: 32px; height: 32px; background-color: #4f46e5; font-size: 11px;">
+                                                {{ strtoupper(substr($pengaduan->siswa->nama ?? 'S', 0, 2)) }}
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bold">{{ $pengaduan->siswa->nama ?? 'Siswa' }}</div>
+                                                <small class="text-muted">NIS: {{ $pengaduan->siswa->nis ?? '-' }}</small>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>{{ $pengaduan->judul }}</td>
                                     <td>
@@ -129,7 +150,7 @@
                                             <span class="badge bg-danger">Ditolak</span>
                                         @endif
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center no-print">
                                         <a href="{{ route('petugas.pengaduan.detail', $pengaduan->id_pengaduan) }}" class="btn btn-primary btn-xs font-weight-bold">
                                             <i class="fas fa-reply mr-1"></i> Tanggapi
                                         </a>
@@ -146,7 +167,7 @@
             </div>
             <!-- Pagination Footer -->
             @if($data_pengaduan->hasPages())
-                <div class="card-footer clearfix d-flex justify-content-end">
+                <div class="card-footer clearfix d-flex justify-content-end no-print">
                     {{ $data_pengaduan->links('pagination::bootstrap-4') }}
                 </div>
             @endif
@@ -154,4 +175,41 @@
 
     </div>
 </div>
+
+<style>
+    .print-only {
+        display: none;
+    }
+    @media print {
+        .no-print, .main-header, .main-sidebar, .main-footer, .card:first-child, .content-header {
+            display: none !important;
+        }
+        .print-only {
+            display: block !important;
+        }
+        .content-wrapper {
+            margin-left: 0 !important;
+            padding: 0 !important;
+            background-color: #fff !important;
+        }
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+        }
+        .table th, .table td {
+            border: 1px solid #333 !important;
+            padding: 6px 8px !important;
+            color: #000 !important;
+        }
+        .badge {
+            border: 1px solid #333 !important;
+            color: #000 !important;
+            background: transparent !important;
+        }
+    }
+</style>
 @endsection

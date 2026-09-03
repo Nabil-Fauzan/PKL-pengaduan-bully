@@ -119,8 +119,16 @@
                                 <tr>
                                     <td class="text-center font-weight-bold">{{ $index + 1 }}</td>
                                     <td>
-                                        <div class="font-weight-bold">{{ $pengaduan->siswa->nama }}</div>
-                                        <small class="text-muted">NIS: {{ $pengaduan->siswa->nis }}</small>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center mr-2 shrink-0" 
+                                                style="width: 32px; height: 32px; background-color: #4f46e5; font-size: 11px;">
+                                                {{ strtoupper(substr($pengaduan->siswa->nama ?? 'S', 0, 2)) }}
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bold">{{ $pengaduan->siswa->nama ?? 'Siswa' }}</div>
+                                                <small class="text-muted">NIS: {{ $pengaduan->siswa->nis ?? '-' }}</small>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>{{ $pengaduan->judul }}</td>
                                     <td>

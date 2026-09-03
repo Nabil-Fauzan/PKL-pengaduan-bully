@@ -311,13 +311,19 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <!-- Sidebar user panel -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
                     <div class="image">
-                        <img src="{{ asset('assets-template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" width="34" height="34">
+                        <div class="rounded-circle font-weight-bold d-flex align-items-center justify-content-center text-white" 
+                            style="width: 36px; height: 36px; background-color: #4f46e5; font-size: 13px; letter-spacing: 0.5px;">
+                            {{ strtoupper(substr(Auth::user()->nama, 0, 2)) }}
+                        </div>
                     </div>
-                    <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
+                    <div class="info pl-2">
+                        <a href="#" class="d-block font-weight-bold text-truncate" style="max-width: 160px;">{{ Auth::user()->nama }}</a>
+                        <small class="badge {{ Auth::user()->role === 'admin' ? 'bg-danger' : 'bg-warning text-dark' }} px-1.5 py-0.5 text-[10px] font-weight-bold">
+                            {{ Auth::user()->role === 'admin' ? 'Administrator' : 'Petugas BK' }}
+                        </small>
                     </div>
                 </div>
 

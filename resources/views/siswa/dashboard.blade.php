@@ -104,6 +104,16 @@
             color: #e0e7ff !important; /* Indigo 100 */
         }
 
+        .dark-mode .bg-amber-100 {
+            background-color: rgba(245, 158, 11, 0.25) !important;
+            color: #fef08a !important;
+        }
+
+        .dark-mode .bg-emerald-100 {
+            background-color: rgba(16, 185, 129, 0.25) !important;
+            color: #a7f3d0 !important;
+        }
+
         /* Webkit calendar indicator inversion for native date pickers */
         .dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
@@ -233,14 +243,24 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- Welcome Hero Banner -->
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-900 text-white p-6 sm:p-8 md:p-10 shadow-xl mb-8">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_45%)]"></div>
-            <div class="relative z-10 max-w-2xl">
-                <span class="inline-block text-[11px] font-extrabold tracking-wider text-indigo-300 uppercase mb-2 bg-indigo-500/20 px-2.5 py-1 rounded-md">Portal Perlindungan Murid</span>
+        <div class="relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 text-white p-6 sm:p-8 md:p-10 shadow-lg mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="max-w-2xl">
+                <span class="inline-block text-[11px] font-extrabold tracking-wider text-indigo-300 uppercase mb-2 bg-indigo-950 border border-indigo-800/80 px-2.5 py-1 rounded-md">Portal Perlindungan Murid</span>
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Halo, {{ $siswa->nama }}!</h1>
                 <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-medium">
                     Suara Anda berharga. Laporkan segala bentuk perundungan (bullying) demi menciptakan sekolah yang aman, nyaman, dan ramah untuk kita semua. Laporan Anda dijamin rahasia.
                 </p>
+                <div class="flex flex-wrap items-center gap-3 mt-4 text-xs font-semibold text-slate-400">
+                    <span class="bg-slate-800 px-3 py-1 rounded-full border border-slate-700">NIS: <strong class="text-white">{{ $siswa->nis }}</strong></span>
+                    <span class="bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Kelas: <strong class="text-white">{{ $siswa->kelas }}</strong></span>
+                    <span class="bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Jurusan: <strong class="text-white">{{ $siswa->jurusan }}</strong></span>
+                </div>
+            </div>
+            <div class="hidden md:flex flex-col items-center justify-center shrink-0">
+                <div class="w-20 h-20 rounded-2xl bg-indigo-600 text-white font-black text-2xl flex items-center justify-center shadow-md">
+                    {{ strtoupper(substr($siswa->nama, 0, 2)) }}
+                </div>
+                <span class="text-xs font-semibold text-indigo-300 mt-2">Siswa Aktif</span>
             </div>
         </div>
 
@@ -259,7 +279,7 @@
                 </div>
             </div>
 
-            <!-- Stat 2: In Process -->
+            <!-- Stat 2: In Progress -->
             <div id="stat-proses" onclick="filterByStatus('proses')" class="stat-card bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300">
                 <div class="h-12 w-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -304,6 +324,23 @@
 
                 <!-- Search and Filters Section -->
                 <div class="flex flex-col gap-4 mb-6">
+                    <!-- Status Quick Pills with Badge Counter -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs font-bold text-slate-400 mr-1">Status:</span>
+                        <button onclick="filterByStatus('all')" id="pill-status-all" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm border border-indigo-600 transition-all cursor-pointer">
+                            <span>Semua</span>
+                            <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-white/25 text-white font-extrabold">{{ $data_pengaduan->count() }}</span>
+                        </button>
+                        <button onclick="filterByStatus('proses')" id="pill-status-proses" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">
+                            <span>Dalam Proses</span>
+                            <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-100 text-amber-800 font-extrabold">{{ $data_pengaduan->whereIn('status', ['baru', 'diproses'])->count() }}</span>
+                        </button>
+                        <button onclick="filterByStatus('selesai')" id="pill-status-selesai" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer">
+                            <span>Selesai</span>
+                            <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-extrabold">{{ $data_pengaduan->where('status', 'selesai')->count() }}</span>
+                        </button>
+                    </div>
+
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <!-- Category Pills Filter -->
                         <div class="flex flex-wrap gap-2">
@@ -337,7 +374,7 @@
                             <input type="date" id="filter-date-start" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
                             <span class="text-slate-300 font-semibold">s.d</span>
                             <input type="date" id="filter-date-end" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
-                            <button onclick="clearDateFilter()" class="text-red-500 hover:text-red-700 font-bold ml-1 text-sm" title="Reset filter tanggal">&times;</button>
+                            <button onclick="clearDateFilter()" class="text-red-500 hover:text-red-700 font-bold ml-1 text-sm cursor-pointer" title="Reset filter tanggal">&times;</button>
                         </div>
                     </div>
                 </div>
@@ -592,6 +629,22 @@
                     statCards[key].className = "stat-card bg-white border-2 border-indigo-500 rounded-2xl p-5 shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
                 } else {
                     statCards[key].className = "stat-card bg-white border-2 border-transparent rounded-2xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all duration-300";
+                }
+            });
+
+            // Update active states of status pill chips
+            const statusPills = {
+                'all': document.getElementById('pill-status-all'),
+                'proses': document.getElementById('pill-status-proses'),
+                'selesai': document.getElementById('pill-status-selesai')
+            };
+
+            Object.keys(statusPills).forEach(key => {
+                if (!statusPills[key]) return;
+                if (key === status) {
+                    statusPills[key].className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm border border-indigo-600 transition-all cursor-pointer";
+                } else {
+                    statusPills[key].className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 transition-all cursor-pointer";
                 }
             });
 

@@ -95,9 +95,13 @@
                                 <i class="fas fa-comment bg-primary"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="far fa-clock"></i> {{ $tanggapan->tanggal_tanggapan->format('d/m/Y H:i') }} WIB</span>
-                                    <h3 class="timeline-header font-weight-bold text-primary">
-                                        {{ $tanggapan->petugas->nama ?? 'Petugas BK' }}
-                                        <span class="text-muted font-weight-normal">menanggapi dengan status</span>
+                                    <h3 class="timeline-header font-weight-bold text-primary d-flex align-items-center">
+                                        <div class="rounded-circle text-white font-weight-bold d-inline-flex align-items-center justify-content-center mr-2 shrink-0" 
+                                            style="width: 26px; height: 26px; background-color: #4f46e5; font-size: 10px;">
+                                            {{ strtoupper(substr($tanggapan->petugas->nama ?? 'BK', 0, 2)) }}
+                                        </div>
+                                        <span>{{ $tanggapan->petugas->nama ?? 'Petugas BK' }}</span>
+                                        <span class="text-muted font-weight-normal mx-1">menanggapi dengan status</span>
                                         @if($tanggapan->status_pengaduan === 'diproses')
                                             <span class="badge bg-warning text-dark">Diproses</span>
                                         @elseif($tanggapan->status_pengaduan === 'selesai')
