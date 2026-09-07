@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Support\Carbon;
 
-#[Fillable(['id_siswa', 'judul', 'kategori', 'isi_pengaduan', 'status', 'id_petugas'])]
 class Pengaduan extends Model
 {
     use HasFactory;
@@ -16,6 +14,16 @@ class Pengaduan extends Model
     protected $primaryKey = 'id_pengaduan';
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'id_siswa',
+        'judul',
+        'kategori',
+        'isi_pengaduan',
+        'status',
+        'id_petugas',
+        'tanggal_pengaduan',
+    ];
 
     /**
      * Get the attributes that should be cast.
@@ -58,6 +66,8 @@ class Pengaduan extends Model
      */
     public function isTerabaikan(): bool
     {
-        return $this->status === 'baru' && $this->tanggal_pengaduan && $this->tanggal_pengaduan->lt(now()->subDays(3));
+        return $this->status === 'baru' 
+            && $this->tanggal_pengaduan 
+            && $this->tanggal_pengaduan->lt(Carbon::now()->subDays(3));
     }
 }

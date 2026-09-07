@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 
-#[Fillable(['nis', 'nama', 'kelas', 'jurusan', 'password', 'status'])]
-#[Hidden(['password'])]
 class Siswa extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -18,6 +14,19 @@ class Siswa extends Authenticatable
     protected $primaryKey = 'id_siswa';
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'nis',
+        'nama',
+        'kelas',
+        'jurusan',
+        'password',
+        'status',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
 
     /**
      * Get the attributes that should be cast.

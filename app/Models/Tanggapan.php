@@ -3,11 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 
-#[Fillable(['id_pengaduan', 'id_user', 'isi_tanggapan', 'status_pengaduan'])]
 class Tanggapan extends Model
 {
     use HasFactory;
@@ -16,6 +13,14 @@ class Tanggapan extends Model
     protected $primaryKey = 'id_tanggapan';
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'id_pengaduan',
+        'id_user',
+        'isi_tanggapan',
+        'status_pengaduan',
+        'tanggal_tanggapan',
+    ];
 
     /**
      * Get the attributes that should be cast.

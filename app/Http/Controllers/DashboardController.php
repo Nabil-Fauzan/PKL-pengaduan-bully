@@ -159,6 +159,7 @@ class DashboardController extends Controller
             'kategori' => $kategori,
             'isi_pengaduan' => $isi_pengaduan,
             'status' => 'baru',
+            'tanggal_pengaduan' => now(),
         ]);
 
         return redirect()->route('dashboard')->with('success_message', 'Pengaduan Anda berhasil dikirim!');
@@ -226,6 +227,7 @@ class DashboardController extends Controller
                 'id_user' => Auth::guard('web')->id(),
                 'isi_tanggapan' => $request->input('isi_tanggapan'),
                 'status_pengaduan' => $request->input('status_pengaduan'),
+                'tanggal_tanggapan' => now(),
             ]);
         });
 
