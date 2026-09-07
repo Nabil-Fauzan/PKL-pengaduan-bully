@@ -150,6 +150,66 @@ class LoginControllerTest extends TestCase
     }
 
     /**
+     * Test login automatically trims accidental whitespace on NIS and login identifier.
+     */
+    public function test_login_trims_whitespace_on_nis_and_identifier(): void
+    {
+        Http::fake([
+            'https://www.google.com/recaptcha/api/siteverify*' => Http::response(['success' => true], 200),
+        ]);
+
+        $siswa = Siswa::create([
+            'nis' => '12345',
+            'nama' => 'Siswa Test',
+            'kelas' => 'XII',
+            'jurusan' => 'RPL',
+            'password' => Hash::make('siswa_pass'),
+            'status' => 'aktif',
+        ]);
+
+        // Submit with leading/trailing spaces
+        $response = $this->post('/login', [
+            'role' => 'siswa',
+            'nis' => '  12345  ',
+            'password' => 'siswa_pass',
+            'g-recaptcha-response' => 'fake-recaptcha-token',
+        ]);
+
+        $response->assertRedirect('/dashboard');
+        $this->assertTrue(Auth::guard('siswa')->check());
+    }
+
+    /**
+     * Test login supports case-insensitive email for user/petugas.
+     */
+    public function test_user_can_login_with_uppercase_email(): void
+    {
+        Http::fake([
+            'https://www.google.com/recaptcha/api/siteverify*' => Http::response(['success' => true], 200),
+        ]);
+
+        $user = User::create([
+            'nama' => 'Admin Test',
+            'username' => 'admin_test',
+            'email' => 'admin@test.com',
+            'password' => Hash::make('admin_pass'),
+            'role' => 'admin',
+            'status' => 'aktif',
+        ]);
+
+        $response = $this->post('/login', [
+            'role' => 'petugas',
+            'login_identifier' => 'ADMIN@TEST.COM',
+            'password' => 'admin_pass',
+            'g-recaptcha-response' => 'fake-recaptcha-token',
+        ]);
+
+        $response->assertRedirect('/dashboard');
+        $this->assertTrue(Auth::guard('web')->check());
+        $this->assertEquals($user->id_user, Auth::guard('web')->id());
+    }
+
+    /**
      * Test logging out.
      */
     public function test_user_can_logout(): void

@@ -60,8 +60,9 @@ class LoginController extends Controller
         ]);
 
         if ($role === 'siswa') {
-            // Login Siswa
-            $siswa = Siswa::where('nis', $request->input('nis'))->first();
+            // Login Siswa (Trim input NIS untuk mengabaikan spasi tidak sengaja)
+            $nis = trim($request->input('nis'));
+            $siswa = Siswa::where('nis', $nis)->first();
 
             if (!$siswa || !Hash::check($request->input('password'), $siswa->password)) {
                 throw ValidationException::withMessages([
@@ -78,10 +79,11 @@ class LoginController extends Controller
             Auth::guard('siswa')->login($siswa);
         } else {
             // Login Petugas / Admin (Guard: web)
-            $identifier = $request->input('login_identifier');
+            $identifier = trim($request->input('login_identifier'));
             
             $user = User::where('username', $identifier)
                         ->orWhere('email', $identifier)
+                        ->orWhereRaw('LOWER(email) = ?', [strtolower($identifier)])
                         ->first();
 
             if (!$user || !Hash::check($request->input('password'), $user->password)) {

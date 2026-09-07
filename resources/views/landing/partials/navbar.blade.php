@@ -16,7 +16,7 @@
                 <i id="themeIcon" class="fas fa-moon"></i>
             </button>
 
-            <button class="navbar-toggler border-0 shadow-none px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStiporNav" aria-controls="navbarStiporNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 shadow-none px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStiporNav" aria-controls="navbarStiporNav" aria-expanded="false" aria-label="Buka navigasi menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -26,6 +26,7 @@
                 <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kategori">Kategori Kasus</a></li>
+                <li class="nav-item"><a class="nav-link" href="#cek-mandiri">Cek Mandiri</a></li>
                 <li class="nav-item"><a class="nav-link" href="#alur">Alur Laporan</a></li>
                 <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
@@ -37,7 +38,7 @@
                         <i class="fas fa-tachometer-alt me-1"></i> Dashboard Siswa
                     </a>
                 @elseif(Auth::guard('web')->check())
-                    <a href="{{ route('dashboard.petugas') }}" class="btn btn-stipor-primary text-center">
+                    <a href="{{ route('dashboard') }}" class="btn btn-stipor-primary text-center">
                         <i class="fas fa-tachometer-alt me-1"></i> Panel Petugas
                     </a>
                 @else

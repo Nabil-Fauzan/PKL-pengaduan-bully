@@ -1,8 +1,8 @@
 <section class="hero-section">
     <div class="container">
         <div class="row align-items-center g-5">
-            <!-- Left Column (Copywriting) -->
-            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="900">
+            <!-- Left Column (Copywriting - Immediate Paint for High LCP) -->
+            <div class="col-lg-6">
                 <div class="hero-badge">
                     <i class="fas fa-check-circle text-primary me-2"></i> Sistem Resmi Pengaduan Sekolah
                 </div>
@@ -10,7 +10,7 @@
                     Wujudkan Sekolah <span>Aman, Nyaman</span> & Bebas Perundungan
                 </h1>
                 <p class="hero-desc">
-                    STIPOR adalah kanal pelaporan perlindungan siswa resmi SMK TI Airlangga Samarinda. Jangan biarkan perundungan terjadi di sekitarmu—suaramu berharga dan identitasmu terjamin 100% aman.
+                    STIPOR adalah kanal pelaporan perlindungan siswa resmi SMK TI Airlangga Samarinda. Jangan biarkan perundungan terjadi di sekitarmu. Suaramu berharga dan identitasmu terjamin 100% aman.
                 </p>
                 <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3">
                     <a href="{{ route('login') }}" class="btn btn-stipor-primary btn-lg text-center">
@@ -28,8 +28,8 @@
                 </div>
             </div>
 
-            <!-- Right Column (Hero Card Showcase) -->
-            <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="150">
+            <!-- Right Column (Hero Card Showcase - Immediate Paint) -->
+            <div class="col-lg-6">
                 <div class="hero-card-container">
                     <!-- Floating Badge Top -->
                     <div class="floating-badge floating-badge-1 text-primary">
@@ -45,7 +45,7 @@
                                     <i class="fas fa-school fs-5"></i>
                                 </div>
                                 <div>
-                                    <h6 class="mb-0 fw-bold">Pusat Layanan BK</h6>
+                                    <h2 class="h6 mb-0 fw-bold">Pusat Layanan BK</h2>
                                     <small class="text-muted">SMK TI Airlangga Samarinda</small>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                 <span class="badge bg-danger text-white">Kasus Prioritas</span>
                                 <small class="hero-card-step">Langkah 1 dari 3</small>
                             </div>
-                            <h6 class="fw-bold hero-inner-title mt-2 mb-1">Perlindungan Korban &amp; Saksi</h6>
+                            <h3 class="h6 fw-bold hero-inner-title mt-2 mb-1">Perlindungan Korban &amp; Saksi</h3>
                             <p class="hero-inner-desc mb-0">
                                 Laporan langsung masuk ke meja Konselor BK tanpa pihak lain mengetahui identitas pelapor.
                             </p>

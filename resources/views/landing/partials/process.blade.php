@@ -1,4 +1,4 @@
-<section id="alur" class="py-5" style="padding: 90px 0 !important;">
+<section id="alur" class="section-py">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <span class="section-tag">ALUR TRANSPARAN</span>
@@ -8,10 +8,10 @@
 
         <div class="row g-4">
             <!-- Step 1 -->
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="step-box">
                     <div class="step-number">1</div>
-                    <h5 class="fw-bold mb-2">Kirim Pengaduan</h5>
+                    <h3 class="h5 fw-bold mb-2">Kirim Pengaduan</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
                         Siswa masuk ke portal STIPOR, mengisi kronologi kejadian, memilih kategori, dan mengirimkan laporan.
                     </p>
@@ -19,10 +19,10 @@
             </div>
 
             <!-- Step 2 -->
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="step-box">
                     <div class="step-number">2</div>
-                    <h5 class="fw-bold mb-2">Verifikasi Guru BK</h5>
+                    <h3 class="h5 fw-bold mb-2">Verifikasi Guru BK</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
                         Konselor BK membaca laporan, menelaah tingkat urgensi, dan mengubah status laporan menjadi <em>Diproses</em>.
                     </p>
@@ -30,10 +30,10 @@
             </div>
 
             <!-- Step 3 -->
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="step-box">
                     <div class="step-number">3</div>
-                    <h5 class="fw-bold mb-2">Pendampingan & Mediasi</h5>
+                    <h3 class="h5 fw-bold mb-2">Pendampingan &amp; Mediasi</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
                         Pemanggilan pihak terkait secara tertutup di Ruang BK, pemberian konseling, serta koordinasi dengan wali kelas.
                     </p>
@@ -41,10 +41,10 @@
             </div>
 
             <!-- Step 4 -->
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="step-box">
                     <div class="step-number">4</div>
-                    <h5 class="fw-bold mb-2">Penyelesaian Kasus</h5>
+                    <h3 class="h5 fw-bold mb-2">Penyelesaian Kasus</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
                         Kasus dituntaskan dengan surat kesepakatan damai, tanggapan resmi tercatat di sistem, dan status dinyatakan <em>Selesai</em>.
                     </p>

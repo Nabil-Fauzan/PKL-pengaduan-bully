@@ -1,10 +1,10 @@
-<section id="tentang" class="py-5" style="padding: 90px 0 !important;">
+<section id="tentang" class="section-py">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="position-relative p-2">
                     <div class="about-feature-card p-4 rounded-4">
-                        <h4 class="fw-bold about-card-title mb-3">Komitmen Nol Toleransi Bullying</h4>
+                        <h3 class="h4 fw-bold about-card-title mb-3">Komitmen Nol Toleransi Bullying</h3>
                         <p class="about-card-desc mb-3">
                             SMK TI Airlangga Samarinda berkomitmen menciptakan lingkungan belajar yang kondusif, inklusif, dan ramah bagi seluruh siswa. Kami menindak tegas segala bentuk intimidasi, pemalakan, pengucilan, maupun kekerasan fisik dan psikis.
                         </p>

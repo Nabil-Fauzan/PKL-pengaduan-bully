@@ -69,6 +69,20 @@
             background-color: #1e293b !important;
             color: #f8fafc !important;
         }
+
+        /* Explicit Select Styling to completely remove native browser arrows across all engines */
+        select.custom-select-input {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            padding-right: 2.75rem !important;
+            padding-left: 1rem !important;
+            background-image: none !important;
+            cursor: pointer;
+        }
+        select.custom-select-input::-ms-expand {
+            display: none !important;
+        }
     </style>
 
     <!-- Immediate Theme Initialization to avoid white flash -->
@@ -141,14 +155,21 @@
             <!-- Kategori -->
             <div class="mb-5">
                 <label for="kategori" class="block text-sm font-semibold text-slate-800 mb-2">Kategori Laporan</label>
-                <select name="kategori" id="kategori" 
-                    class="block w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white">
-                    <option value="">-- Pilih Kategori --</option>
-                    <option value="bullying" {{ old('kategori') === 'bullying' ? 'selected' : '' }}>Perundungan (Bullying)</option>
-                    <option value="fasilitas" {{ old('kategori') === 'fasilitas' ? 'selected' : '' }}>Fasilitas Sekolah</option>
-                    <option value="akademik" {{ old('kategori') === 'akademik' ? 'selected' : '' }}>Akademik / Pembelajaran</option>
-                    <option value="lainnya" {{ old('kategori') === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
-                </select>
+                <div class="relative">
+                    <select name="kategori" id="kategori" 
+                        class="custom-select-input block w-full rounded-lg border border-slate-300 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white cursor-pointer">
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="bullying" {{ old('kategori') === 'bullying' ? 'selected' : '' }}>Perundungan (Bullying)</option>
+                        <option value="fasilitas" {{ old('kategori') === 'fasilitas' ? 'selected' : '' }}>Fasilitas Sekolah</option>
+                        <option value="akademik" {{ old('kategori') === 'akademik' ? 'selected' : '' }}>Akademik / Pembelajaran</option>
+                        <option value="lainnya" {{ old('kategori') === 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
                 @error('kategori')
                     <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
                 @enderror

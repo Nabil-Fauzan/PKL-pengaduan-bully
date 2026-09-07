@@ -23,7 +23,7 @@ class SecurityHeaders
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
         $isLocal = app()->environment('local') || config('app.debug');
-        $viteOrigins = $isLocal ? " http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:* http://*:5173 ws://*:5173" : "";
+        $viteOrigins = $isLocal ? " http://localhost:5173 http://127.0.0.1:5173 ws://localhost:5173 ws://127.0.0.1:5173" : "";
 
         $csp = "default-src 'self' data:; "
             . "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net{$viteOrigins}; "
@@ -32,6 +32,8 @@ class SecurityHeaders
             . "img-src 'self' data: https: blob:; "
             . "frame-src 'self' https://www.google.com https://www.gstatic.com; "
             . "frame-ancestors 'self'; "
+            . "object-src 'none'; "
+            . "base-uri 'self'; "
             . "connect-src 'self' https: ws: wss:{$viteOrigins};";
 
         $response->headers->set('Content-Security-Policy', $csp);

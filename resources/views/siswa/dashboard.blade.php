@@ -16,9 +16,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
-        body {
+        html, body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         /* Dark Mode overrides */
@@ -75,6 +77,16 @@
         .dark-mode #filter-date-start,
         .dark-mode #filter-date-end {
             color: #f8fafc !important;
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+
+        @media (min-width: 640px) {
+            .dark-mode #filter-date-start,
+            .dark-mode #filter-date-end {
+                background-color: transparent !important;
+                border-color: transparent !important;
+            }
         }
 
         /* Card highlight and micro-animations on hover */
@@ -363,18 +375,25 @@
                     </div>
 
                     <!-- Date Range Filter Row -->
-                    <div class="flex flex-wrap items-center gap-3">
-                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200/80 rounded-full px-4 py-1.5 shadow-sm text-xs">
-                            <span class="text-slate-400 font-semibold flex items-center gap-1">
-                                <svg class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                Rentang Tanggal:
-                            </span>
-                            <input type="date" id="filter-date-start" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
-                            <span class="text-slate-300 font-semibold">s.d</span>
-                            <input type="date" id="filter-date-end" onchange="applyFilters()" class="border-0 focus:ring-0 p-0 text-xs w-28 bg-transparent text-slate-700 outline-none">
-                            <button onclick="clearDateFilter()" class="text-red-500 hover:text-red-700 font-bold ml-1 text-sm cursor-pointer" title="Reset filter tanggal">&times;</button>
+                    <div class="flex flex-wrap items-center gap-3 w-full">
+                        <div class="w-full sm:w-auto inline-flex flex-col sm:flex-row sm:items-center gap-2 bg-white border border-slate-200/80 rounded-2xl sm:rounded-full px-3.5 sm:px-4 py-2 sm:py-1.5 shadow-sm text-xs">
+                            <div class="flex items-center justify-between sm:justify-start gap-1">
+                                <span class="text-slate-400 font-semibold flex items-center gap-1.5">
+                                    <svg class="h-3.5 w-3.5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Rentang Tanggal:
+                                </span>
+                                <button type="button" onclick="clearDateFilter()" class="sm:hidden text-red-500 hover:text-red-700 font-bold text-xs bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded-md cursor-pointer transition-colors" title="Reset filter tanggal">
+                                    Reset &times;
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 w-full sm:w-auto">
+                                <input type="date" id="filter-date-start" onchange="applyFilters()" class="flex-1 min-w-0 sm:w-28 bg-slate-50 sm:bg-transparent rounded-lg sm:rounded-none px-2.5 py-1 sm:p-0 border border-slate-200 sm:border-0 text-xs text-slate-700 outline-none focus:ring-1 focus:ring-indigo-500 sm:focus:ring-0">
+                                <span class="text-slate-300 font-semibold shrink-0">s.d</span>
+                                <input type="date" id="filter-date-end" onchange="applyFilters()" class="flex-1 min-w-0 sm:w-28 bg-slate-50 sm:bg-transparent rounded-lg sm:rounded-none px-2.5 py-1 sm:p-0 border border-slate-200 sm:border-0 text-xs text-slate-700 outline-none focus:ring-1 focus:ring-indigo-500 sm:focus:ring-0">
+                                <button type="button" onclick="clearDateFilter()" class="hidden sm:inline-block text-red-500 hover:text-red-700 font-bold ml-1 text-sm cursor-pointer" title="Reset filter tanggal">&times;</button>
+                            </div>
                         </div>
                     </div>
                 </div>

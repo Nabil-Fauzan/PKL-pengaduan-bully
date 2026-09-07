@@ -6,6 +6,20 @@
     <title>STIPOR - Layanan Pengaduan Bullying SMK TI Airlangga Samarinda</title>
     <meta name="description" content="Sistem Informasi Pelaporan Bullying dan Pengaduan Siswa Resmi SMK TI Airlangga Samarinda. 100% Rahasia, Cepat, dan Didampingi Guru BK Profesional.">
 
+    <!-- OpenGraph & Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="STIPOR - Layanan Pengaduan &amp; Perlindungan Bullying SMK TI Airlangga">
+    <meta property="og:description" content="Kanal resmi pelaporan bullying SMK TI Airlangga Samarinda. 100% Rahasia, Aman, Bebas Intimidasi, dan Didampingi Guru BK Profesional.">
+    <meta property="og:image" content="{{ asset('favicon.svg') }}">
+    <meta property="og:site_name" content="STIPOR SMK TI Airlangga">
+    <meta property="og:locale" content="id_ID">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STIPOR - Layanan Pengaduan Bullying SMK TI Airlangga">
+    <meta name="twitter:description" content="Laporkan tindakan perundungan secara aman &amp; rahasia. Bersama wujudkan sekolah ramah dan beradab.">
+    <meta name="twitter:image" content="{{ asset('favicon.svg') }}">
+    <meta name="theme-color" content="#2563eb">
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
@@ -17,8 +31,7 @@
     <!-- Bootstrap 5.3.3 CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Font Awesome 5 (Local Project Assets + CDN Fallback) -->
-    <link rel="stylesheet" href="{{ asset('assets-template/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Font Awesome 5 (CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- AOS (Animate on Scroll) CSS (CDN) -->
@@ -487,6 +500,25 @@
             color: #c084fc;
         }
 
+        /* --- TRANSPARENCY BAR --- */
+        .transparency-bar {
+            border-color: var(--stipor-card-border) !important;
+        }
+
+        .transparency-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .transparency-label {
+            font-size: 0.82rem;
+            color: var(--stipor-muted);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         /* --- ABOUT SECTION --- */
         .about-feature-card {
             background-color: #eff6ff;
@@ -524,6 +556,123 @@
 
         [data-bs-theme="dark"] .about-feature-list {
             color: #f1f5f9;
+        }
+
+        /* --- QUOTES & COMMITMENT CARDS --- */
+        .quote-card {
+            background: #ffffff;
+            border: 1px solid var(--stipor-card-border);
+            border-radius: 20px;
+            padding: 32px 28px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .quote-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px -10px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-bs-theme="dark"] .quote-card:hover {
+            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        .quote-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background-color: #eff6ff;
+            color: var(--stipor-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .quote-icon-box.quote-icon-green {
+            background-color: #f0fdf4;
+            color: #16a34a;
+        }
+
+        [data-bs-theme="dark"] .quote-icon-box {
+            background-color: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+        }
+
+        [data-bs-theme="dark"] .quote-icon-box.quote-icon-green {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .quote-text {
+            font-size: 0.98rem;
+            color: #475569;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        [data-bs-theme="dark"] .quote-text {
+            color: #cbd5e1;
+        }
+
+        .quote-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .quote-author {
+            color: var(--stipor-dark);
+        }
+
+        /* --- QUIZ SECTION --- */
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid var(--stipor-card-border);
+            transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .quiz-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .quiz-option-btn {
+            border: 1.5px solid var(--stipor-card-border);
+            background-color: #ffffff;
+            color: var(--stipor-dark);
+            border-radius: 14px;
+            transition: all 0.25s ease;
+            font-size: 0.95rem;
+        }
+
+        .quiz-option-btn:hover {
+            border-color: var(--stipor-primary);
+            background-color: #eff6ff;
+            color: var(--stipor-primary);
+            transform: translateX(4px);
+        }
+
+        [data-bs-theme="dark"] .quiz-option-btn {
+            background-color: #0f172a;
+            border-color: #334155;
+            color: #f8fafc;
+        }
+
+        [data-bs-theme="dark"] .quiz-option-btn:hover {
+            background-color: rgba(37, 99, 235, 0.18);
+            border-color: #60a5fa;
+            color: #60a5fa;
         }
 
         /* --- CATEGORY CARDS (FLAVORA-INSPIRED) --- */
@@ -593,6 +742,7 @@
             justify-content: center;
             font-size: 1.5rem;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
 
         .category-tag {
@@ -603,7 +753,34 @@
             display: inline-block;
             margin-bottom: 12px;
             align-self: flex-start;
+            transition: all 0.3s ease;
         }
+
+        /* Category Icons & Tags (Light Theme) */
+        .category-icon.cat-danger { background-color: #fee2e2; color: #ef4444; }
+        .category-tag.tag-danger { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+        .category-icon.cat-warning { background-color: #fef3c7; color: #d97706; }
+        .category-tag.tag-warning { background-color: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+        .category-icon.cat-primary { background-color: #dbeafe; color: #2563eb; }
+        .category-tag.tag-primary { background-color: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+        .category-icon.cat-purple { background-color: #f3e8ff; color: #9333ea; }
+        .category-tag.tag-purple { background-color: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+
+        /* Category Icons & Tags (Dark Theme) */
+        [data-bs-theme="dark"] .category-icon.cat-danger { background-color: rgba(239, 68, 68, 0.2); color: #f87171; }
+        [data-bs-theme="dark"] .category-tag.tag-danger { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+
+        [data-bs-theme="dark"] .category-icon.cat-warning { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        [data-bs-theme="dark"] .category-tag.tag-warning { background-color: rgba(245, 158, 11, 0.2); color: #fde047; border: 1px solid rgba(245, 158, 11, 0.35); }
+
+        [data-bs-theme="dark"] .category-icon.cat-primary { background-color: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+        [data-bs-theme="dark"] .category-tag.tag-primary { background-color: rgba(37, 99, 235, 0.2); color: #93c5fd; border: 1px solid rgba(37, 99, 235, 0.35); }
+
+        [data-bs-theme="dark"] .category-icon.cat-purple { background-color: rgba(147, 51, 234, 0.2); color: #c084fc; }
+        [data-bs-theme="dark"] .category-tag.tag-purple { background-color: rgba(147, 51, 234, 0.2); color: #d8b4fe; border: 1px solid rgba(147, 51, 234, 0.35); }
 
         /* --- PROCESS STEP / TIMELINE --- */
         .step-box {
@@ -711,8 +888,36 @@
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
+        .contact-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--stipor-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon-box.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #16a34a;
+        }
+
         [data-bs-theme="dark"] .contact-info-card {
             background: #1e293b;
+        }
+
+        [data-bs-theme="dark"] .contact-icon-box {
+            background-color: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+        }
+
+        [data-bs-theme="dark"] .contact-icon-box.success {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399;
         }
 
         /* --- FOOTER --- */
@@ -761,6 +966,57 @@
             color: #94a3b8;
         }
 
+        /* --- SECTION SPACING & UTILITIES --- */
+        .section-py {
+            padding: 85px 0;
+            transition: padding 0.3s ease;
+        }
+
+        .transparency-number.text-info {
+            color: #0284c7 !important;
+        }
+
+        [data-bs-theme="dark"] .transparency-number.text-info {
+            color: #38bdf8 !important;
+        }
+
+        .btn-warning {
+            color: #0f172a !important;
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .btn-warning:hover {
+            background-color: #d97706;
+            border-color: #d97706;
+            color: #ffffff !important;
+        }
+
+        .footer-official-badge {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50rem;
+            font-weight: 600;
+        }
+
+        [data-bs-theme="dark"] .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        [data-bs-theme="dark"] .badge.text-primary {
+            color: #93c5fd !important;
+        }
+
+        [data-bs-theme="dark"] .badge.text-success {
+            color: #86efac !important;
+        }
+
+        [data-bs-theme="dark"] .badge.text-warning {
+            color: #fde047 !important;
+        }
+
         /* --- DARK THEME HELPERS --- */
         [data-bs-theme="dark"] .bg-light {
             background-color: #0f172a !important;
@@ -779,6 +1035,10 @@
         }
 
         @media (max-width: 991.98px) {
+            .section-py {
+                padding: 55px 0;
+            }
+
             .navbar-collapse {
                 background: rgba(255, 255, 255, 0.98);
                 padding: 20px;
@@ -823,10 +1083,6 @@
             .section-header {
                 margin-bottom: 35px;
             }
-
-            section.py-5 {
-                padding: 55px 0 !important;
-            }
         }
 
         @media (max-width: 767.98px) {
@@ -865,6 +1121,10 @@
         }
 
         @media (max-width: 575.98px) {
+            .section-py {
+                padding: 42px 0;
+            }
+
             .navbar-brand {
                 font-size: 1.15rem;
             }
@@ -886,7 +1146,9 @@
             .category-card,
             .step-box,
             .contact-info-card,
-            .about-feature-card {
+            .about-feature-card,
+            .quote-card,
+            .quiz-card {
                 padding: 22px 16px !important;
                 border-radius: 16px !important;
             }
@@ -899,6 +1161,14 @@
                 width: 44px;
                 height: 44px;
                 font-size: 1.15rem;
+            }
+
+            .transparency-number {
+                font-size: 1.35rem;
+            }
+
+            .transparency-label {
+                font-size: 0.76rem;
             }
 
             .accordion-button {
@@ -914,6 +1184,49 @@
             .stipor-footer {
                 padding: 30px 0 15px;
             }
+        }
+
+        /* --- SCROLL OFFSET & BACK TO TOP --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id], div[id], [id] {
+            scroll-margin-top: 85px;
+        }
+
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--stipor-primary);
+            color: #ffffff !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--stipor-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
         }
     </style>
 
@@ -943,8 +1256,14 @@
     <!-- 5. TENTANG LAYANAN (ABOUT) -->
     @include('landing.partials.about')
 
+    <!-- 5.1 KOMITMEN PIMPINAN & GURU BK (QUOTES) -->
+    @include('landing.partials.quotes')
+
     <!-- 6. KATEGORI PERUNDUNGAN (MENU/CATEGORY CARDS) -->
     @include('landing.partials.categories')
+
+    <!-- 6.1 CEK MANDIRI INTERAKTIF (QUIZ) -->
+    @include('landing.partials.quiz')
 
     <!-- 7. ALUR PENANGANAN (PROCESS STEPS) -->
     @include('landing.partials.process')
@@ -955,12 +1274,109 @@
     <!-- 9. FOOTER PROFESIONAL -->
     @include('landing.partials.footer')
 
+    <!-- Back to Top Floating Button -->
+    <a href="#beranda" id="backToTop" class="back-to-top-btn" aria-label="Kembali ke atas" title="Kembali ke atas">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <!-- Bootstrap 5.3.3 JS Bundle (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- AOS (Animate on Scroll) JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+        // Interactive Bullying Assessment Quiz
+        let quizAnswers = {};
+
+        window.selectQuizAnswer = function (step, score) {
+            quizAnswers[step] = score;
+            const currentStepEl = document.getElementById('quizStep' + step);
+            const nextStepEl = document.getElementById('quizStep' + (step + 1));
+            const progressBar = document.getElementById('quizProgressBar');
+            const stepText = document.getElementById('quizStepText');
+            const percentText = document.getElementById('quizPercentText');
+
+            if (currentStepEl) currentStepEl.classList.add('d-none');
+
+            if (step < 3 && nextStepEl) {
+                nextStepEl.classList.remove('d-none');
+                const nextPercent = Math.round(((step + 1) / 3) * 100);
+                if (progressBar) progressBar.style.width = nextPercent + '%';
+                if (stepText) stepText.textContent = 'Pertanyaan ' + (step + 1) + ' dari 3';
+                if (percentText) percentText.textContent = nextPercent + '% Selesai';
+            } else {
+                showQuizResult();
+            }
+        };
+
+        function showQuizResult() {
+            const questionsContainer = document.getElementById('quizQuestionsContainer');
+            const resultContainer = document.getElementById('quizResultContainer');
+            const resultTitle = document.getElementById('quizResultTitle');
+            const resultDesc = document.getElementById('quizResultDesc');
+            const resultIconBox = document.getElementById('quizResultIconBox');
+            const actionBtn = document.getElementById('quizActionBtn');
+            const progressBar = document.getElementById('quizProgressBar');
+            const stepText = document.getElementById('quizStepText');
+            const percentText = document.getElementById('quizPercentText');
+
+            if (progressBar) progressBar.style.width = '100%';
+            if (stepText) stepText.textContent = 'Hasil Analisis Cek Mandiri';
+            if (percentText) percentText.textContent = '100% Selesai';
+            if (questionsContainer) questionsContainer.classList.add('d-none');
+            if (resultContainer) resultContainer.classList.remove('d-none');
+
+            const totalScore = (quizAnswers[1] || 0) + (quizAnswers[2] || 0) + (quizAnswers[3] || 0);
+
+            if (totalScore >= 4) {
+                resultIconBox.innerHTML = '<div class="rounded-circle bg-danger bg-opacity-10 text-danger d-inline-flex p-3 fs-2"><i class="fas fa-exclamation-triangle"></i></div>';
+                resultTitle.textContent = 'Indikasi Kuat Tindakan Perundungan (Bullying)';
+                resultTitle.className = 'fw-bold mb-2 text-danger';
+                resultDesc.textContent = 'Situasi yang kamu alami memiliki unsur intimidasi, ketimpangan kuasa, atau perlakuan berulang yang merugikanmu. Kamu tidak sendiri, jangan ragu untuk melaporkannya sekarang melalui STIPOR. Identitasmu dijamin 100% aman dan rahasia.';
+                actionBtn.href = "{{ route('login') }}";
+                actionBtn.innerHTML = '<i class="fas fa-bullhorn me-2"></i> Laporkan ke Guru BK Sekarang';
+                actionBtn.className = 'btn btn-danger px-4 py-2';
+            } else if (totalScore >= 2) {
+                resultIconBox.innerHTML = '<div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex p-3 fs-2"><i class="fas fa-info-circle"></i></div>';
+                resultTitle.textContent = 'Potensi Konflik / Perundungan Ringan';
+                resultTitle.className = 'fw-bold mb-2 text-warning';
+                resultDesc.textContent = 'Ada indikasi ketidaknyamanan sosial atau perlakuan yang mengarah ke perundungan. Kami sarankan kamu berkonsultasi atau bercerita langsung dengan Guru BK untuk mencegah situasi ini berlanjut.';
+                actionBtn.href = "{{ route('login') }}";
+                actionBtn.innerHTML = '<i class="fas fa-comments me-2"></i> Konsultasi ke Ruang BK';
+                actionBtn.className = 'btn btn-warning px-4 py-2 text-dark fw-semibold';
+            } else {
+                resultIconBox.innerHTML = '<div class="rounded-circle bg-success bg-opacity-10 text-success d-inline-flex p-3 fs-2"><i class="fas fa-check-circle"></i></div>';
+                resultTitle.textContent = 'Tampaknya Bukan Tindak Perundungan Berat';
+                resultTitle.className = 'fw-bold mb-2 text-success';
+                resultDesc.textContent = 'Berdasarkan jawabanmu, situasi ini mungkin merupakan kesalahpahaman antarteman biasa. Namun jika di kemudian hari kamu merasa terancam, STIPOR dan Guru BK selalu siap membantumu.';
+                actionBtn.href = "#kontak";
+                actionBtn.innerHTML = '<i class="fas fa-phone-alt me-2"></i> Info Kontak Ruang BK';
+                actionBtn.className = 'btn btn-stipor-primary px-4 py-2';
+            }
+        }
+
+        window.resetQuiz = function () {
+            quizAnswers = {};
+            for (let i = 1; i <= 3; i++) {
+                const stepEl = document.getElementById('quizStep' + i);
+                if (stepEl) {
+                    if (i === 1) stepEl.classList.remove('d-none');
+                    else stepEl.classList.add('d-none');
+                }
+            }
+            const questionsContainer = document.getElementById('quizQuestionsContainer');
+            const resultContainer = document.getElementById('quizResultContainer');
+            const progressBar = document.getElementById('quizProgressBar');
+            const stepText = document.getElementById('quizStepText');
+            const percentText = document.getElementById('quizPercentText');
+
+            if (questionsContainer) questionsContainer.classList.remove('d-none');
+            if (resultContainer) resultContainer.classList.add('d-none');
+            if (progressBar) progressBar.style.width = '33%';
+            if (stepText) stepText.textContent = 'Pertanyaan 1 dari 3';
+            if (percentText) percentText.textContent = '33% Selesai';
+        };
+
         document.addEventListener('DOMContentLoaded', function () {
             AOS.init({
                 duration: 800,
@@ -993,7 +1409,32 @@
                     const targetTheme = activeTheme === 'dark' ? 'light' : 'dark';
                     document.documentElement.setAttribute('data-bs-theme', targetTheme);
                     localStorage.setItem('stipor_theme', targetTheme);
+                    localStorage.setItem('dark-mode', targetTheme === 'dark' ? 'enabled' : 'disabled');
                     syncThemeIcon(targetTheme);
+                });
+            }
+
+            // Back to Top Button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 350) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            // Auto-close mobile navbar on link click
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.getElementById('navbarStiporNav');
+            if (navbarCollapse) {
+                navLinks.forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
+                            bsCollapse.hide();
+                        }
+                    });
                 });
             }
         });

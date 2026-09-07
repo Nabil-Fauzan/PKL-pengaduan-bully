@@ -19,6 +19,7 @@
                     <li><a href="#beranda"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Beranda</a></li>
                     <li><a href="#tentang"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Tentang STIPOR</a></li>
                     <li><a href="#kategori"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Kategori Kasus</a></li>
+                    <li><a href="#cek-mandiri"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Cek Mandiri</a></li>
                     <li><a href="#alur"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Alur Laporan</a></li>
                     <li><a href="#faq"><i class="fas fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> FAQ &amp; Kontak</a></li>
                 </ul>
@@ -30,8 +31,8 @@
                     <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt me-1 text-primary"></i> Login Siswa</a></li>
                     <li><a href="{{ route('login') }}"><i class="fas fa-user-shield me-1 text-primary"></i> Login Petugas / Konselor BK</a></li>
                 </ul>
-                <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-2 py-1" style="font-size: 0.75rem;">
-                    <i class="fas fa-check-double me-1"></i> Layanan Resmi Sekolah
+                <span class="badge footer-official-badge px-3 py-2" style="font-size: 0.78rem;">
+                    <i class="fas fa-check-double me-1 text-primary"></i> Layanan Resmi Sekolah
                 </span>
             </div>
         </div>
