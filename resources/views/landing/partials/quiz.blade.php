@@ -1,4 +1,4 @@
-<section id="cek-mandiri" class="section-py bg-light">
+<section id="cek-mandiri" class="section-py">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <span class="section-tag">CEK MANDIRI INTERAKTIF</span>

@@ -508,7 +508,7 @@
                     <p class="text-xs leading-relaxed font-semibold italic text-slate-100 mb-4">
                         "{{ $randomQuote }}"
                     </p>
-                    <span class="text-[10px] text-indigo-300 font-bold block">— Tim Perlindungan Murid</span>
+                    <span class="text-[10px] text-indigo-300 font-bold block">- Tim Perlindungan Murid</span>
                 </div>
 
                 <!-- Action Card -->
