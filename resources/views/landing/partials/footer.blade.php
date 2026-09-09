@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <p class="footer-desc mb-3" style="font-size: 0.86rem; color: #cbd5e1;">
-                    Kanal pelaporan pengaduan dan perlindungan perundungan resmi sekolah. Menjamin kerahasiaan 100%, cepat ditindaklanjuti, dan didampingi langsung oleh Tim Guru BK.
+                    Website pelaporan pengaduan dan perlindungan perundungan resmi sekolah. Menjamin kerahasiaan 100%, cepat ditindaklanjuti, dan didampingi langsung oleh Tim Guru BK.
                 </p>
                 <div class="d-flex flex-wrap gap-2 pt-1">
                     <span class="badge rounded-pill px-3 py-1.5" style="background: rgba(37, 99, 235, 0.25); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.4); font-size: 0.76rem; font-weight: 600;">
@@ -80,7 +80,7 @@
                     </div>
                     <div style="font-size: 0.82rem;">
                         <span class="text-white fw-bold d-block">Hotline Siaga BK</span>
-                        <a href="tel:0541732644" class="text-white-50 text-decoration-none" style="transition: color 0.2s ease;">(0541) 732644</a>
+                        <a href="tel:0541741864" class="text-white-50 text-decoration-none" style="transition: color 0.2s ease;">(0541) 741864</a>
                     </div>
                 </div>
             </div>

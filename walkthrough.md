@@ -27,9 +27,31 @@ Telah dilakukan audit dan optimasi menyeluruh pada halaman login (`http://127.0.
 
 ## Verifikasi Pengujian
 
-- **Automated Test Suite**: 29 passed (114 assertions) via `php artisan test`.
+- **Automated Test Suite**: 67 passed (428 assertions) via `php artisan test`.
 - **Lighthouse Scores**:
   - Accessibility: **100**
   - SEO: **100**
   - Agentic Browsing: **2/2**
   - Performance: **93+**
+
+---
+
+## Visual Error Hunt & Optimasi Landing Page
+
+Telah dilakukan audit visual error hunt mendalam pada landing page ([welcome.blade.php](file:///c:/xampp/htdocs/pkl-bully/resources/views/welcome.blade.php)) dan seluruh komponen partial:
+
+1. **Sinkronisasi Hotline & Jam Operasional Google Maps**:
+   - Nomor hotline disesuaikan menjadi **(0541) 741864** pada Topbar, Kontak BK, dan Footer.
+   - Jadwal jam buka: *Senin–Kamis 06.00–22.00 WITA, Jumat 06.00–18.00 WITA, Sabtu–Minggu 10.00–18.00 WITA*.
+
+2. **Perbaikan Navbar & Spacing Cluster**:
+   - Diberikan jarak presisi `gap: 14px !important` pada `.navbar-action-cluster` antara tombol toggle tema dan tombol aksi login/dashboard.
+   - Dropdown menu Edukasi memiliki animasi halus, backdrop blur, dan auto-close saat diklik di mobile.
+
+3. **Input-Group FAQ Search Wrapper Refinement**:
+   - Memperbaiki pembungkus `.faq-search-wrapper .input-group` dengan `border-radius: 14px` dan `overflow: hidden` sehingga transisi tombol reset (`#faqSearchClear`) saat muncul/hilang tetap memiliki sudut melengkung sempurna tanpa *broken inner radius*.
+   - Menambahkan aturan styling eksplisit untuk `#faqSearchClear` di Dark Mode.
+
+4. **Hero & Interactive Cards**:
+   - Radial ambient mesh background pada hero section.
+   - Floating badge bertransisi menjadi static block pada layar `<= 767.98px` sehingga tidak pernah tumpang tindih dengan kartu utama di perangkat mobile.

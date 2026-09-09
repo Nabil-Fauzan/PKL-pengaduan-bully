@@ -10,7 +10,7 @@
                 <!-- FAQ Search Box -->
                 <div class="faq-search-wrapper mb-3">
                     <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0 text-muted ps-3">
+                        <span class="input-group-text border-end-0 text-muted ps-3">
                             <i class="fas fa-search"></i>
                         </span>
                         <input type="text" id="faqSearchInput" class="form-control border-start-0 ps-1" placeholder="Cari pertanyaan... (contoh: rahasia, waktu, saksi, bukti)" aria-label="Cari pertanyaan di FAQ">
@@ -157,11 +157,13 @@
                             <i class="fas fa-clock fs-5"></i>
                         </div>
                         <div>
-                            <h3 class="h6 fw-bold mb-1">Jam Konseling Tatap Muka:</h3>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                                Senin - Jumat: 07.30 - 15.30 WITA<br>
-                                (Bisa langsung berkunjung di Ruang BK Lantai 1)
-                            </p>
+                            <h3 class="h6 fw-bold mb-1">Jam Operasional &amp; Konseling:</h3>
+                            <div class="text-muted mb-0" style="font-size: 0.88rem; line-height: 1.55;">
+                                <div><strong>Senin - Kamis:</strong> 06.00 - 22.00 WITA</div>
+                                <div><strong>Jumat:</strong> 06.00 - 18.00 WITA</div>
+                                <div><strong>Sabtu - Minggu:</strong> 10.00 - 18.00 WITA</div>
+                                <small class="text-muted d-block mt-1 fst-italic">(Bisa langsung berkunjung di Ruang BK Lantai 1)</small>
+                            </div>
                         </div>
                     </div>
 
@@ -170,9 +172,9 @@
                             <i class="fas fa-phone-alt fs-5"></i>
                         </div>
                         <div>
-                            <h3 class="h6 fw-bold mb-1">Hotline &amp; WhatsApp BK:</h3>
+                            <h3 class="h6 fw-bold mb-1">Hotline &amp; Telepon Sekolah:</h3>
                             <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                                (0541) 732644 / +62 812-3456-7890
+                                <a href="tel:0541741864" class="text-muted text-decoration-none">(0541) 741864</a>
                             </p>
                         </div>
                     </div>

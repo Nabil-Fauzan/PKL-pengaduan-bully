@@ -5,37 +5,87 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes - STIPOR (Sistem Pengaduan Bullying SMK TI Airlangga)
+|--------------------------------------------------------------------------
+| File ini mendefinisikan seluruh rute web aplikasi yang terbagi menjadi:
+| 1. Halaman Publik (Landing Page)
+| 2. Autentikasi (Login & Logout)
+| 3. Portal Dashboard & Pengaduan (Siswa & Petugas BK)
+| 4. Manajemen Akun & Pengaturan Sistem (Administrator)
+|--------------------------------------------------------------------------
+*/
+
+// =========================================================================
+// 1. HALAMAN PUBLIK
+// =========================================================================
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// =========================================================================
+// 2. AUTENTIKASI (LOGIN & LOGOUT)
+// =========================================================================
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('/login', 'login')->middleware('throttle:5,1');
+    Route::post('/logout', 'logout')->name('logout');
+    Route::get('/logout', function () {
+        return redirect('/');
+    });
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard/pengaduan', [DashboardController::class, 'pengaduan'])->name('dashboard.pengaduan');
-Route::get('/dashboard/pengaduan/tambah', [DashboardController::class, 'tambahPengaduan'])->name('dashboard.pengaduan.tambah');
-Route::post('/dashboard/pengaduan/simpan', [DashboardController::class, 'simpanPengaduan'])->name('dashboard.pengaduan.simpan');
-Route::get('/dashboard/pengaduan/{id}', [DashboardController::class, 'detailPengaduan'])->name('dashboard.pengaduan.detail')->whereNumber('id');
-Route::get('/dashboard/petugas/pengaduan/{id}', [DashboardController::class, 'detailPengaduanPetugas'])->name('petugas.pengaduan.detail')->whereNumber('id');
-Route::post('/dashboard/petugas/pengaduan/{id}/tanggapan', [DashboardController::class, 'simpanTanggapanPetugas'])->name('petugas.pengaduan.tanggapan')->whereNumber('id');
+// =========================================================================
+// 3. DASHBOARD & PENGADUAN (SISWA & PETUGAS BK)
+// =========================================================================
+Route::prefix('dashboard')->group(function () {
 
-// Admin Account Management Routes
-Route::get('/dashboard/admin/siswa', [AdminController::class, 'siswaIndex'])->name('admin.siswa');
-Route::get('/dashboard/admin/siswa/tambah', [AdminController::class, 'siswaCreate'])->name('admin.siswa.tambah');
-Route::post('/dashboard/admin/siswa/simpan', [AdminController::class, 'siswaStore'])->name('admin.siswa.simpan');
-Route::get('/dashboard/admin/siswa/edit/{id}', [AdminController::class, 'siswaEdit'])->name('admin.siswa.edit')->whereNumber('id');
-Route::post('/dashboard/admin/siswa/update/{id}', [AdminController::class, 'siswaUpdate'])->name('admin.siswa.update')->whereNumber('id');
-Route::post('/dashboard/admin/siswa/toggle/{id}', [AdminController::class, 'siswaToggleStatus'])->name('admin.siswa.toggle')->whereNumber('id');
+    Route::controller(DashboardController::class)->group(function () {
+        // Beranda Dashboard (Multi-Guard View)
+        Route::get('/', 'index')->name('dashboard');
 
-Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugasIndex'])->name('admin.petugas');
-Route::get('/dashboard/admin/petugas/tambah', [AdminController::class, 'petugasCreate'])->name('admin.petugas.tambah');
-Route::post('/dashboard/admin/petugas/simpan', [AdminController::class, 'petugasStore'])->name('admin.petugas.simpan');
-Route::get('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'petugasEdit'])->name('admin.petugas.edit')->whereNumber('id');
-Route::post('/dashboard/admin/petugas/update/{id}', [AdminController::class, 'petugasUpdate'])->name('admin.petugas.update')->whereNumber('id');
-Route::post('/dashboard/admin/petugas/toggle/{id}', [AdminController::class, 'petugasToggleStatus'])->name('admin.petugas.toggle')->whereNumber('id');
+        // Pengaduan Siswa
+        Route::get('/pengaduan', 'pengaduan')->name('dashboard.pengaduan');
+        Route::get('/pengaduan/tambah', 'tambahPengaduan')->name('dashboard.pengaduan.tambah');
+        Route::post('/pengaduan/simpan', 'simpanPengaduan')->name('dashboard.pengaduan.simpan');
+        Route::get('/pengaduan/{id}', 'detailPengaduan')->name('dashboard.pengaduan.detail')->whereNumber('id');
 
-Route::get('/dashboard/admin/setting', [AdminController::class, 'settingsIndex'])->name('admin.setting');
-Route::post('/dashboard/admin/setting', [AdminController::class, 'settingsUpdate'])->name('admin.setting.update');
+        // Investigasi & Tanggapan Petugas BK
+        Route::get('/petugas/pengaduan/{id}', 'detailPengaduanPetugas')->name('petugas.pengaduan.detail')->whereNumber('id');
+        Route::post('/petugas/pengaduan/{id}/tanggapan', 'simpanTanggapanPetugas')->name('petugas.pengaduan.tanggapan')->whereNumber('id');
+    });
+
+    // =====================================================================
+    // 4. MANAJEMEN ADMINISTRATOR
+    // =====================================================================
+    Route::prefix('admin')->controller(AdminController::class)->group(function () {
+
+        // Manajemen Akun Siswa
+        Route::prefix('siswa')->group(function () {
+            Route::get('/', 'siswaIndex')->name('admin.siswa');
+            Route::get('/tambah', 'siswaCreate')->name('admin.siswa.tambah');
+            Route::post('/simpan', 'siswaStore')->name('admin.siswa.simpan');
+            Route::get('/edit/{id}', 'siswaEdit')->name('admin.siswa.edit')->whereNumber('id');
+            Route::post('/update/{id}', 'siswaUpdate')->name('admin.siswa.update')->whereNumber('id');
+            Route::post('/toggle/{id}', 'siswaToggleStatus')->name('admin.siswa.toggle')->whereNumber('id');
+        });
+
+        // Manajemen Akun Petugas & Admin
+        Route::prefix('petugas')->group(function () {
+            Route::get('/', 'petugasIndex')->name('admin.petugas');
+            Route::get('/tambah', 'petugasCreate')->name('admin.petugas.tambah');
+            Route::post('/simpan', 'petugasStore')->name('admin.petugas.simpan');
+            Route::get('/edit/{id}', 'petugasEdit')->name('admin.petugas.edit')->whereNumber('id');
+            Route::post('/update/{id}', 'petugasUpdate')->name('admin.petugas.update')->whereNumber('id');
+            Route::post('/toggle/{id}', 'petugasToggleStatus')->name('admin.petugas.toggle')->whereNumber('id');
+        });
+
+        // Pengaturan Pilihan Jurusan
+        Route::get('/setting', 'settingsIndex')->name('admin.setting');
+        Route::post('/setting', 'settingsUpdate')->name('admin.setting.update');
+    });
+
+});
+
 

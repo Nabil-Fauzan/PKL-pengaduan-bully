@@ -9,7 +9,7 @@
         <div class="row g-4">
             <!-- Step 1 -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="step-box">
+                <div class="step-box h-100">
                     <div class="step-number">1</div>
                     <h3 class="h5 fw-bold mb-2">Kirim Pengaduan</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
@@ -20,7 +20,7 @@
 
             <!-- Step 2 -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="step-box">
+                <div class="step-box h-100">
                     <div class="step-number">2</div>
                     <h3 class="h5 fw-bold mb-2">Verifikasi Guru BK</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
@@ -31,7 +31,7 @@
 
             <!-- Step 3 -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="step-box">
+                <div class="step-box h-100">
                     <div class="step-number">3</div>
                     <h3 class="h5 fw-bold mb-2">Pendampingan &amp; Mediasi</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">
@@ -42,7 +42,7 @@
 
             <!-- Step 4 -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="step-box">
+                <div class="step-box h-100">
                     <div class="step-number">4</div>
                     <h3 class="h5 fw-bold mb-2">Penyelesaian Kasus</h3>
                     <p class="text-muted mb-0" style="font-size: 0.9rem;">

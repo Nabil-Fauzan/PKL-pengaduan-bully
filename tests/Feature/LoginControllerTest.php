@@ -210,7 +210,7 @@ class LoginControllerTest extends TestCase
     }
 
     /**
-     * Test logging out.
+     * Test logging out as siswa.
      */
     public function test_user_can_logout(): void
     {
@@ -229,5 +229,36 @@ class LoginControllerTest extends TestCase
 
         $response->assertRedirect('/');
         $this->assertFalse(Auth::guard('siswa')->check());
+    }
+
+    /**
+     * Test logging out as petugas.
+     */
+    public function test_petugas_can_logout(): void
+    {
+        $petugas = User::create([
+            'nama' => 'Petugas BK Test',
+            'username' => 'petugas_bk',
+            'email' => 'petugas@smktia.sch.id',
+            'password' => Hash::make('password123'),
+            'role' => 'petugas',
+            'status' => 'aktif',
+        ]);
+
+        $this->actingAs($petugas, 'web');
+
+        $response = $this->post('/logout');
+
+        $response->assertRedirect('/');
+        $this->assertFalse(Auth::guard('web')->check());
+    }
+
+    /**
+     * Test GET /logout redirects gracefully.
+     */
+    public function test_get_logout_redirects_gracefully(): void
+    {
+        $response = $this->get('/logout');
+        $response->assertRedirect('/');
     }
 }

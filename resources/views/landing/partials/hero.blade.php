@@ -10,7 +10,7 @@
                     Wujudkan Sekolah <span>Aman, Nyaman</span> & Bebas Perundungan
                 </h1>
                 <p class="hero-desc">
-                    STIPOR adalah kanal pelaporan perlindungan siswa resmi SMK TI Airlangga Samarinda. Jangan biarkan perundungan terjadi di sekitarmu. Suaramu berharga dan identitasmu terjamin 100% aman.
+                    STIPOR adalah website pelaporan perlindungan siswa resmi SMK TI Airlangga Samarinda. Jangan biarkan perundungan terjadi di sekitarmu. Suaramu berharga dan identitasmu terjamin 100% aman.
                 </p>
                 <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3">
                     <a href="{{ route('login') }}" class="btn btn-stipor-primary btn-lg text-center">

@@ -9,7 +9,7 @@
         <div class="row g-4 justify-content-center">
             <!-- Quote 1: Kepala Sekolah -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="quote-card h-100">
+                <div class="quote-card h-100 d-flex flex-column">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div class="quote-icon-box">
                             <i class="fas fa-quote-left"></i>
@@ -21,21 +21,26 @@
                     <p class="quote-text mb-4">
                         "Sekolah adalah rumah kedua tempat setiap anak berhak merasa aman, dihargai, dan bertumbuh tanpa rasa takut. Kami tidak memberi ruang sedikit pun bagi perilaku perundungan dalam bentuk apa pun di SMK TI Airlangga."
                     </p>
-                    <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                    <div class="d-flex align-items-center gap-3 pt-3 border-top mt-auto">
                         <div class="quote-avatar bg-primary text-white">
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <div>
-                            <h3 class="h6 fw-bold mb-0 quote-author">Pimpinan Sekolah</h3>
-                            <small class="text-muted">SMK TI Airlangga Samarinda</small>
+                            <h3 class="h6 fw-bold mb-0 quote-author">Muhammad Yani, S.Kom., M.T.I.</h3>
+                            <small class="text-muted d-block">Kepala Sekolah SMK TI Airlangga Samarinda</small>
                         </div>
+                    </div>
+                    <div class="pt-2">
+                        <small class="text-muted fst-italic d-block" style="font-size: 0.72rem; opacity: 0.75;">
+                            *Catatan: Kutipan di atas merupakan ilustrasi komitmen pimpinan sekolah dan tidak dinyatakan secara harfiah oleh beliau.
+                        </small>
                     </div>
                 </div>
             </div>
 
             <!-- Quote 2: Koordinator BK -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="quote-card h-100">
+                <div class="quote-card h-100 d-flex flex-column">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div class="quote-icon-box quote-icon-green">
                             <i class="fas fa-quote-left"></i>
@@ -47,13 +52,13 @@
                     <p class="quote-text mb-4">
                         "Setiap suara kalian sangat berharga. Di Ruang BK, tidak ada penghakiman dan tidak ada kebocoran identitas. Kami hadir sebagai pendengar setia dan pelindung hak-hak belajar kalian di sekolah."
                     </p>
-                    <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                    <div class="d-flex align-items-center gap-3 pt-3 border-top mt-auto">
                         <div class="quote-avatar bg-success text-white">
                             <i class="fas fa-hands-helping"></i>
                         </div>
                         <div>
                             <h3 class="h6 fw-bold mb-0 quote-author">Tim Konselor Bimbingan Konseling</h3>
-                            <small class="text-muted">Unit Layanan BK SMK TI Airlangga</small>
+                            <small class="text-muted d-block">Unit Layanan BK SMK TI Airlangga</small>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
         <div class="row g-4">
             <!-- Card 1: Bullying Fisik -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="category-card">
+                <div class="category-card h-100">
                     <div class="category-icon cat-danger">
                         <i class="fas fa-fist-raised"></i>
                     </div>
@@ -23,7 +23,7 @@
 
             <!-- Card 2: Bullying Verbal & Sosial -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="category-card">
+                <div class="category-card h-100">
                     <div class="category-icon cat-warning">
                         <i class="fas fa-comments"></i>
                     </div>
@@ -37,7 +37,7 @@
 
             <!-- Card 3: Cyberbullying -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="category-card">
+                <div class="category-card h-100">
                     <div class="category-icon cat-primary">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
@@ -51,7 +51,7 @@
 
             <!-- Card 4: Fasilitas & Lainnya -->
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="category-card">
+                <div class="category-card h-100">
                     <div class="category-icon cat-purple">
                         <i class="fas fa-school"></i>
                     </div>
