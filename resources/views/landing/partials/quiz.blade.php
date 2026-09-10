@@ -1,4 +1,4 @@
-<section id="cek-mandiri" class="section-py">
+<section id="cek-mandiri" class="section-py bg-light">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <span class="section-tag">CEK MANDIRI INTERAKTIF</span>
@@ -13,11 +13,11 @@
                     <!-- Progress Bar -->
                     <div class="mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span id="quizStepText" class="text-primary fw-bold" style="font-size: 0.85rem;">Pertanyaan 1 dari 3</span>
+                            <span id="quizStepText" class="text-primary-high fw-bold" style="font-size: 0.85rem;">Pertanyaan 1 dari 3</span>
                             <span id="quizPercentText" class="text-muted fw-semibold" style="font-size: 0.85rem;">33% Selesai</span>
                         </div>
                         <div class="progress" style="height: 6px; border-radius: 10px;">
-                            <div id="quizProgressBar" class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div id="quizProgressBar" class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Progres Kuis Analisis Bullying"></div>
                         </div>
                     </div>
 
@@ -28,13 +28,13 @@
                             <h3 class="h5 fw-bold mb-3">1. Apakah perlakuan tidak menyenangkan tersebut terjadi berulang-ulang atau ada ancaman akan diulang?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(1, 2)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Ya, sering terjadi</strong> atau hampir setiap hari.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Ya, sering terjadi</strong> atau hampir setiap hari.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(1, 1)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Pernah beberapa kali</strong>, dan ada rasa khawatir terulang.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Pernah beberapa kali</strong>, dan ada rasa khawatir terulang.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(1, 0)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Hanya sekali</strong> karena perdebatan/kesalahpahaman biasa.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Hanya sekali</strong> karena perdebatan/kesalahpahaman biasa.</span>
                                 </button>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                             <h3 class="h5 fw-bold mb-3">2. Apakah terdapat ketimpangan kuasa (misal: senior ke junior, kelompok mengeroyok individu, atau ancaman sosial/fisik)?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(2, 2)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Ya, sangat timpang</strong> (korban merasa tidak berdaya untuk melawan).</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Ya, sangat timpang</strong> (korban merasa tidak berdaya untuk melawan).</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(2, 1)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Ada tekanan sosial/kelompok</strong> yang membuat merasa terasing.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Ada tekanan sosial/kelompok</strong> yang membuat merasa terasing.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(2, 0)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Setara</strong>, kami berteman akrab dan saling bercanda.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Setara</strong>, kami berteman akrab dan saling bercanda.</span>
                                 </button>
                             </div>
                         </div>
@@ -60,13 +60,13 @@
                             <h3 class="h5 fw-bold mb-3">3. Bagaimana dampaknya terhadap perasaan dan kegiatan belajarmu di sekolah?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(3, 2)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Sangat tertekan / takut</strong> berangkat ke sekolah atau masuk kelas.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Sangat tertekan / takut</strong> berangkat ke sekolah atau masuk kelas.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(3, 1)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Merasa cemas &amp; sedih</strong>, konsentrasi belajar menjadi terganggu.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Merasa cemas &amp; sedih</strong>, konsentrasi belajar menjadi terganggu.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center" onclick="selectQuizAnswer(3, 0)">
-                                    <i class="fas fa-chevron-right me-3 text-primary opacity-75" style="font-size: 0.85rem;"></i> <span><strong>Tidak terlalu berdampak</strong>, masih merasa aman beraktivitas.</span>
+                                    <i class="fas fa-chevron-right me-3 text-primary-high opacity-75" aria-hidden="true" style="font-size: 0.85rem;"></i> <span><strong>Tidak terlalu berdampak</strong>, masih merasa aman beraktivitas.</span>
                                 </button>
                             </div>
                         </div>

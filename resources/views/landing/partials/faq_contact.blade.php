@@ -1,4 +1,4 @@
-<section id="faq" class="section-py bg-light">
+<section id="faq" class="section-py">
     <div class="container">
         <div class="row g-5">
             <!-- Left: FAQ Accordion with Instant Search -->
@@ -22,16 +22,16 @@
 
                 <!-- FAQ Category Filter Chips -->
                 <div class="faq-filter-chips d-flex flex-wrap gap-2 mb-4" id="faqCategoryChips">
-                    <button type="button" class="faq-chip active" data-filter="all">Semua</button>
-                    <button type="button" class="faq-chip" data-filter="kerahasiaan"><i class="fas fa-user-shield me-1"></i> Kerahasiaan</button>
-                    <button type="button" class="faq-chip" data-filter="penanganan"><i class="fas fa-clock me-1"></i> Penanganan</button>
-                    <button type="button" class="faq-chip" data-filter="saksi"><i class="fas fa-hands-helping me-1"></i> Saksi</button>
-                    <button type="button" class="faq-chip" data-filter="akun"><i class="fas fa-key me-1"></i> Akun</button>
+                    <button type="button" class="faq-chip active" data-filter="all" aria-label="Tampilkan semua pertanyaan FAQ">Semua</button>
+                    <button type="button" class="faq-chip" data-filter="kerahasiaan" aria-label="Filter kategori Kerahasiaan"><i class="fas fa-user-shield me-1"></i> Kerahasiaan</button>
+                    <button type="button" class="faq-chip" data-filter="penanganan" aria-label="Filter kategori Penanganan"><i class="fas fa-clock me-1"></i> Penanganan</button>
+                    <button type="button" class="faq-chip" data-filter="saksi" aria-label="Filter kategori Saksi"><i class="fas fa-hands-helping me-1"></i> Saksi</button>
+                    <button type="button" class="faq-chip" data-filter="akun" aria-label="Filter kategori Akun"><i class="fas fa-key me-1"></i> Akun</button>
                 </div>
 
                 <!-- FAQ Match Status / Counter -->
                 <div id="faqSearchResultCount" class="small text-muted mb-3 d-none">
-                    <i class="fas fa-info-circle me-1 text-primary"></i> <span id="faqMatchText">Menampilkan hasil</span>
+                    <i class="fas fa-info-circle me-1 text-primary-high"></i> <span id="faqMatchText">Menampilkan hasil</span>
                 </div>
                 
                 <!-- FAQ Accordion List -->
@@ -128,7 +128,7 @@
                     </div>
                     <h5 class="fw-bold mb-1">Pertanyaan Tidak Ditemukan</h5>
                     <p class="text-muted small mb-3">Coba gunakan kata kunci lain atau langsung tanyakan ke Ruang BK melalui kontak di sebelah kanan.</p>
-                    <button type="button" class="btn btn-sm btn-outline-primary" id="faqResetBtn">
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="faqResetBtn" aria-label="Tampilkan semua pertanyaan">
                         <i class="fas fa-undo me-1"></i> Tampilkan Semua Pertanyaan
                     </button>
                 </div>
@@ -146,9 +146,12 @@
                         </div>
                         <div>
                             <h3 class="h6 fw-bold mb-1">Alamat Sekolah:</h3>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            <p class="text-muted mb-2" style="font-size: 0.9rem;">
                                 Jl. Pahlawan No. 2A, Kel. Dadi Mulya, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75123.
                             </p>
+                            <a href="https://maps.google.com/?q=SMK+TI+Airlangga+Samarinda" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1" style="font-size: 0.76rem; font-weight: 600;">
+                                <i class="fas fa-directions text-primary"></i> Buka Rute Google Maps <i class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -173,9 +176,17 @@
                         </div>
                         <div>
                             <h3 class="h6 fw-bold mb-1">Hotline &amp; Telepon Sekolah:</h3>
-                            <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                                <a href="tel:0541741864" class="text-muted text-decoration-none">(0541) 741864</a>
+                            <p class="mb-2" style="font-size: 0.9rem;">
+                                <a href="tel:0541741864" class="text-decoration-none fw-bold" style="color: inherit;">(0541) 741864</a>
                             </p>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <a href="tel:0541741864" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1" style="font-size: 0.76rem; font-weight: 600;">
+                                    <i class="fas fa-phone-alt"></i> Hubungi
+                                </a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1 btn-copy-phone" data-phone="(0541) 741864" style="font-size: 0.76rem; font-weight: 600;" aria-label="Salin nomor telepon sekolah">
+                                    <i class="fas fa-copy"></i> <span class="copy-label">Salin Nomor</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 

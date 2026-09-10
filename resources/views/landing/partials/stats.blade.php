@@ -53,25 +53,25 @@
             <div class="row g-3 text-center">
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="transparency-item p-2">
-                        <div class="transparency-number text-primary">100%</div>
+                        <div class="transparency-number text-primary-high">100%</div>
                         <div class="transparency-label">Kerahasiaan Terjamin</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
                     <div class="transparency-item p-2">
-                        <div class="transparency-number text-success">&lt; 24 Jam</div>
+                        <div class="transparency-number text-success-high">&lt; 24 Jam</div>
                         <div class="transparency-label">Respon Awal BK</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="transparency-item p-2">
-                        <div class="transparency-number text-warning">0%</div>
+                        <div class="transparency-number text-warning-high">0%</div>
                         <div class="transparency-label">Toleransi Bullying</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
                     <div class="transparency-item p-2">
-                        <div class="transparency-number text-info">Mediasi</div>
+                        <div class="transparency-number text-info-high">Mediasi</div>
                         <div class="transparency-label">Penyelesaian Damai</div>
                     </div>
                 </div>

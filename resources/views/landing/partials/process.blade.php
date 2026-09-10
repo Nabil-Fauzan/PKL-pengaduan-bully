@@ -1,4 +1,4 @@
-<section id="alur" class="section-py">
+<section id="alur" class="section-py bg-light">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <span class="section-tag">ALUR TRANSPARAN</span>
@@ -12,8 +12,8 @@
                 <div class="step-box h-100">
                     <div class="step-number">1</div>
                     <h3 class="h5 fw-bold mb-2">Kirim Pengaduan</h3>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                        Siswa masuk ke portal STIPOR, mengisi kronologi kejadian, memilih kategori, dan mengirimkan laporan.
+                    <p class="text-muted mb-0" style="font-size: 0.88rem; line-height: 1.6;">
+                        Login siswa, tulis kronologi kasus secara rahasia, dan lampirkan bukti pendukung jika tersedia.
                     </p>
                 </div>
             </div>
@@ -23,8 +23,8 @@
                 <div class="step-box h-100">
                     <div class="step-number">2</div>
                     <h3 class="h5 fw-bold mb-2">Verifikasi Guru BK</h3>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                        Konselor BK membaca laporan, menelaah tingkat urgensi, dan mengubah status laporan menjadi <em>Diproses</em>.
+                    <p class="text-muted mb-0" style="font-size: 0.88rem; line-height: 1.6;">
+                        Konselor BK menelaah tingkat urgensi dalam &lt; 24 jam dan memperbarui status menjadi <em>Diproses</em>.
                     </p>
                 </div>
             </div>
@@ -33,9 +33,9 @@
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="step-box h-100">
                     <div class="step-number">3</div>
-                    <h3 class="h5 fw-bold mb-2">Pendampingan &amp; Mediasi</h3>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                        Pemanggilan pihak terkait secara tertutup di Ruang BK, pemberian konseling, serta koordinasi dengan wali kelas.
+                    <h3 class="h5 fw-bold mb-2">Mediasi &amp; Konseling</h3>
+                    <p class="text-muted mb-0" style="font-size: 0.88rem; line-height: 1.6;">
+                        Pendampingan psikologis dan mediasi tertutup di Ruang BK demi memulihkan hak rasa aman siswa.
                     </p>
                 </div>
             </div>
@@ -44,9 +44,9 @@
             <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="step-box h-100">
                     <div class="step-number">4</div>
-                    <h3 class="h5 fw-bold mb-2">Penyelesaian Kasus</h3>
-                    <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                        Kasus dituntaskan dengan surat kesepakatan damai, tanggapan resmi tercatat di sistem, dan status dinyatakan <em>Selesai</em>.
+                    <h3 class="h5 fw-bold mb-2">Penanganan Tuntas</h3>
+                    <p class="text-muted mb-0" style="font-size: 0.88rem; line-height: 1.6;">
+                        Kesepakatan damai dibuat, tanggapan resmi tersimpan di portal, dan status dinyatakan <em>Selesai</em>.
                     </p>
                 </div>
             </div>

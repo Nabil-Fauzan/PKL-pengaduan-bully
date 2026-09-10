@@ -31,24 +31,13 @@
 
                 <!-- Dropdown Menu Edukasi & Bantuan -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-stipor dropdown-toggle d-inline-flex align-items-center gap-1" href="#" id="navbarEdukasiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link nav-link-stipor dropdown-toggle d-inline-flex align-items-center gap-1" href="#" id="navbarEdukasiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Menu Edukasi dan Bantuan">
                         <span>Edukasi</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-stipor shadow-lg border-0" aria-labelledby="navbarEdukasiDropdown">
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3 py-2.5 px-3" href="#edukasi">
-                                <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center p-2" style="width: 36px; height: 36px;">
-                                    <i class="fas fa-book-open"></i>
-                                </div>
-                                <div>
-                                    <span class="d-block fw-semibold" style="font-size: 0.88rem;">Bentuk Bullying</span>
-                                    <small class="text-muted d-block" style="font-size: 0.75rem;">Kenali tanda terselubung</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3 py-2.5 px-3" href="#panduan-saksi">
-                                <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center p-2" style="width: 36px; height: 36px;">
+                            <a class="dropdown-item d-flex align-items-center gap-3 py-2 px-3" href="#panduan-saksi">
+                                <div class="rounded-3 bg-warning bg-opacity-10 text-warning-high d-flex align-items-center justify-content-center p-2" style="width: 36px; height: 36px;">
                                     <i class="fas fa-hands-helping"></i>
                                 </div>
                                 <div>
@@ -58,8 +47,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3 py-2.5 px-3" href="#cek-mandiri">
-                                <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center p-2" style="width: 36px; height: 36px;">
+                            <a class="dropdown-item d-flex align-items-center gap-3 py-2 px-3" href="#cek-mandiri">
+                                <div class="rounded-3 bg-success bg-opacity-10 text-success-high d-flex align-items-center justify-content-center p-2" style="width: 36px; height: 36px;">
                                     <i class="fas fa-clipboard-check"></i>
                                 </div>
                                 <div>

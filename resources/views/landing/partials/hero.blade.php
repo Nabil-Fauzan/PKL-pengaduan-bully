@@ -1,99 +1,120 @@
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <!-- Left Column (Copywriting - Immediate Paint for High LCP) -->
-            <div class="col-lg-6">
-                <div class="hero-badge">
-                    <i class="fas fa-check-circle text-primary me-2"></i> Sistem Resmi Pengaduan Sekolah
-                </div>
-                <h1 class="hero-title">
-                    Wujudkan Sekolah <span>Aman, Nyaman</span> & Bebas Perundungan
-                </h1>
-                <p class="hero-desc">
-                    STIPOR adalah website pelaporan perlindungan siswa resmi SMK TI Airlangga Samarinda. Jangan biarkan perundungan terjadi di sekitarmu. Suaramu berharga dan identitasmu terjamin 100% aman.
-                </p>
-                <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3">
-                    <a href="{{ route('login') }}" class="btn btn-stipor-primary btn-lg text-center">
-                        <i class="fas fa-paper-plane me-2"></i> Buat Pengaduan Sekarang
-                    </a>
-                    <a href="#alur" class="btn btn-stipor-outline btn-lg text-center">
-                        <i class="fas fa-info-circle me-2"></i> Pelajari Alur Kasus
-                    </a>
-                </div>
-
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-2 gap-sm-3 mt-4 pt-2 text-muted" style="font-size: 0.85rem;">
-                    <span class="d-flex align-items-center"><i class="fas fa-check text-success me-1"></i> Privasi Terlindungi</span>
-                    <span class="d-flex align-items-center"><i class="fas fa-check text-success me-1"></i> Pendampingan Guru BK</span>
-                    <span class="d-flex align-items-center"><i class="fas fa-check text-success me-1"></i> Tindak Cepat</span>
-                </div>
-            </div>
-
-            <!-- Right Column (Hero Card Showcase - Immediate Paint) -->
-            <div class="col-lg-6">
-                <div class="hero-card-container">
-                    <!-- Floating Badge Top -->
-                    <div class="floating-badge floating-badge-1 text-primary">
-                        <i class="fas fa-user-shield fs-5 text-success"></i>
-                        <span>100% Kerahasiaan Terjamin</span>
-                    </div>
-
-                    <!-- Main Graphic Card -->
-                    <div class="hero-main-card">
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-school fs-5"></i>
-                                </div>
-                                <div>
-                                    <h2 class="h6 mb-0 fw-bold">Pusat Layanan BK</h2>
-                                    <small class="text-muted">SMK TI Airlangga Samarinda</small>
-                                </div>
-                            </div>
-                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1">
-                                <i class="fas fa-circle text-success me-1" style="font-size: 8px;"></i> Siaga Aktif
-                            </span>
-                        </div>
-
-                        <div class="hero-inner-card p-3 rounded-4 mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span class="badge bg-danger text-white">Kasus Prioritas</span>
-                                <small class="hero-card-step">Langkah 1 dari 3</small>
-                            </div>
-                            <h3 class="h6 fw-bold hero-inner-title mt-2 mb-1">Perlindungan Korban &amp; Saksi</h3>
-                            <p class="hero-inner-desc mb-0">
-                                Laporan langsung masuk ke meja Konselor BK tanpa pihak lain mengetahui identitas pelapor.
-                            </p>
-                        </div>
-
-                        <div class="row g-2 text-center pt-2">
-                            <div class="col-4">
-                                <div class="hero-stat-box">
-                                    <h5 class="fw-bold text-primary mb-0">&lt;= 24 Jam</h5>
-                                    <small class="hero-stat-label">Respon Awal</small>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="hero-stat-box warning">
-                                    <h5 class="fw-bold text-warning mb-0">Anonim</h5>
-                                    <small class="hero-stat-label">Pilihan Lapor</small>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="hero-stat-box success">
-                                    <h5 class="fw-bold text-success mb-0">Tuntas</h5>
-                                    <small class="hero-stat-label">Mediasi Damai</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Badge Bottom -->
-                    <div class="floating-badge floating-badge-2 text-dark">
-                        <i class="fas fa-heart fs-5 text-danger"></i>
-                        <span>Didampingi Konselor Profesional</span>
-                    </div>
-                </div>
-            </div>
+<section class="hero-carousel-section" id="beranda-hero">
+    <div id="stiporHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators hero-carousel-indicators mb-3">
+            <button type="button" data-bs-target="#stiporHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#stiporHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#stiporHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+
+        <!-- Carousel Slides -->
+        <div class="carousel-inner">
+
+            <!-- Slide 1: Komitmen Sekolah & Buat Pengaduan -->
+            <div class="carousel-item active">
+                <picture>
+                    <source srcset="{{ asset('assets/img/hero-carousel/slide-1-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-1.webp') }}" class="hero-carousel-img" alt="STIPOR SMK TI Airlangga - Bebas Bullying" width="1920" height="1080" fetchpriority="high" decoding="async">
+                </picture>
+                <div class="hero-carousel-overlay"></div>
+                <div class="container h-100">
+                    <div class="hero-carousel-content">
+                        <span class="hero-carousel-badge" data-aos="fade-down">
+                            <i class="fas fa-shield-alt"></i> Sistem Resmi Pengaduan Sekolah
+                        </span>
+                        <h1 class="hero-carousel-title" data-aos="fade-up" data-aos-delay="100">
+                            Wujudkan Sekolah <span>Aman, Nyaman</span> &amp; Bebas Perundungan
+                        </h1>
+                        <p class="hero-carousel-desc" data-aos="fade-up" data-aos-delay="200">
+                            Layanan pelaporan resmi SMK TI Airlangga. 100% rahasia, aman, dan didampingi langsung oleh Guru BK.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
+                            <a href="{{ route('login') }}" class="btn btn-stipor-primary text-center px-4 py-2">
+                                <i class="fas fa-paper-plane me-2"></i> Buat Pengaduan Sekarang
+                            </a>
+                            <a href="#alur" class="btn btn-outline-light rounded-pill text-center px-4 py-2">
+                                <i class="fas fa-info-circle me-2"></i> Pelajari Alur Kasus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Kerahasiaan 100% & Keamanan Data -->
+            <div class="carousel-item">
+                <picture>
+                    <source srcset="{{ asset('assets/img/hero-carousel/slide-2-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-2.webp') }}" class="hero-carousel-img" alt="Kerahasiaan 100% Terjamin Unit BK" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
+                <div class="hero-carousel-overlay"></div>
+                <div class="container h-100">
+                    <div class="hero-carousel-content">
+                        <span class="hero-carousel-badge">
+                            <i class="fas fa-user-shield"></i> 100% Kerahasiaan Terjamin
+                        </span>
+                        <h2 class="hero-carousel-title">
+                            Privasi Terjaga, <span>Tanpa Rasa Takut</span>
+                        </h2>
+                        <p class="hero-carousel-desc">
+                            Identitas pelapor dan saksi terlindungi penuh langsung di meja Bimbingan Konseling tanpa perantara.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3">
+                            <a href="{{ route('login') }}" class="btn btn-stipor-primary text-center px-4 py-2">
+                                <i class="fas fa-bullhorn me-2"></i> Laporkan Masalah
+                            </a>
+                            <a href="#faq" class="btn btn-outline-light rounded-pill text-center px-4 py-2">
+                                <i class="fas fa-question-circle me-2"></i> Tanya Jawab Kerahasiaan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Pendampingan Guru BK & Aksi Saksi (5D) -->
+            <div class="carousel-item">
+                <picture>
+                    <source srcset="{{ asset('assets/img/hero-carousel/slide-3-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-3.webp') }}" class="hero-carousel-img" alt="Pendampingan Guru BK dan Panduan Saksi" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
+                <div class="hero-carousel-overlay"></div>
+                <div class="container h-100">
+                    <div class="hero-carousel-content">
+                        <span class="hero-carousel-badge">
+                            <i class="fas fa-hands-helping"></i> Peduli Teman &amp; Upstander
+                        </span>
+                        <h2 class="hero-carousel-title">
+                            Melihat Bullying? <span>Jadilah Pembela (Upstander)</span>
+                        </h2>
+                        <p class="hero-carousel-desc">
+                            Gunakan metode 5D untuk lindungi temanmu atau ikuti kuis cek mandiri untuk menganalisis situasi.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3">
+                            <a href="#panduan-saksi" class="btn btn-stipor-primary text-center px-4 py-2">
+                                <i class="fas fa-hands-helping me-2"></i> Panduan Saksi (5D)
+                            </a>
+                            <a href="#cek-mandiri" class="btn btn-outline-light rounded-pill text-center px-4 py-2">
+                                <i class="fas fa-clipboard-check me-2"></i> Kuis Cek Mandiri
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#stiporHeroCarousel" data-bs-slide="prev" aria-label="Slide Sebelumnya">
+            <span class="hero-carousel-control">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#stiporHeroCarousel" data-bs-slide="next" aria-label="Slide Selanjutnya">
+            <span class="hero-carousel-control">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </button>
+
     </div>
 </section>

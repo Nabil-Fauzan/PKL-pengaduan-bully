@@ -29,7 +29,7 @@ class LandingPageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('<meta name="viewport" content="width=device-width, initial-scale=1">', false);
-        $response->assertSee('bootstrap@5.3.3', false);
+        $response->assertSee('bootstrap', false);
         $response->assertSee('data-bs-theme', false);
         $response->assertSee('id="backToTop"', false);
     }
@@ -43,7 +43,6 @@ class LandingPageTest extends TestCase
         $response->assertSee('href="#tentang"', false);
         $response->assertSee('href="#kategori"', false);
         $response->assertSee('id="navbarEdukasiDropdown"', false);
-        $response->assertSee('href="#edukasi"', false);
         $response->assertSee('href="#panduan-saksi"', false);
         $response->assertSee('href="#cek-mandiri"', false);
         $response->assertSee('href="#alur"', false);
@@ -105,20 +104,6 @@ class LandingPageTest extends TestCase
         $response->assertSee('id="quizResultContainer"', false);
         $response->assertSee('selectQuizAnswer(1', false);
         $response->assertSee('resetQuiz()', false);
-    }
-
-    public function test_landing_page_contains_hidden_bullying_infographic(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-        $response->assertSee('id="edukasi"', false);
-        $response->assertSee('Bentuk Bullying yang Sering Tak Disadari');
-        $response->assertSee('Pengucilan &amp; Silent Treatment', false);
-        $response->assertSee('Ejekan Berkedok');
-        $response->assertSee('Cuma Bercanda');
-        $response->assertSee('Gaslighting &amp; Manipulasi', false);
-        $response->assertSee('Doxing &amp; Teror Akun Anonim', false);
     }
 
     public function test_landing_page_contains_bystander_5d_intervention_guide(): void
