@@ -25,7 +25,13 @@
 
                     <div class="d-flex align-items-center gap-3 pt-3 border-top mt-auto">
                         <div class="quote-avatar-wrapper position-relative flex-shrink-0">
-                            <img src="{{ asset('assets/img/kepsek.webp') }}" alt="Muhammad Yani, S.Kom., M.T.I. - Kepala Sekolah SMK TI Airlangga" class="quote-avatar-img" width="64" height="64" loading="lazy">
+                            <img src="{{ asset('assets/img/kepsek.webp') }}" 
+                                 onerror="this.onerror=null; this.src='{{ asset('assets/img/kepsek.jpg') }}';" 
+                                 alt="Muhammad Yani, S.Kom., M.T.I. - Kepala Sekolah SMK TI Airlangga" 
+                                 class="quote-avatar-img" 
+                                 width="64" 
+                                 height="64" 
+                                 loading="lazy">
                             <span class="quote-badge-check bg-primary" title="Pimpinan Sekolah">
                                 <i class="fas fa-check"></i>
                             </span>

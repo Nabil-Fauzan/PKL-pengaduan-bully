@@ -47,6 +47,14 @@
     <link rel="preload" as="image" href="{{ asset('assets/img/hero-carousel/slide-1-mobile.webp') }}" type="image/webp" media="(max-width: 576px)" fetchpriority="high">
     <link rel="preload" as="image" href="{{ asset('assets/img/hero-carousel/slide-1.webp') }}" type="image/webp" media="(min-width: 576.02px)" fetchpriority="high">
 
+    <!-- Preload Key WOFF2 Fonts -->
+    <link rel="preload" href="{{ asset('assets/vendor/fonts/font-3.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('assets/vendor/fonts/font-14.woff2') }}" as="font" type="font/woff2" crossorigin>
+
+    <!-- Preload Core Stylesheets -->
+    <link rel="preload" as="style" href="{{ asset('assets/vendor/bootstrap/bootstrap.min.css') }}">
+    <link rel="preload" as="style" href="{{ asset('assets/css/landing.css') }}">
+
     <!-- Bootstrap 5.3.3 CSS (Local Zero-Latency) -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/bootstrap.min.css') }}">
 
@@ -125,6 +133,37 @@
     <a href="#beranda" id="backToTop" class="back-to-top-btn" aria-label="Kembali ke atas" title="Kembali ke atas">
         <i class="fas fa-chevron-up"></i>
     </a>
+
+    <!-- Floating Mobile Sticky Bottom Bar (Visible on Mobile/Tablet when scrolled past Hero) -->
+    <div id="mobileStickyBar" class="mobile-sticky-bar d-lg-none" aria-label="Aksi Cepat Pengaduan">
+        <div class="mobile-sticky-inner d-flex align-items-center justify-content-between gap-2">
+            @if(Auth::guard('siswa')->check())
+                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard Siswa</span>
+                </a>
+            @elseif(Auth::guard('web')->check())
+                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Panel Petugas</span>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                    <i class="fas fa-bullhorn text-warning"></i>
+                    <span>Laporkan Sekarang</span>
+                </a>
+            @endif
+            <a href="https://wa.me/6281254332990?text=Halo%20Guru%20BK%20SMK%20TI%20Airlangga%2C%20saya%20ingin%20konsultasi%20mengenai%20situasi%20di%20sekolah." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-mobile-cta btn-mobile-whatsapp flex-shrink-0 d-flex align-items-center justify-content-center gap-1" 
+               aria-label="Hubungi Guru BK via WhatsApp" 
+               title="Konsultasi WhatsApp Ruang BK">
+                <i class="fab fa-whatsapp fs-5"></i>
+                <span class="d-none d-sm-inline" style="font-size: 0.8rem;">Chat BK</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Bootstrap 5.3.3 JS Bundle (Local Zero-Latency Defer) -->
     <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}" defer></script>

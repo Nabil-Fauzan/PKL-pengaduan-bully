@@ -15,7 +15,14 @@
             <div class="carousel-item active">
                 <picture>
                     <source srcset="{{ asset('assets/img/hero-carousel/slide-1-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
-                    <img src="{{ asset('assets/img/hero-carousel/slide-1.webp') }}" class="hero-carousel-img" alt="STIPOR SMK TI Airlangga - Bebas Bullying" width="1920" height="1080" fetchpriority="high" decoding="async">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-1.webp') }}" 
+                         onerror="this.onerror=null; this.src='{{ asset('assets/img/hero-carousel/slide-1.png') }}';" 
+                         class="hero-carousel-img" 
+                         alt="STIPOR SMK TI Airlangga - Bebas Bullying" 
+                         width="1920" 
+                         height="1080" 
+                         fetchpriority="high" 
+                         decoding="async">
                 </picture>
                 <div class="hero-carousel-overlay"></div>
                 <div class="container h-100">
@@ -45,7 +52,14 @@
             <div class="carousel-item">
                 <picture>
                     <source srcset="{{ asset('assets/img/hero-carousel/slide-2-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
-                    <img src="{{ asset('assets/img/hero-carousel/slide-2.webp') }}" class="hero-carousel-img" alt="Kerahasiaan 100% Terjamin Unit BK" width="1920" height="1080" loading="lazy" decoding="async">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-2.webp') }}" 
+                         onerror="this.onerror=null; this.src='{{ asset('assets/img/hero-carousel/slide-2.png') }}';" 
+                         class="hero-carousel-img" 
+                         alt="Kerahasiaan 100% Terjamin Unit BK" 
+                         width="1920" 
+                         height="1080" 
+                         loading="lazy" 
+                         decoding="async">
                 </picture>
                 <div class="hero-carousel-overlay"></div>
                 <div class="container h-100">
@@ -75,7 +89,14 @@
             <div class="carousel-item">
                 <picture>
                     <source srcset="{{ asset('assets/img/hero-carousel/slide-3-mobile.webp') }}" media="(max-width: 576px)" type="image/webp" width="640" height="360">
-                    <img src="{{ asset('assets/img/hero-carousel/slide-3.webp') }}" class="hero-carousel-img" alt="Pendampingan Guru BK dan Panduan Saksi" width="1920" height="1080" loading="lazy" decoding="async">
+                    <img src="{{ asset('assets/img/hero-carousel/slide-3.webp') }}" 
+                         onerror="this.onerror=null; this.src='{{ asset('assets/img/hero-carousel/slide-3.png') }}';" 
+                         class="hero-carousel-img" 
+                         alt="Pendampingan Guru BK dan Panduan Saksi" 
+                         width="1920" 
+                         height="1080" 
+                         loading="lazy" 
+                         decoding="async">
                 </picture>
                 <div class="hero-carousel-overlay"></div>
                 <div class="container h-100">

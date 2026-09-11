@@ -1,8 +1,8 @@
 <section class="value-bar-section">
     <div class="container">
-        <!-- Main 4 Values -->
-        <div class="row g-4 justify-content-between">
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <!-- Main 4 Values (Compact 2x2 Grid on Mobile) -->
+        <div class="row g-3 g-md-4 justify-content-between">
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="value-item">
                     <div class="value-icon-box">
                         <i class="fas fa-lock"></i>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="value-item">
                     <div class="value-icon-box value-icon-warning">
                         <i class="fas fa-hands-helping"></i>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="value-item">
                     <div class="value-icon-box value-icon-success">
                         <i class="fas fa-bolt"></i>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="value-item">
                     <div class="value-icon-box value-icon-purple">
                         <i class="fas fa-balance-scale"></i>

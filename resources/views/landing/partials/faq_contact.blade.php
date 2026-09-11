@@ -13,7 +13,7 @@
                         <span class="input-group-text border-end-0 text-muted ps-3">
                             <i class="fas fa-search"></i>
                         </span>
-                        <input type="text" id="faqSearchInput" class="form-control border-start-0 ps-1" placeholder="Cari pertanyaan... (contoh: rahasia, waktu, saksi, bukti)" aria-label="Cari pertanyaan di FAQ">
+                        <input type="text" id="faqSearchInput" class="form-control border-start-0 ps-1" placeholder="Cari pertanyaan FAQ... (contoh: rahasia, saksi)" aria-label="Cari pertanyaan di FAQ">
                         <button class="btn btn-outline-secondary d-none border-start-0" type="button" id="faqSearchClear" aria-label="Bersihkan pencarian">
                             <i class="fas fa-times"></i>
                         </button>

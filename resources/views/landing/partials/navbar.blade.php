@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-stipor sticky-top">
+<nav class="navbar navbar-expand-lg navbar-stipor sticky-top position-relative">
+    <!-- Top Reading Progress Bar -->
+    <div id="scrollProgressBar" class="scroll-reading-bar" aria-hidden="true"></div>
+
     <div class="container-xl">
         <!-- Brand Logo & School Identity -->
         <a class="navbar-brand d-flex align-items-center gap-3 text-decoration-none me-3 me-xl-4" href="{{ url('/') }}">

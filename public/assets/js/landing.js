@@ -1,24 +1,53 @@
 // Interactive Bullying Assessment Quiz
         let quizAnswers = {};
 
-        window.selectQuizAnswer = function (step, score) {
+        window.selectQuizAnswer = function (step, score, clickedBtn) {
             quizAnswers[step] = score;
+
+            // Highlight selected button visually
             const currentStepEl = document.getElementById('quizStep' + step);
+            if (currentStepEl) {
+                currentStepEl.querySelectorAll('.quiz-option-btn').forEach(btn => btn.classList.remove('active', 'selected'));
+            }
+            if (clickedBtn) {
+                clickedBtn.classList.add('active', 'selected');
+            }
+
             const nextStepEl = document.getElementById('quizStep' + (step + 1));
             const progressBar = document.getElementById('quizProgressBar');
             const stepText = document.getElementById('quizStepText');
             const percentText = document.getElementById('quizPercentText');
 
-            if (currentStepEl) currentStepEl.classList.add('d-none');
+            setTimeout(() => {
+                if (currentStepEl) currentStepEl.classList.add('d-none');
 
-            if (step < 3 && nextStepEl) {
-                nextStepEl.classList.remove('d-none');
-                const nextPercent = Math.round(((step + 1) / 3) * 100);
-                if (progressBar) progressBar.style.width = nextPercent + '%';
-                if (stepText) stepText.textContent = 'Pertanyaan ' + (step + 1) + ' dari 3';
-                if (percentText) percentText.textContent = nextPercent + '% Selesai';
-            } else {
-                showQuizResult();
+                if (step < 3 && nextStepEl) {
+                    nextStepEl.classList.remove('d-none');
+                    const nextPercent = Math.round(((step + 1) / 3) * 100);
+                    if (progressBar) progressBar.style.width = nextPercent + '%';
+                    if (stepText) stepText.textContent = 'Pertanyaan ' + (step + 1) + ' dari 3';
+                    if (percentText) percentText.textContent = nextPercent + '% Selesai';
+                } else {
+                    showQuizResult();
+                }
+            }, 120);
+        };
+
+        window.prevQuizStep = function (currentStep) {
+            if (currentStep <= 1) return;
+            const currentStepEl = document.getElementById('quizStep' + currentStep);
+            const prevStepEl = document.getElementById('quizStep' + (currentStep - 1));
+            const progressBar = document.getElementById('quizProgressBar');
+            const stepText = document.getElementById('quizStepText');
+            const percentText = document.getElementById('quizPercentText');
+
+            if (currentStepEl) currentStepEl.classList.add('d-none');
+            if (prevStepEl) {
+                prevStepEl.classList.remove('d-none');
+                const prevPercent = Math.round(((currentStep - 1) / 3) * 100);
+                if (progressBar) progressBar.style.width = prevPercent + '%';
+                if (stepText) stepText.textContent = 'Pertanyaan ' + (currentStep - 1) + ' dari 3';
+                if (percentText) percentText.textContent = prevPercent + '% Selesai';
             }
         };
 
@@ -66,6 +95,12 @@
                 actionBtn.innerHTML = '<i class="fas fa-phone-alt me-2"></i> Info Kontak Ruang BK';
                 actionBtn.className = 'btn btn-stipor-primary px-4 py-2';
             }
+
+            // Smooth auto-scroll to result container so mobile users see the result immediately
+            const quizCard = document.querySelector('.quiz-card');
+            if (quizCard) {
+                quizCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
 
         window.resetQuiz = function () {
@@ -77,6 +112,7 @@
                     else stepEl.classList.add('d-none');
                 }
             }
+            document.querySelectorAll('.quiz-option-btn').forEach(btn => btn.classList.remove('active', 'selected'));
             const questionsContainer = document.getElementById('quizQuestionsContainer');
             const resultContainer = document.getElementById('quizResultContainer');
             const progressBar = document.getElementById('quizProgressBar');
@@ -88,15 +124,24 @@
             if (progressBar) progressBar.style.width = '33%';
             if (stepText) stepText.textContent = 'Pertanyaan 1 dari 3';
             if (percentText) percentText.textContent = '33% Selesai';
+
+            const quizCard = document.querySelector('.quiz-card');
+            if (quizCard) {
+                quizCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         };
 
         document.addEventListener('DOMContentLoaded', function () {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                mirror: false
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 500,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    mirror: false,
+                    disable: window.innerWidth < 768,
+                    disableMutationObserver: true
+                });
+            }
 
             // Theme Toggle Logic (Multi-button support for desktop and mobile)
             const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
@@ -129,17 +174,28 @@
                 });
             });
 
-            // Back to Top Button
+            // Back to Top & Mobile Sticky Bar Scroll Handler
             const backToTop = document.getElementById('backToTop');
-            if (backToTop) {
+            const mobileStickyBar = document.getElementById('mobileStickyBar');
+            if (backToTop || mobileStickyBar) {
                 let scrollTicking = false;
                 window.addEventListener('scroll', function () {
                     if (!scrollTicking) {
                         window.requestAnimationFrame(function () {
-                            if (window.scrollY > 350) {
-                                backToTop.classList.add('show');
-                            } else {
-                                backToTop.classList.remove('show');
+                            const scrollY = window.scrollY;
+                            if (backToTop) {
+                                if (scrollY > 350) {
+                                    backToTop.classList.add('show');
+                                } else {
+                                    backToTop.classList.remove('show');
+                                }
+                            }
+                            if (mobileStickyBar) {
+                                if (scrollY > 380) {
+                                    mobileStickyBar.classList.add('show');
+                                } else {
+                                    mobileStickyBar.classList.remove('show');
+                                }
                             }
                             scrollTicking = false;
                         });
@@ -147,6 +203,39 @@
                     }
                 }, { passive: true });
             }
+
+            // Interactive Category Filter Chips
+            const catFilterChips = document.querySelectorAll('.cat-filter-chip');
+            const categoryColItems = document.querySelectorAll('.category-col-item');
+
+            catFilterChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    catFilterChips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterValue = this.getAttribute('data-cat-filter');
+
+                    categoryColItems.forEach(item => {
+                        const itemType = item.getAttribute('data-cat-type');
+                        if (filterValue === 'all' || itemType === filterValue) {
+                            item.classList.remove('cat-item-hidden');
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(10px)';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 20);
+                        } else {
+                            item.classList.add('cat-item-hidden');
+                        }
+                    });
+
+                    // Smooth reset horizontal scroll on mobile when filtering
+                    const catRow = document.getElementById('categoryCardsRow');
+                    if (catRow) {
+                        catRow.scrollTo({ left: 0, behavior: 'smooth' });
+                    }
+                });
+            });
 
             // Auto-close mobile navbar on link click
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle), .dropdown-menu .dropdown-item');
@@ -306,4 +395,78 @@
                     });
                 });
             });
+
+            // Touch Swipe Gesture for Hero Carousel on Mobile
+            const heroCarouselEl = document.getElementById('stiporHeroCarousel');
+            if (heroCarouselEl && typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
+                let touchStartX = 0;
+                let touchEndX = 0;
+                const heroCarouselInstance = bootstrap.Carousel.getInstance(heroCarouselEl) || new bootstrap.Carousel(heroCarouselEl);
+
+                heroCarouselEl.addEventListener('touchstart', function(e) {
+                    if (e.changedTouches && e.changedTouches.length > 0) {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }
+                }, { passive: true });
+
+                heroCarouselEl.addEventListener('touchend', function(e) {
+                    if (e.changedTouches && e.changedTouches.length > 0) {
+                        touchEndX = e.changedTouches[0].screenX;
+                        const diffX = touchStartX - touchEndX;
+                        if (Math.abs(diffX) > 45) {
+                            if (diffX > 0) {
+                                heroCarouselInstance.next();
+                            } else {
+                                heroCarouselInstance.prev();
+                            }
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // Top Scroll Reading Progress Bar
+            const scrollProgressBar = document.getElementById('scrollProgressBar');
+            if (scrollProgressBar) {
+                let progressTicking = false;
+                window.addEventListener('scroll', function () {
+                    if (!progressTicking) {
+                        window.requestAnimationFrame(function () {
+                            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                            const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                            scrollProgressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+                            progressTicking = false;
+                        });
+                        progressTicking = true;
+                    }
+                }, { passive: true });
+            }
+
+            // Mobile Drawer & Desktop Navigation Scrollspy Indicator
+            const spySections = document.querySelectorAll('section[id], body[id]');
+            const spyNavLinks = document.querySelectorAll('.navbar-stipor .nav-link-stipor:not(.dropdown-toggle)');
+
+            if (spySections.length > 0 && spyNavLinks.length > 0 && 'IntersectionObserver' in window) {
+                const spyObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const sectionId = entry.target.getAttribute('id');
+                            spyNavLinks.forEach(link => {
+                                const href = link.getAttribute('href');
+                                if (href === '#' + sectionId) {
+                                    link.classList.add('active');
+                                } else {
+                                    link.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                }, {
+                    root: null,
+                    rootMargin: '-15% 0px -65% 0px',
+                    threshold: 0
+                });
+
+                spySections.forEach(section => spyObserver.observe(section));
+            }
         });

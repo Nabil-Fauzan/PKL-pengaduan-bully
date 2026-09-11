@@ -6,9 +6,38 @@
             <p class="section-subtitle">Pilihlah kategori yang sesuai saat mengirimkan laporan pengaduan agar tim penanganan dapat mengambil tindakan yang tepat sasaran.</p>
         </div>
 
-        <div class="row g-4">
+        <!-- Category Filter & Mobile Swipeable Indicator -->
+        <div class="cat-filter-wrapper mb-4 text-center" data-aos="fade-up" data-aos-delay="50">
+            <!-- Mobile Swipe Hint Badge -->
+            <div class="cat-swipe-indicator-wrapper d-flex d-md-none align-items-center justify-content-center mb-3">
+                <span class="badge rounded-pill cat-swipe-hint">
+                    <i class="fas fa-arrows-alt-h me-1 text-primary"></i> Geser kartu atau pilih filter jenis kasus
+                </span>
+            </div>
+
+            <!-- Filter Chips Group (Horizontal Scrollable on Mobile) -->
+            <div class="cat-filter-scroll-container d-inline-flex gap-2 p-1 rounded-pill">
+                <button type="button" class="btn cat-filter-chip active" data-cat-filter="all" aria-label="Tampilkan Semua Kategori">
+                    <i class="fas fa-th-large me-1"></i> Semua Jenis
+                </button>
+                <button type="button" class="btn cat-filter-chip" data-cat-filter="fisik" aria-label="Filter Kategori Fisik">
+                    <i class="fas fa-fist-raised me-1 text-danger"></i> Fisik
+                </button>
+                <button type="button" class="btn cat-filter-chip" data-cat-filter="verbal" aria-label="Filter Kategori Verbal dan Emosional">
+                    <i class="fas fa-comments me-1 text-warning"></i> Verbal
+                </button>
+                <button type="button" class="btn cat-filter-chip" data-cat-filter="cyber" aria-label="Filter Kategori Cyberbullying">
+                    <i class="fas fa-mobile-alt me-1 text-primary"></i> Cyberbullying
+                </button>
+                <button type="button" class="btn cat-filter-chip" data-cat-filter="fasilitas" aria-label="Filter Kategori Fasilitas Sekolah">
+                    <i class="fas fa-school me-1 text-purple"></i> Fasilitas
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center cat-scroll-row" id="categoryCardsRow">
             <!-- Card 1: Bullying Fisik -->
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12 col-sm-6 col-lg-3 category-col-item" data-cat-type="fisik" data-aos="fade-up" data-aos-delay="100">
                 <div class="category-card h-100 d-flex flex-column">
                     <div class="category-icon cat-danger">
                         <i class="fas fa-fist-raised"></i>
@@ -27,7 +56,7 @@
             </div>
 
             <!-- Card 2: Bullying Verbal & Sosial -->
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-12 col-sm-6 col-lg-3 category-col-item" data-cat-type="verbal" data-aos="fade-up" data-aos-delay="200">
                 <div class="category-card h-100 d-flex flex-column">
                     <div class="category-icon cat-warning">
                         <i class="fas fa-comments"></i>
@@ -46,7 +75,7 @@
             </div>
 
             <!-- Card 3: Cyberbullying -->
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-12 col-sm-6 col-lg-3 category-col-item" data-cat-type="cyber" data-aos="fade-up" data-aos-delay="300">
                 <div class="category-card h-100 d-flex flex-column">
                     <div class="category-icon cat-primary">
                         <i class="fas fa-mobile-alt"></i>
@@ -65,7 +94,7 @@
             </div>
 
             <!-- Card 4: Fasilitas & Lainnya -->
-            <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-12 col-sm-6 col-lg-3 category-col-item" data-cat-type="fasilitas" data-aos="fade-up" data-aos-delay="400">
                 <div class="category-card h-100 d-flex flex-column">
                     <div class="category-icon cat-purple">
                         <i class="fas fa-school"></i>

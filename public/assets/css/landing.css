@@ -33,6 +33,8 @@
         [data-bs-theme="dark"] .text-primary-high { color: #93c5fd !important; }
         .text-success-high { color: #15803d !important; }
         [data-bs-theme="dark"] .text-success-high { color: #86efac !important; }
+        .text-purple { color: #9333ea !important; }
+        [data-bs-theme="dark"] .text-purple { color: #c084fc !important; }
 
         .cat-example-chip {
             font-size: 0.78rem;
@@ -1309,7 +1311,49 @@
         [data-bs-theme="dark"] .category-icon.cat-purple { background-color: rgba(147, 51, 234, 0.2); color: #c084fc; }
         [data-bs-theme="dark"] .category-tag.tag-purple { background-color: rgba(147, 51, 234, 0.2); color: #d8b4fe; border: 1px solid rgba(147, 51, 234, 0.35); }
 
+        /* Category Example Tooltip Chips */
+        .cat-example-chip {
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .cat-example-chip:hover {
+            transform: translateY(-1px);
+        }
+
+        .cat-chip-danger { background-color: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .cat-chip-warning { background-color: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+        .cat-chip-primary { background-color: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+        .cat-chip-purple { background-color: #faf5ff; color: #9333ea; border: 1px solid #e9d5ff; }
+
+        [data-bs-theme="dark"] .cat-chip-danger { background-color: rgba(239, 68, 68, 0.15); color: #fca5a5; border-color: rgba(239, 68, 68, 0.3); }
+        [data-bs-theme="dark"] .cat-chip-warning { background-color: rgba(245, 158, 11, 0.15); color: #fde047; border-color: rgba(245, 158, 11, 0.3); }
+        [data-bs-theme="dark"] .cat-chip-primary { background-color: rgba(37, 99, 235, 0.15); color: #93c5fd; border-color: rgba(37, 99, 235, 0.3); }
+        [data-bs-theme="dark"] .cat-chip-purple { background-color: rgba(147, 51, 234, 0.15); color: #d8b4fe; border-color: rgba(147, 51, 234, 0.3); }
+
         /* --- PROCESS STEP / TIMELINE --- */
+        .process-connector-track {
+            position: absolute;
+            top: 58px;
+            left: 12%;
+            width: 76%;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #10b981 100%);
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        [data-bs-theme="dark"] .process-connector-track {
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #059669 100%);
+            opacity: 0.3;
+        }
+
         .step-box {
             background: #ffffff;
             border: 1px solid var(--stipor-card-border);
@@ -1338,6 +1382,31 @@
             box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.35);
         }
 
+        .step-number-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .step-badge-indicator {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50rem;
+            background: rgba(37, 99, 235, 0.08);
+            color: #2563eb;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            letter-spacing: 0.02em;
+        }
+
+        [data-bs-theme="dark"] .step-badge-indicator {
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
         .step-number {
             width: 50px;
             height: 50px;
@@ -1349,9 +1418,9 @@
             justify-content: center;
             font-weight: 800;
             font-size: 1.2rem;
-            margin-bottom: 20px;
             box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
         }
 
         .step-box:hover .step-number {
@@ -2007,7 +2076,7 @@
             }
 
             .faq-filter-chips {
-                justify-content: center;
+                justify-content: flex-start;
             }
         }
 
@@ -2166,11 +2235,17 @@
 
             /* FAQ Search & Chips Mobile */
             .faq-filter-chips {
-                overflow-x: auto;
+                display: flex !important;
+                justify-content: flex-start !important;
+                overflow-x: auto !important;
                 flex-wrap: nowrap !important;
                 -webkit-overflow-scrolling: touch;
-                padding-bottom: 6px;
+                padding-top: 2px;
+                padding-bottom: 8px;
+                padding-left: 2px;
+                padding-right: 16px;
                 scrollbar-width: none;
+                gap: 8px !important;
             }
 
             .faq-filter-chips::-webkit-scrollbar {
@@ -2200,7 +2275,7 @@
             /* Footer Mobile */
             .stipor-footer {
                 text-align: center;
-                padding: 40px 0 20px;
+                padding: 40px 0 calc(85px + env(safe-area-inset-bottom, 0px));
             }
 
             .stipor-footer .col-lg-4,
@@ -2546,4 +2621,640 @@
 
         .about-feature-list li {
             font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           MICRO-INTERACTIONS & TOUCH FEEDBACK
+           ========================================================================== */
+        .btn, 
+        .category-card, 
+        .quiz-option-btn, 
+        .faq-chip, 
+        .cat-filter-chip,
+        .accordion-button, 
+        .bystander-card,
+        .step-box,
+        .btn-mobile-cta,
+        .theme-toggle-btn {
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn:active, 
+        .btn-mobile-cta:active,
+        .quiz-option-btn:active, 
+        .faq-chip:active,
+        .cat-filter-chip:active,
+        .theme-toggle-btn:active {
+            transform: scale(0.95) !important;
+        }
+
+        .category-card:active,
+        .bystander-card:active,
+        .step-box:active {
+            transform: scale(0.985);
+        }
+
+        /* ==========================================================================
+           CATEGORY FILTER BAR & SWIPEABLE INDICATOR
+           ========================================================================== */
+        .cat-filter-wrapper {
+            position: relative;
+        }
+
+        .cat-filter-scroll-container {
+            background: #ffffff;
+            border: 1px solid var(--stipor-card-border);
+            box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.06);
+            max-width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .cat-filter-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (max-width: 767.98px) {
+            .cat-filter-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 6px;
+                text-align: left !important;
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            .cat-filter-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+
+            .cat-filter-scroll-container {
+                display: inline-flex !important;
+                justify-content: flex-start !important;
+                white-space: nowrap;
+                min-width: min-content;
+                flex-shrink: 0;
+            }
+        }
+
+        [data-bs-theme="dark"] .cat-filter-scroll-container {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5);
+        }
+
+        .cat-filter-chip {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 50rem;
+            color: #475569;
+            background: transparent;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cat-filter-chip:hover {
+            color: var(--stipor-primary);
+            background: rgba(37, 99, 235, 0.06);
+        }
+
+        .cat-filter-chip.active {
+            background: var(--stipor-primary);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.32);
+        }
+
+        .cat-filter-chip.active i {
+            color: #ffffff !important;
+        }
+
+        [data-bs-theme="dark"] .cat-filter-chip {
+            color: #cbd5e1;
+        }
+
+        [data-bs-theme="dark"] .cat-filter-chip:hover {
+            color: #93c5fd;
+            background: rgba(37, 99, 235, 0.18);
+        }
+
+        [data-bs-theme="dark"] .cat-filter-chip.active {
+            background: #2563eb;
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.5);
+        }
+
+        .cat-swipe-hint {
+            font-size: 0.76rem;
+            font-weight: 600;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--stipor-primary);
+            border: 1px dashed rgba(37, 99, 235, 0.25);
+            padding: 6px 14px;
+            letter-spacing: 0.02em;
+            animation: swipePulse 2.5s infinite ease-in-out;
+        }
+
+        [data-bs-theme="dark"] .cat-swipe-hint {
+            background: rgba(37, 99, 235, 0.16);
+            color: #93c5fd;
+            border-color: rgba(147, 197, 253, 0.3);
+        }
+
+        @keyframes swipePulse {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.03); }
+        }
+
+        .category-col-item {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .category-col-item.cat-item-hidden {
+            display: none !important;
+        }
+
+        /* ==========================================================================
+           ANIMATED PROCESS STEP-CONNECTOR & TIMELINE
+           ========================================================================== */
+        .process-timeline-wrapper {
+            position: relative;
+        }
+
+        .process-connector-track {
+            position: absolute;
+            top: 58px;
+            left: 12%;
+            right: 12%;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #10b981 100%, #2563eb 200%);
+            background-size: 200% 100%;
+            border-radius: 4px;
+            z-index: 1;
+            opacity: 0.75;
+            animation: processLineFlow 4s linear infinite;
+        }
+
+        @keyframes processLineFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        [data-bs-theme="dark"] .process-connector-track {
+            opacity: 0.9;
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+        }
+
+        .step-number-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .step-number {
+            position: relative;
+            z-index: 3;
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            border: 2px dashed rgba(37, 99, 235, 0.4);
+            animation: stepHaloRotate 12s linear infinite;
+        }
+
+        [data-bs-theme="dark"] .step-number::before {
+            border-color: rgba(96, 165, 250, 0.45);
+        }
+
+        @keyframes stepHaloRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .step-badge-indicator {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 4px 10px;
+            border-radius: 50rem;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--stipor-primary);
+            border: 1px solid rgba(37, 99, 235, 0.15);
+        }
+
+        [data-bs-theme="dark"] .step-badge-indicator {
+            background: rgba(37, 99, 235, 0.18);
+            color: #93c5fd;
+            border-color: rgba(147, 197, 253, 0.2);
+        }
+
+        /* ==========================================================================
+           FLOATING MOBILE STICKY BOTTOM ACTION BAR (STICKY CTA)
+           ========================================================================== */
+        .mobile-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-top: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 -8px 28px -4px rgba(15, 23, 42, 0.12);
+            transform: translateY(120%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-sticky-bar.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        [data-bs-theme="dark"] .mobile-sticky-bar {
+            background: rgba(11, 15, 25, 0.94);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 -10px 32px -4px rgba(0, 0, 0, 0.7);
+        }
+
+        .mobile-sticky-inner {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .btn-mobile-cta {
+            border-radius: 50rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            border: none;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            letter-spacing: -0.01em;
+        }
+
+        .btn-mobile-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff !important;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-mobile-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            color: #ffffff !important;
+        }
+
+        .btn-mobile-whatsapp {
+            background: #25d366;
+            color: #ffffff !important;
+            padding: 10px 16px;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-mobile-whatsapp:hover {
+            background: #20ba5a;
+            color: #ffffff !important;
+        }
+
+        /* Adjust Back-to-Top button on Mobile so it doesn't collide with Sticky Bar */
+        @media (max-width: 991.98px) {
+            .back-to-top-btn {
+                bottom: 74px !important;
+                right: 16px !important;
+            }
+        }
+
+        /* ==========================================================================
+           MOBILE-SPECIFIC POLISH: DRAWER, 2x2 VALUE GRID, SNAP-SCROLL, QUIZ TOUCH
+           ========================================================================== */
+        
+        /* --- SCROLL READING PROGRESS BAR --- */
+        .scroll-reading-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #2563eb 0%, #38bdf8 50%, #f59e0b 100%);
+            z-index: 1060;
+            transition: width 0.08s ease-out;
+            box-shadow: 0 1px 6px rgba(37, 99, 235, 0.4);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        [data-bs-theme="dark"] .scroll-reading-bar {
+            background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 50%, #fbbf24 100%);
+            box-shadow: 0 1px 8px rgba(56, 189, 248, 0.5);
+        }
+
+        /* 1. Modern Glassmorphic Mobile Drawer */
+        @media (max-width: 991.98px) {
+            .navbar-stipor .navbar-collapse {
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border: 1px solid var(--stipor-card-border);
+                border-radius: 24px;
+                padding: 22px 18px;
+                margin-top: 14px;
+                box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.18);
+            }
+
+            [data-bs-theme="dark"] .navbar-stipor .navbar-collapse {
+                background: rgba(15, 23, 42, 0.96);
+                border-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75);
+            }
+
+            .navbar-stipor .nav-link-stipor {
+                padding: 10px 18px !important;
+                text-align: center;
+                font-size: 0.95rem;
+                border-radius: 12px;
+                transition: all 0.2s ease;
+            }
+
+            .navbar-stipor .nav-link-stipor.active {
+                background: rgba(37, 99, 235, 0.12) !important;
+                color: var(--stipor-primary) !important;
+                font-weight: 700 !important;
+                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+            }
+
+            [data-bs-theme="dark"] .navbar-stipor .nav-link-stipor.active {
+                background: rgba(59, 130, 246, 0.22) !important;
+                color: #93c5fd !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* 2. Compact 2x2 Value Bar Grid on Mobile */
+        @media (max-width: 575.98px) {
+            .value-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                background: rgba(37, 99, 235, 0.03);
+                padding: 14px;
+                border-radius: 16px;
+                border: 1px solid var(--stipor-card-border);
+                height: 100%;
+            }
+
+            [data-bs-theme="dark"] .value-item {
+                background: rgba(30, 41, 59, 0.55);
+                border-color: rgba(255, 255, 255, 0.06);
+            }
+
+            .value-icon-box {
+                width: 38px;
+                height: 38px;
+                font-size: 1.05rem;
+                border-radius: 12px;
+            }
+
+            .value-item h3 {
+                font-size: 0.88rem;
+                line-height: 1.3;
+            }
+
+            .value-item small {
+                font-size: 0.74rem;
+                line-height: 1.35;
+                display: block;
+            }
+        }
+
+        /* 3. Horizontal Snap-Scroll for Category Cards & 5D Bystander Cards on Mobile */
+        @media (max-width: 767.98px) {
+            .cat-scroll-row,
+            .bystander-scroll-row {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scroll-padding-left: 16px;
+                scroll-padding-right: 16px;
+                overscroll-behavior-x: contain;
+                -webkit-overflow-scrolling: touch;
+                padding-top: 4px !important;
+                padding-bottom: 16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                scrollbar-width: none;
+                gap: 14px !important;
+                justify-content: flex-start !important;
+                margin-left: -12px !important;
+                margin-right: -12px !important;
+            }
+
+            .cat-scroll-row::-webkit-scrollbar,
+            .bystander-scroll-row::-webkit-scrollbar {
+                display: none;
+            }
+
+            .cat-scroll-row > .category-col-item,
+            .cat-scroll-row > [class*="col-"],
+            .bystander-scroll-row > .bystander-col-item,
+            .bystander-scroll-row > [class*="col-"] {
+                flex: 0 0 82% !important;
+                max-width: 82% !important;
+                width: 82% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                scroll-snap-align: start !important;
+                scroll-snap-stop: normal !important;
+            }
+        }
+
+        /* 4. Thumb-Friendly Quiz Option Selection Indicator */
+        .quiz-option-btn {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px !important;
+            border-radius: 16px !important;
+            min-height: 56px;
+        }
+
+        .quiz-radio-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.45rem;
+            color: transparent;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-bs-theme="dark"] .quiz-radio-circle {
+            border-color: #475569;
+        }
+
+        .quiz-option-btn:hover .quiz-radio-circle,
+        .quiz-option-btn:active .quiz-radio-circle {
+            border-color: var(--stipor-primary);
+            color: var(--stipor-primary);
+            background: rgba(37, 99, 235, 0.12);
+            transform: scale(1.15);
+        }
+
+        .quiz-option-btn.selected {
+            border-color: var(--stipor-primary) !important;
+            background: rgba(37, 99, 235, 0.07) !important;
+        }
+
+        [data-bs-theme="dark"] .quiz-option-btn.selected {
+            border-color: #60a5fa !important;
+            background: rgba(37, 99, 235, 0.2) !important;
+        }
+
+        .quiz-option-btn.selected .quiz-radio-circle {
+            border-color: var(--stipor-primary) !important;
+            color: var(--stipor-primary) !important;
+            background: rgba(37, 99, 235, 0.15) !important;
+            transform: scale(1.15);
+        }
+
+        [data-bs-theme="dark"] .quiz-option-btn.selected .quiz-radio-circle {
+            border-color: #60a5fa !important;
+            color: #93c5fd !important;
+            background: rgba(37, 99, 235, 0.3) !important;
+        }
+
+        .quiz-prev-btn {
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: #64748b;
+            border-color: #cbd5e1;
+            background: transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quiz-prev-btn:hover,
+        .quiz-prev-btn:active {
+            color: var(--stipor-primary);
+            border-color: var(--stipor-primary);
+            background: rgba(37, 99, 235, 0.08);
+            transform: translateX(-2px);
+        }
+
+        [data-bs-theme="dark"] .quiz-prev-btn {
+            color: #94a3b8;
+            border-color: #475569;
+        }
+
+        [data-bs-theme="dark"] .quiz-prev-btn:hover,
+        [data-bs-theme="dark"] .quiz-prev-btn:active {
+            color: #93c5fd;
+            border-color: #60a5fa;
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .quiz-step {
+            animation: fadeInQuizStep 0.22s ease-out;
+        }
+
+        @keyframes fadeInQuizStep {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .faq-search-wrapper #faqSearchClear {
+                min-width: 44px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* 5. Glowing Initial Pulse for Mobile Sticky Bar */
+        .mobile-sticky-bar.show {
+            animation: stickyBarPulse 1.8s ease-out;
+        }
+
+        @keyframes stickyBarPulse {
+            0% { box-shadow: 0 -8px 28px -4px rgba(15, 23, 42, 0.12); }
+            35% { box-shadow: 0 -12px 36px 4px rgba(37, 99, 235, 0.38); }
+            100% { box-shadow: 0 -8px 28px -4px rgba(15, 23, 42, 0.12); }
+        }
+
+        [data-bs-theme="dark"] .mobile-sticky-bar.show {
+            animation: stickyBarPulseDark 1.8s ease-out;
+        }
+
+        @keyframes stickyBarPulseDark {
+            0% { box-shadow: 0 -10px 32px -4px rgba(0, 0, 0, 0.7); }
+            35% { box-shadow: 0 -12px 40px 4px rgba(59, 130, 246, 0.5); }
+            100% { box-shadow: 0 -10px 32px -4px rgba(0, 0, 0, 0.7); }
+        }
+
+        /* Accessible Mobile Swipe Hints & Quiz Buttons */
+        .cat-swipe-hint {
+            background-color: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 6px 14px;
+        }
+
+        [data-bs-theme="dark"] .cat-swipe-hint {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .quiz-prev-btn {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            border-color: #cbd5e1;
+        }
+
+        [data-bs-theme="dark"] .quiz-prev-btn {
+            color: #cbd5e1;
+            border-color: #475569;
+        }
+
+        /* 6. High-Performance Content Visibility Optimization (Skips rendering offscreen DOM during initial load) */
+        #tentang,
+        #komitmen,
+        #kategori,
+        #cek-mandiri,
+        #panduan-saksi,
+        #alur,
+        #faq,
+        .stipor-footer {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 600px;
         }

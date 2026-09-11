@@ -6,9 +6,16 @@
             <p class="section-subtitle">Jangan jadi penonton pasif. Bantu temanmu secara aman menggunakan 5 metode aksi cepat yang diakui secara global.</p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <!-- Mobile Swipe Indicator -->
+        <div class="d-flex d-md-none align-items-center justify-content-center mb-3" data-aos="fade-up" data-aos-delay="50">
+            <span class="badge rounded-pill cat-swipe-hint">
+                <i class="fas fa-arrows-alt-h me-1 text-primary"></i> Geser kartu untuk melihat 5 Metode Aksi
+            </span>
+        </div>
+
+        <div class="row g-4 justify-content-lg-center bystander-scroll-row" data-aos="fade-up" data-aos-delay="100">
             <!-- 1. Direct (Tegur Langsung) -->
-            <div class="col-12 col-md-6 col-lg" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12 col-md-6 col-lg bystander-col-item">
                 <div class="bystander-card h-100">
                     <div class="bystander-step-badge">1</div>
                     <div class="bystander-icon-box text-danger-high bg-danger-subtle">
@@ -27,7 +34,7 @@
             </div>
 
             <!-- 2. Distract (Alihkan Perhatian) -->
-            <div class="col-12 col-md-6 col-lg" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-12 col-md-6 col-lg bystander-col-item">
                 <div class="bystander-card h-100">
                     <div class="bystander-step-badge">2</div>
                     <div class="bystander-icon-box text-warning-high bg-warning-subtle">
@@ -46,7 +53,7 @@
             </div>
 
             <!-- 3. Delegate (Minta Bantuan) -->
-            <div class="col-12 col-md-6 col-lg" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-12 col-md-6 col-lg bystander-col-item">
                 <div class="bystander-card h-100">
                     <div class="bystander-step-badge">3</div>
                     <div class="bystander-icon-box text-primary-high bg-primary-subtle">
@@ -65,7 +72,7 @@
             </div>
 
             <!-- 4. Delay (Dampingi Korban) -->
-            <div class="col-12 col-md-6 col-lg" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-12 col-md-6 col-lg bystander-col-item">
                 <div class="bystander-card h-100">
                     <div class="bystander-step-badge">4</div>
                     <div class="bystander-icon-box text-success-high bg-success-subtle">
@@ -84,7 +91,7 @@
             </div>
 
             <!-- 5. Document (Dokumentasi Bijak) -->
-            <div class="col-12 col-md-6 col-lg" data-aos="fade-up" data-aos-delay="500">
+            <div class="col-12 col-md-6 col-lg bystander-col-item">
                 <div class="bystander-card h-100">
                     <div class="bystander-step-badge">5</div>
                     <div class="bystander-icon-box text-info-high bg-info-subtle">
