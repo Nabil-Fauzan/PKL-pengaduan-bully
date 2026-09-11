@@ -13,7 +13,7 @@
                                 <span class="rounded-circle d-inline-block" style="width: 10px; height: 10px; background: #10b981;"></span>
                             </div>
                             <div class="about-mockup-address px-3 py-1 rounded-pill text-truncate" style="font-size: 0.72rem;">
-                                <i class="fas fa-lock me-1 text-success-high"></i> stipor.smktiairlangga.sch.id/dashboard
+                                <i class="fas fa-lock me-1 text-success-high"></i> stipor.infinityfreeapp.com/dashboard
                             </div>
                             <div style="width: 32px;"></div>
                         </div>
