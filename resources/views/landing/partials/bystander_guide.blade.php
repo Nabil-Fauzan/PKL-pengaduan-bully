@@ -114,7 +114,7 @@
         <div class="mt-5 bystander-banner text-center p-4 p-md-5 rounded-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="mx-auto" style="max-width: 700px;">
                 <span class="badge rounded-pill px-3 py-2 mb-3 bystander-banner-badge">
-                    <i class="fas fa-shield-alt me-1 flex-shrink-0"></i> <span>KOMITMEN UPSTANDER SMK TI AIRLANGGA</span>
+                    <i class="fas fa-shield-alt me-1 shrink-0"></i> <span>KOMITMEN UPSTANDER SMK TI AIRLANGGA</span>
                 </span>
                 <h3 class="text-white fw-bold h4 mb-3 bystander-banner-title">"Diamnya Kita adalah Bahan Bakar bagi Pelaku Bullying"</h3>
                 <p class="text-white text-opacity-90 mb-4 small bystander-banner-desc">

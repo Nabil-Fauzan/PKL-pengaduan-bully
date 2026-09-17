@@ -31,7 +31,7 @@
                     <!-- Caption Badge Below Mockup (Responsive & Non-intrusive) -->
                     <div class="text-center mt-3" data-aos="fade-up" data-aos-delay="150">
                         <span class="badge rounded-pill about-mockup-caption-badge">
-                            <i class="fas fa-laptop-code flex-shrink-0"></i> <span>Antarmuka Portal Siswa (Responsif &amp; Mudah Diakses)</span>
+                            <i class="fas fa-laptop-code shrink-0"></i> <span>Antarmuka Portal Siswa (Responsif &amp; Mudah Diakses)</span>
                         </span>
                     </div>
                 </div>
@@ -47,21 +47,21 @@
 
                 <ul class="list-unstyled mb-4 d-flex flex-column gap-3 about-feature-list">
                     <li class="d-flex align-items-start gap-2">
-                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 flex-shrink-0"></i>
+                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 shrink-0"></i>
                         <div>
                             <strong>Akses Langsung ke Ruang BK</strong>
                             <small class="d-block text-muted">Laporan terenkripsi dan langsung diterima Guru BK tanpa perantara pihak lain.</small>
                         </div>
                     </li>
                     <li class="d-flex align-items-start gap-2">
-                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 flex-shrink-0"></i>
+                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 shrink-0"></i>
                         <div>
                             <strong>Kerahasiaan Identitas 100%</strong>
                             <small class="d-block text-muted">Data pelapor dan saksi terlindungi penuh dari risiko intimidasi lanjutan.</small>
                         </div>
                     </li>
                     <li class="d-flex align-items-start gap-2">
-                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 flex-shrink-0"></i>
+                        <i class="fas fa-check-circle text-success-high fs-5 mt-1 shrink-0"></i>
                         <div>
                             <strong>Transparansi Status Kasus</strong>
                             <small class="d-block text-muted">Pantau perkembangan tindak lanjut laporan langsung dari portal siswa secara real-time.</small>

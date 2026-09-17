@@ -91,7 +91,7 @@
 <body id="beranda">
 
     <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="visually-hidden-focusable btn btn-primary position-absolute top-0 start-0 m-2" style="z-index: 9999;">Lewati ke konten utama</a>
+    <a href="#main-content" class="visually-hidden-focusable btn btn-primary position-absolute top-0 inset-s-0 m-2" style="z-index: 9999;">Lewati ke konten utama</a>
 
     <!-- 1. STICKY NAVBAR -->
     @include('landing.partials.navbar')
@@ -138,17 +138,17 @@
     <div id="mobileStickyBar" class="mobile-sticky-bar d-lg-none" aria-label="Aksi Cepat Pengaduan">
         <div class="mobile-sticky-inner d-flex align-items-center justify-content-between gap-2">
             @if(Auth::guard('siswa')->check())
-                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary grow d-flex align-items-center justify-content-center gap-2">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard Siswa</span>
                 </a>
             @elseif(Auth::guard('web')->check())
-                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                <a href="{{ route('dashboard') }}" class="btn btn-mobile-cta btn-mobile-primary grow d-flex align-items-center justify-content-center gap-2">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Panel Petugas</span>
                 </a>
             @else
-                <a href="{{ route('login') }}" class="btn btn-mobile-cta btn-mobile-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2">
+                <a href="{{ route('login') }}" class="btn btn-mobile-cta btn-mobile-primary grow d-flex align-items-center justify-content-center gap-2">
                     <i class="fas fa-bullhorn text-warning"></i>
                     <span>Laporkan Sekarang</span>
                 </a>
@@ -156,7 +156,7 @@
             <a href="https://wa.me/6281254332990?text=Halo%20Guru%20BK%20SMK%20TI%20Airlangga%2C%20saya%20ingin%20konsultasi%20mengenai%20situasi%20di%20sekolah." 
                target="_blank" 
                rel="noopener noreferrer" 
-               class="btn btn-mobile-cta btn-mobile-whatsapp flex-shrink-0 d-flex align-items-center justify-content-center gap-1" 
+               class="btn btn-mobile-cta btn-mobile-whatsapp shrink-0 d-flex align-items-center justify-content-center gap-1" 
                aria-label="Hubungi Guru BK via WhatsApp" 
                title="Konsultasi WhatsApp Ruang BK">
                 <i class="fab fa-whatsapp fs-5"></i>

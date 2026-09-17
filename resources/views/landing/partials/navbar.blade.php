@@ -5,7 +5,7 @@
     <div class="container-xl">
         <!-- Brand Logo & School Identity -->
         <a class="navbar-brand d-flex align-items-center gap-3 text-decoration-none me-3 me-xl-4" href="{{ url('/') }}">
-            <div class="brand-logo-icon flex-shrink-0">
+            <div class="brand-logo-icon shrink-0">
                 <i class="fas fa-shield-alt fs-5"></i>
             </div>
             <div class="brand-text-group">
@@ -70,7 +70,7 @@
 
             <!-- Desktop Action Group (Theme Toggle + CTA Buttons) -->
             <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center justify-content-center gap-3 mt-3 mt-lg-0 navbar-action-cluster ms-lg-3">
-                <button class="btn btn-theme-toggle theme-toggle-btn d-none d-lg-inline-flex flex-shrink-0" type="button" aria-label="Ganti mode gelap / terang" title="Ganti Mode Gelap / Terang">
+                <button class="btn btn-theme-toggle theme-toggle-btn d-none d-lg-inline-flex shrink-0" type="button" aria-label="Ganti mode gelap / terang" title="Ganti Mode Gelap / Terang">
                     <i class="fas fa-moon theme-icon"></i>
                 </button>
 

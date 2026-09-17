@@ -28,15 +28,15 @@
                             <h3 class="h5 fw-bold mb-3">1. Apakah perlakuan tidak menyenangkan tersebut terjadi berulang-ulang atau ada ancaman akan diulang?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(1, 2, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Ya, sering terjadi</strong> atau hampir setiap hari.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(1, 1, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Pernah beberapa kali</strong>, dan ada rasa khawatir terulang.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(1, 0, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Hanya sekali</strong> karena perdebatan/kesalahpahaman biasa.</span>
                                 </button>
                             </div>
@@ -47,15 +47,15 @@
                             <h3 class="h5 fw-bold mb-3">2. Apakah terdapat ketimpangan kuasa (misal: senior ke junior, kelompok mengeroyok individu, atau ancaman sosial/fisik)?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(2, 2, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Ya, sangat timpang</strong> (korban merasa tidak berdaya untuk melawan).</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(2, 1, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Ada tekanan sosial/kelompok</strong> yang membuat merasa terasing.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(2, 0, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Setara</strong>, kami berteman akrab dan saling bercanda.</span>
                                 </button>
                             </div>
@@ -71,15 +71,15 @@
                             <h3 class="h5 fw-bold mb-3">3. Bagaimana dampaknya terhadap perasaan dan kegiatan belajarmu di sekolah?</h3>
                             <div class="d-flex flex-column gap-2 mt-3">
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(3, 2, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Sangat tertekan / takut</strong> berangkat ke sekolah atau masuk kelas.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(3, 1, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Merasa cemas &amp; sedih</strong>, konsentrasi belajar menjadi terganggu.</span>
                                 </button>
                                 <button type="button" class="btn quiz-option-btn text-start p-3 d-flex align-items-center gap-3" onclick="selectQuizAnswer(3, 0, this)">
-                                    <span class="quiz-radio-circle flex-shrink-0"><i class="fas fa-circle"></i></span>
+                                    <span class="quiz-radio-circle shrink-0"><i class="fas fa-circle"></i></span>
                                     <span><strong>Tidak terlalu berdampak</strong>, masih merasa aman beraktivitas.</span>
                                 </button>
                             </div>

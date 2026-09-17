@@ -58,6 +58,12 @@
             display: contents;
         }
 
+        /* Utility Aliases (Clean IDE Linter & Cross-Compatibility) */
+        .shrink-0 { flex-shrink: 0 !important; }
+        .grow { flex-grow: 1 !important; }
+        .inset-s-0 { left: 0 !important; inset-inline-start: 0 !important; }
+
+
         body {
             font-family: 'Poppins', 'Plus Jakarta Sans', sans-serif;
             color: #334155;

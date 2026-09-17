@@ -24,7 +24,7 @@
                     </p>
 
                     <div class="d-flex align-items-center gap-3 pt-3 border-top mt-auto">
-                        <div class="quote-avatar-wrapper position-relative flex-shrink-0">
+                        <div class="quote-avatar-wrapper position-relative shrink-0">
                             <img src="{{ asset('assets/img/kepsek.webp') }}" 
                                  onerror="this.onerror=null; this.src='{{ asset('assets/img/kepsek.jpg') }}';" 
                                  alt="Muhammad Yani, S.Kom., M.T.I. - Kepala Sekolah SMK TI Airlangga" 
@@ -61,7 +61,7 @@
                     </p>
 
                     <div class="d-flex align-items-center gap-3 pt-3 border-top mt-auto">
-                        <div class="quote-avatar-wrapper position-relative flex-shrink-0">
+                        <div class="quote-avatar-wrapper position-relative shrink-0">
                             <div class="quote-avatar bg-success text-white">
                                 <i class="fas fa-hands-helping"></i>
                             </div>
